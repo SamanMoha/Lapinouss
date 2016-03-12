@@ -10,7 +10,7 @@
 			<div class="col-sm-3 about-grid">
 				<a href="<?php echo getAbsolutePath("resources/images/s1.jpg"); ?>" title="name" rel="title2">
 				<div class="view view-first">
-				  <img src="<?php echo getAbsolutePath("resources/images/actions/.png"); ?>" class="img-responsive" alt=""/>
+				  <img src="<?php echo getAbsolutePath("resources/images/actions/bin.png"); ?>" class="img-responsive" alt=""/>
 				  <div class="mask">
 					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
 				  </div>
@@ -20,9 +20,9 @@
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
 			</div>
 			<div class="col-sm-3 about-grid">
-				<a href="<?php echo getAbsolutePath("resources/images/s2.jpg"); ?>" title="name" rel="title2">
+				<a href="<?php echo getAbsolutePath("resources/images/actions/leaf.png"); ?>" title="name" rel="title2">
 				<div class="view view-first">
-				  <img src="<?php echo getAbsolutePath("resources/images/pic9.jpg"); ?>" class="img-responsive" alt=""/>
+				  <img src="<?php echo getAbsolutePath("resources/images/actions/leaf.png"); ?>" class="img-responsive" alt=""/>
 				  <div class="mask">
 					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
 				  </div>
@@ -34,7 +34,7 @@
 			<div class="col-sm-3 about-grid">
 				<a href="<?php echo getAbsolutePath("resources/images/s3.jpg"); ?>" title="name" rel="title2">
 				<div class="view view-first">
-				  <img src="<?php echo getAbsolutePath("resources/images/pic10.jpg"); ?>" class="img-responsive" alt=""/>
+				  <img src="<?php echo getAbsolutePath("resources/images/actions/umbrella.png"); ?>" class="img-responsive" alt=""/>
 				  <div class="mask">
 					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
 				  </div>
@@ -46,7 +46,7 @@
 			<div class="col-sm-3 about-grid">
 				<a href="<?php echo getAbsolutePath("resources/images/s4.jpg"); ?>" title="name" rel="title2">
 				<div class="view view-first">
-				  <img src="<?php echo getAbsolutePath("resources/images/pic11.jpg"); ?>" class="img-responsive" alt=""/>
+				  <img src="<?php echo getAbsolutePath("resources/images/actions/computer.png"); ?>" class="img-responsive" alt=""/>
 				  <div class="mask">
 					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
 				  </div>
