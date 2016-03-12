@@ -48,7 +48,7 @@
 		</div>
 		
 		<div class="copy">
-			<p>&copy; 2016 - <a href="http://esgi.com" target="_blank">ESGI</a></p>
+			<p>&copy; 2016 - <a href="http://lapinouss.com" target="_blank">Lapinouss</a></p>
 		</div>
 		
 		<script src="<?php echo getAbsolutePath("scripts/jquery-1.11.1.min.js"); ?>"></script>

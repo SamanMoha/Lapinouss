@@ -4,7 +4,7 @@
 		<div class="container">
 		  <div class="comments-area">
 			<h3>Connecte toi !</h3>
-			<form>
+			<form method="POST" action="<?php echo getAbsolutePath("views/account"); ?>">
 				<p>
 					<label>Adresse e-mail</label>
 					<span>*</span>
@@ -19,7 +19,8 @@
 					<label class="btn1 btn2 btn-8 btn-8c"><input type="submit" value="Valider"></label>
 				</p>
 			</form>
-			<h4><a href="signup.html">Pas encore de compte ?</a></h4>
+			<br />
+			<h4><a href="<?php echo getAbsolutePath("views/account/signup.php"); ?>">Pas encore de compte ?</a></h4>
 		    </div>
 		</div>
 	</div>

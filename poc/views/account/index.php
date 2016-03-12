@@ -3,74 +3,116 @@
 	<div class="grid_1">
 	   <div class="container">
 		  <div class="box_1">
-			<h3>Who we are</h3>
+			<h3>Salut mon ami !</h3>
+			<h4>Que veux tu faire aujourd'hui ?</h4>
 		  </div>
-		  <div class="col-md-12 about_banner"><img src="images/about.jpg" class="img-responsive" alt=""/></div>
-		  <div class="box_20">
-			  <div class="col-sm-6 box_3">
-			  	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue dui</p>
-			  </div>
-			  <div class="col-sm-6 box_3">
-			  	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue dui</p>
-			  </div>
-		      <div class="clearfix"> </div>
-		  </div>
+		  <div class="about-grids">
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s1.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/actions/.png"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s2.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic9.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s3.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic10.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s4.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic11.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="clearfix"> </div>
+	      </div
 	   </div>
 	</div>
 	
 	<div class="grid_3">
 		<div class="container"> 
-			<h3>Our Staff</h3>
+			<h3>Mes troph&eacute;es</h3>
 		  <div class="about-grids">
-						<div class="col-sm-3 about-grid">
-							<a href="images/s1.jpg" title="name" rel="title2">
-						    <div class="view view-first">
-                              <img src="images/pic8.jpg" class="img-responsive" alt=""/>
-                              <div class="mask">
-                                <div class="info"><img src="images/magnify-alt.png" alt=""></div>
-		                      </div>
-                             </div>
-							</a>
-							<h4><a href="#">Duis autem</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-						</div>
-						<div class="col-sm-3 about-grid">
-							<a href="images/s2.jpg" title="name" rel="title2">
-						    <div class="view view-first">
-                              <img src="images/pic9.jpg" class="img-responsive" alt=""/>
-                              <div class="mask">
-                                <div class="info"><img src="images/magnify-alt.png" alt=""></div>
-		                      </div>
-                             </div>
-							</a>
-							<h4><a href="#">Duis autem</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-						</div>
-						<div class="col-sm-3 about-grid">
-							<a href="images/s3.jpg" title="name" rel="title2">
-						    <div class="view view-first">
-                              <img src="images/pic10.jpg" class="img-responsive" alt=""/>
-                              <div class="mask">
-                                <div class="info"><img src="images/magnify-alt.png" alt=""></div>
-		                      </div>
-                             </div>
-							</a>
-							<h4><a href="#">Duis autem</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-						</div>
-						<div class="col-sm-3 about-grid">
-							<a href="images/s4.jpg" title="name" rel="title2">
-						    <div class="view view-first">
-                              <img src="images/pic11.jpg" class="img-responsive" alt=""/>
-                              <div class="mask">
-                                <div class="info"><img src="images/magnify-alt.png" alt=""></div>
-		                      </div>
-                             </div>
-							</a>
-							<h4><a href="#">Duis autem</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
-						</div>
-				        <div class="clearfix"> </div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s1.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic8.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s2.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic9.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s3.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic10.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="col-sm-3 about-grid">
+				<a href="<?php echo getAbsolutePath("resources/images/s4.jpg"); ?>" title="name" rel="title2">
+				<div class="view view-first">
+				  <img src="<?php echo getAbsolutePath("resources/images/pic11.jpg"); ?>" class="img-responsive" alt=""/>
+				  <div class="mask">
+					<div class="info"><img src="<?php echo getAbsolutePath("resources/images/magnify-alt.png"); ?>" alt=""></div>
+				  </div>
+				 </div>
+				</a>
+				<h4><a href="#">Duis autem</a></h4>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+			</div>
+			<div class="clearfix"> </div>
 	      </div>
 	   </div>
 	</div>
@@ -104,13 +146,13 @@
 			<div class="col-md-6">
 				<h3 class="m_3">Testimonials</h3>
 				<ul class="about_box span_1">
-				  <li class="box_img"><img src="images/pic9.jpg" class="img-responsive" alt=""/></li>
+				  <li class="box_img"><img src="<?php echo getAbsolutePath("resources/images/pic9.jpg"); ?>" class="img-responsive" alt=""/></li>
 				  <li class="box_desc">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,</li>
 				  <h4>Finibus Bonorum <span><a href="#">http://demolink.org</a></span></h4>
 				  <div class="clearfix"> </div>
 				</ul>
 				<ul class="about_box span_1">
-				  <li class="box_img"><img src="images/pic9.jpg" class="img-responsive" alt=""/></li>
+				  <li class="box_img"><img src="<?php echo getAbsolutePath("resources/images/pic9.jpg"); ?>" class="img-responsive" alt=""/></li>
 				  <li class="box_desc">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,</li>
 				  <h4>Finibus Bonorum <span><a href="#">http://demolink.org</a></span></h4>
 				  <div class="clearfix"> </div>

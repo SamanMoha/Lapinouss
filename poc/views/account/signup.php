@@ -4,7 +4,7 @@
 		<div class="container">	   
 		  <div class="comments-area">
 			<h3>Cr&eacute;e toi vite un compte !</h3>
-			<form>
+			<form method="POST" action="<?php echo getAbsolutePath("views/account"); ?>">
 				<p>
 					<label>Pr&eacute;nom</label>
 					<span>*</span>
@@ -27,6 +27,11 @@
 				</p>
 				<p>
 					<label>Mot de passe</label>
+					<span>*</span>
+					<input type="password" value="" required>
+				</p>
+				<p>
+					<label>Confirme ton mot de passe</label>
 					<span>*</span>
 					<input type="password" value="" required>
 				</p>

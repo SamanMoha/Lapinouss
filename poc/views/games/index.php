@@ -60,12 +60,13 @@
 		        <a href="#" class="btn1 btn-8 btn-8c">Jouer</a>
 		     </div>  
 		   </div>
+		   
 		   <div class="pagination">
-		    <ul><li class="pagination-start firstItem"><span class="pagenav">Start</span></li>
-		    	<li class="pagination-prev"><span class="pagenav">Prev</span></li><li>
+		    <ul><li class="pagination-start firstItem"><span class="pagenav">D&eacute;but</span></li>
+		    	<li class="pagination-prev"><span class="pagenav">Prec</span></li><li>
 		    	<span class="pagenav">1</span></li><li><a href="#" class="pagenav">2</a></li>
-		    	<li class="pagination-next"><a title="" href="#" class="border pagenav" data-original-title="Next">Next</a></li>
-		    	<li class="pagination-end lastItem"><a title="" href="#" class="border pagenav" data-original-title="End">End</a></li>
+		    	<li class="pagination-next"><a title="" href="#" class="border pagenav" data-original-title="Next">Suiv</a></li>
+		    	<li class="pagination-end lastItem"><a title="" href="#" class="border pagenav" data-original-title="End">Fin</a></li>
 		    </ul>	
 		  </div>
 	   </div>

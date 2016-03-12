@@ -264,7 +264,7 @@ span.main {
 	margin-bottom:8em;
 }
 .team{
-	background: url(../../resources/images/banner1.jpg) no-repeat center top;
+	background: url(../resources/images/banner1.jpg) no-repeat center top;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -489,7 +489,7 @@ ul.list2 li a:hover{
 }
 /*--about--*/
 .header_about{
-	background: url(../../resources/images/banner.jpg) no-repeat center top;
+	background: url(../resources/images/banner.jpg) no-repeat center top;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
