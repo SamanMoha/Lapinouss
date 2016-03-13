@@ -3,38 +3,35 @@
    <div class="grid_4">
 		<div class="container"> 
 			<h1 class="blog_head">Contact</h1>
-		    <div class="map">
-			  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3150859.767904157!2d-96.62081048651531!3d39.536794757966845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1408111832978"> </iframe>
-			</div>
 			<div class="contact">
 				<div class="col-md-4 contact_left">
-					<h3>Contact info</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum adipiscing vestibulum sapien, in ultricies tellus dignissim eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-				    <p> Praesent mollis dolor eros, vel facilisis nisi auctor ut. Cras id convallis ipsum. Mauris posuere, ligula ac sodales sollicitudin, risus sapien iaculis libero, ac molestie orci arcu non ante. Fusce est leo, ornare ut porta quis, dictum et mi. Aliquam vel pretium sem</p>
+					<h3>Qui sommes nous ?</h3>
+					<p>Etudiants de l'ESGI, nous sommes une &eacute;quipe de jeunes d&eacute;veloppeurs dynamique et motiv&eacute;e &agrave; l'envie de partager notre exp&eacute;rience avec les parents et leurs enfants.</p>
+				    <p>Si vous avez des remarques faites nous le savoir, nous sommes toujours &agrave; l'&eacute;coute et nous &eacute;tudierons toute proposition.</p>
 				</div>
 				<div class="col-md-8 contact_right">
-					<h3>Catch me</h3>
+					<h3>Laissez nous un message</h3>
 					<form>
-									<div class="text">
-										<div class="text-fild">
-											<span>Name:</span>
-											<input type="text" class="text" value="Your Name here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name here';}">
-										</div>
-										<div class="text-fild">
-											<span>Email:</span>
-											<input type="text" class="text" value="Your Email here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email here';}">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-									<div class="msg-fild">
-											<span>Subject:</span>
-											<input type="text" class="text" value="Your Subject here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Subject here';}">
-									</div>
-									<div class="message-fild">
-											<span>Message:</span>
-											<textarea> </textarea>
-									</div>
-									<label class="btn1 btn2 btn-8 btn-8c"><input type="submit" value="Send"></label>
+						<div class="text">
+							<div class="text-fild">
+								<span>Nom, Pr&eacute;nom :</span>
+								<input type="text" class="text" placeholder="Votre nom et pr&eacute;nom ici">
+							</div>
+							<div class="text-fild">
+								<span>Adresse e-mail :</span>
+								<input type="text" class="text" placeholder="Votre adresse e-mail">
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="msg-fild">
+								<span>Sujet :</span>
+								<input type="text" class="text" placeholder="Le sujet de votre message">
+						</div>
+						<div class="message-fild">
+								<span>Message :</span>
+								<textarea> </textarea>
+						</div>
+						<label class="btn1 btn2 btn-8 btn-8c"><input type="submit" value="Envoyer"></label>
 					</form>
 				</div>
 				<div class="clearfix"> </div>

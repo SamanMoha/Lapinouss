@@ -65,7 +65,7 @@
 				<h3 class="head_1 wow rotateInUpLeft" data-wow-delay="0.4s">&agrave; vous de choisir</h3>
 				
 				<div class="col-md-4 box_6 wow rotateInDownLeft " data-wow-delay="0.4s">
-					<img src="<?php echo getAbsolutePath("resources/images/pic2.jpg"); ?>" class="img-responsive" alt=""/>
+					<img src="<?php echo getAbsolutePath("resources/images/tiles/pic2.jpg"); ?>" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Cr&eacute;ez</h4>
 						<p>Choissisez parmi plusieurs th&eacute;mes propos&eacute;s.</p>
@@ -73,7 +73,7 @@
 				</div>
 				
 				<div class="col-md-4 box_6 wow lightSpeedIn" data-wow-delay="0.4s">
-					<img src="<?php echo getAbsolutePath("resources/images/pic1.jpg"); ?>" class="img-responsive" alt=""/>
+					<img src="<?php echo getAbsolutePath("resources/images/tiles/pic1.jpg"); ?>" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Jouez</h4>
 						<p>Laisser grandir vos enfants &agrave; travers un apprentissage ludique.</p>
@@ -81,7 +81,7 @@
 				</div>
 			  
 				<div class="col-md-4 box_6 wow rotateIn " data-wow-delay="0.4s">
-					<img src="<?php echo getAbsolutePath("resources/images/pic3.jpg"); ?>" class="img-responsive" alt=""/>
+					<img src="<?php echo getAbsolutePath("resources/images/tiles/pic3.jpg"); ?>" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Partagez</h4>
 						<p>Faites d&eacute;couvrir aux autres parents vos plus belles cr&eacute;ations.</p>
@@ -95,9 +95,9 @@
 				<h3 class="head_2 wow rollIn" data-wow-delay="0.4s">&agrave; l'&eacute;cole</h3>
 				
 				<div class="img-wrapper wow slideInLeft" data-wow-delay="0.4s">
-					<a><img src="<?php echo getAbsolutePath("resources/images/pic6.jpg"); ?>" class="img-responsive" alt=""/></a>
-					<a><img src="<?php echo getAbsolutePath("resources/images/pic7.jpg"); ?>" class="img-responsive" alt=""/></a>
-					<a><img src="<?php echo getAbsolutePath("resources/images/pic4.jpg"); ?>" class="img-responsive" alt=""/></a>
+					<a><img src="<?php echo getAbsolutePath("resources/images/tiles/pic6.jpg"); ?>" class="img-responsive" alt=""/></a>
+					<a><img src="<?php echo getAbsolutePath("resources/images/tiles/pic7.jpg"); ?>" class="img-responsive" alt=""/></a>
+					<a><img src="<?php echo getAbsolutePath("resources/images/tiles/pic4.jpg"); ?>" class="img-responsive" alt=""/></a>
 				</div>
 				
 				<blockquote class="blockquote1">
@@ -114,7 +114,7 @@
 			<div class="container">
 				<h3>Des parents heureux</h3>
 				<div class="custom_testimonials_wrap_inner">
-					<address><img src="<?php echo getAbsolutePath("resources/images/pic5.jpg"); ?>" class="img-responsive" alt=""/></address>
+					<address><img src="<?php echo getAbsolutePath("resources/images/tiles/pic5.jpg"); ?>" class="img-responsive" alt=""/></address>
 					<div class="extra-wrap">
 						<i class="fa quote fa-quote-left"></i>
 						<p>Gr&acirc;ce &agrave; Lapinous, Damien apprend &agrave; formuler des phrases d&egrave;s l'&acirc;ge de 3 ans.</p>

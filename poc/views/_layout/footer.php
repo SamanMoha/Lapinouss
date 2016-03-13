@@ -4,30 +4,30 @@
 					<div class="col-sm-3">
 						<ul class="list1">
 							<h3>Menu</h3>
-							<li><a href="">Accueil</a></li>
-							<li><a href="views/">Store</a></li>
-							<li><a href="#">Tutoriels</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/"); ?>">Accueil</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/store"); ?>">Store</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/tutoriels"); ?>">Tutoriels</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/contact"); ?>">Contact</a></li>
 						</ul>
 					</div>
 					
 					<div class="col-sm-3">
 						<ul class="list1">
 							<h3>Th&egrave;mes</h3>
-							<li><a href="#">Fran&ccedil;ais</a></li>
-							<li><a href="#">Anglais</a></li>
-							<li><a href="#">Math&eacute;matiques</a></li>
-							<li><a href="#">Logique</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/store/#francais"); ?>">Fran&ccedil;ais</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/store/#anglais"); ?>">Anglais</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/store/#mathematiques"); ?>">Math&eacute;matiques</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/store/#logique"); ?>">Logique</a></li>
 						</ul>
 					</div>
 				
 					<div class="col-sm-3">
 						<ul class="list1">
 							<h3>&agrave; propos</h3>
-							<li><a href="#">Qui sommes nous ?</a></li>
-							<li><a href="#">Recrutement</a></li>
-							<li><a href="#">Conditions d'utilisations</a></li>
-							<li><a href="#">Nous contacter</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/contact"); ?>">Qui sommes nous ?</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/contact"); ?>">Recrutement</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/contact"); ?>">Conditions d'utilisations</a></li>
+							<li><a href="<?php echo getAbsolutePath("views/contact"); ?>">Nous contacter</a></li>
 						</ul>
 					</div>
 					

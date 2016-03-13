@@ -5,58 +5,54 @@
 			<h1 class="blog_head">Blog</h1>
 		   <div class="blog_grid span2">
 		     <div class="col-md-6 blog_box">
-		        <a href="single.html" class="mask"><img src="images/b1.jpg" alt="image" class="img-responsive zoom-img" alt=""/></a>
-		     	<h3><a href="single.html">Ut wisi enim ad minim veniam, quis nostrud exerc</a></h3>
+		        <a href="single.html" class="mask"><img src="<?php echo getAbsolutePath("resources/images/tiles/b1.jpg"); ?>" alt="image" class="img-responsive zoom-img" alt=""/></a>
+		     	<h3><a href="single.html">Multiplications</a></h3>
 		     	<div class="links">
 		  		    <ul>
-		  				<li><i class="fa blog-icon fa-calendar"> </i><span>june 14, 2013</span></li>
-		  				<li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
-		  				<li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
+		  				<li><i class="fa blog-icon fa-star"> </i><i class="fa blog-icon fa-star"> </i><i class="fa blog-icon fa-star"> </i></li>
+		  				<li><i class="fa blog-icon fa-user"> </i><span>Niveau 1/9</span></li>
 		  		    </ul>
 		  		</div>
-		     	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,nibh euismod tincidunt</p>
+		     	<p>Multiplication niveau CM1.</p>
 		        <a href="#" class="btn1 btn-8 btn-8c">Jouer</a>
 		     </div>  
 		     <div class="col-md-6 blog_box">
-		        <a href="single.html" class="mask"><img src="images/b2.jpg" alt="image" class="img-responsive zoom-img" alt=""/></a>
-		     	<h3><a href="single.html">Ut wisi enim ad minim veniam, quis nostrud exerc</a></h3>
+		        <a href="single.html" class="mask"><img src="<?php echo getAbsolutePath("resources/images/tiles/b2.jpg"); ?>" alt="image" class="img-responsive zoom-img" alt=""/></a>
+		     	<h3><a href="single.html">Pays</a></h3>
 		     	<div class="links">
 		  		    <ul>
-		  				<li><i class="fa blog-icon fa-calendar"> </i><span>june 14, 2013</span></li>
-		  				<li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
-		  				<li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
+		  				<li><i class="fa blog-icon fa-star"> </i><i class="fa blog-icon fa-star"> </i></li>
+		  				<li><i class="fa blog-icon fa-user"> </i><span>Niveau 5/30</span></li>
 		  		    </ul>
 		  		</div>
-		     	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,nibh euismod tincidunt</p>
+		     	<p>Apprends les diff&eacute;rents pays du monde !</p>
 		        <a href="#" class="btn1 btn-8 btn-8c">Jouer</a>
 		     </div>  
 		     <div class="clearfix"> </div>
 		   </div>
 		    <div class="blog_grid">
 		     <div class="col-md-6 blog_box">
-		        <a href="single.html" class="mask"><img src="images/b3.jpg" alt="image" class="img-responsive zoom-img" alt=""/></a>
+		        <a href="single.html" class="mask"><img src="<?php echo getAbsolutePath("resources/images/tiles/b3.jpg"); ?>" alt="image" class="img-responsive zoom-img" alt=""/></a>
 		     	<h3><a href="single.html">Ut wisi enim ad minim veniam, quis nostrud exerc</a></h3>
 		     	<div class="links">
 		  		    <ul>
-		  				<li><i class="fa blog-icon fa-calendar"> </i><span>june 14, 2013</span></li>
-		  				<li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
-		  				<li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
+		  				<li><i class="fa blog-icon fa-star"> </i><i class="fa blog-icon fa-star"> </i><i class="fa blog-icon fa-star"> </i></li>
+		  				<li><i class="fa blog-icon fa-user"> </i><span>Niveau 2/4</span></li>
 		  		    </ul>
 		  		</div>
-		     	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,nibh euismod tincidunt</p>
+		     	<p>Continents</p>
 		        <a href="#" class="btn1 btn-8 btn-8c">Jouer</a>
 		     </div>  
 		     <div class="col-md-6 blog_box">
-		        <a href="single.html" class="mask"><img src="images/b4.jpg" alt="image" class="img-responsive zoom-img" alt=""/></a>
-		     	<h3><a href="single.html">Ut wisi enim ad minim veniam, quis nostrud exerc</a></h3>
+		        <a href="single.html" class="mask"><img src="<?php echo getAbsolutePath("resources/images/tiles/b4.jpg"); ?>" alt="image" class="img-responsive zoom-img" alt=""/></a>
+		     	<h3><a href="single.html">Devinettes couleurs</a></h3>
 		     	<div class="links">
 		  		    <ul>
-		  				<li><i class="fa blog-icon fa-calendar"> </i><span>june 14, 2013</span></li>
-		  				<li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
-		  				<li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
+		  				<li><i class="fa blog-icon fa-star"> </i></li>
+		  				<li><i class="fa blog-icon fa-user"> </i><span>Niveau 5/5</span></li>
 		  		    </ul>
 		  		</div>
-		     	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,nibh euismod tincidunt</p>
+		     	<p>Devine le nom de chaque couleur.</p>
 		        <a href="#" class="btn1 btn-8 btn-8c">Jouer</a>
 		     </div>  
 		   </div>
