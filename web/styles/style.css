@@ -28,7 +28,9 @@ body a{
 	min-height:750px;
 }
 .header_top{
-	padding-top:15em;
+	background-color: rgba(47, 47, 47, 0.51);
+	margin-top: 150px;
+    padding: 50px;
 	text-align: center;
 }
 .header_top h1{
