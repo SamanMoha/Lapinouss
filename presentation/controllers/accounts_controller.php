@@ -10,11 +10,11 @@
 			require_once('views/pages/accounts/index.php');
 		}
 		
-		public function signin() {	
+		public function login() {	
 			require_once('views/pages/accounts/signin.php');
 		}
 
-		public function signup() {
+		public function register 	() {
 			require_once('views/pages/accounts/signup.php');
 		}
 	}

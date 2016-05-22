@@ -1,5 +1,17 @@
 <?php
-	function call($controller, $action) {
+	function redirect($controller, $action = 'index') {
+		if (empty($action)) {
+			$action = 'index';
+		}
+
+		header('Location: ?controller='.$controller.'&action='.$action);
+	}
+
+	function call($controller, $action = 'index') {
+		if (empty($action)) {
+			$action = 'index';
+		}
+
 		require_once 'controllers/'.$controller.'_controller.php';
 
 		switch ($controller) {
@@ -25,13 +37,14 @@
 					   'accounts' 
 							=> [
 								'index',
-								'signin', 
-								'signup'
+								'login', 
+								'register'
 								]
 					);
 
 	if (array_key_exists($controller, $controllers)
-		&& in_array($action, $controllers[$controller])) {
+		&& (in_array($action, $controllers[$controller])
+			|| empty($action))) {
 		call($controller, $action);
 	}
 	else {
