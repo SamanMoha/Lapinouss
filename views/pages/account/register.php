@@ -2,7 +2,7 @@
 		<div class="container">	   
 		  <div class="comments-area">
 			<h3>Cr&eacute;e toi vite un compte !</h3>
-			<form method="POST" action="<?php echo getAbsolutePath("views/account"); ?>">
+			<form method="POST" action="<?php echo action('account', 'register'); ?>">
 				<p>
 					<label>Pr&eacute;nom</label>
 					<span>*</span>

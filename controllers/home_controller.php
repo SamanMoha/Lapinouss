@@ -2,9 +2,6 @@
 	class HomeController {
 		
 		public function index() {
-			$name = 'Ismail';
-			$surname  = 'NGUYEN';
-
 			require_once('views/pages/index.php');
 		}
 
@@ -12,4 +9,3 @@
 			require_once('views/pages/error.php');
 		}
 	}
-?>

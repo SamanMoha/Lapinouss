@@ -6,8 +6,8 @@
                     FROM account
                     WHERE email = :email
                       AND password = :password
-                ";
+                ;";
 
-        const REGISTER = "";
+        const REGISTER = "INSERT INTO account (permission, uid, email, password, first_name, last_name, birth_date, created_date)
+                            VALUES (:permission, :uid, :email, :password, :first_name, :last_name, :birth_date, :created_date);";
     }
-?>

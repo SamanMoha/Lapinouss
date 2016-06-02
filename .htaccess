@@ -4,6 +4,7 @@ RewriteEngine on
 RewriteRule (styles/.*) $1 [L]
 RewriteRule (scripts/.*) $1 [L]
 RewriteRule (resources/.*) $1 [L]
+RewriteRule (views/.*) $1 [L]
 
 RewriteRule index.php index.php?controller=home [QSA]
 RewriteRule ^([^/]+)/?$ index.php?controller=$1 [QSA]

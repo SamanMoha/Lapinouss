@@ -29,4 +29,3 @@
             return self::$_db;
         }
     }
-?>

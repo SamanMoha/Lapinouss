@@ -3,6 +3,9 @@
 	
 	define('BASE_PATH', '/Lapinouss/');
 
+	require_once 'common/exceptions/fatal_exception.php';
+	require_once 'common/exceptions/web_exception.php';
+
 	function action($controller, $action = 'index') {
 		if (empty($action)) {
 			$action = 'index';
@@ -25,4 +28,3 @@
 	}
 
 	require_once 'views/layout.php';
-?>

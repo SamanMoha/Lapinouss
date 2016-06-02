@@ -3,7 +3,7 @@
 		   <div class="comment">
 				<h2>En ce moment</h2>
 				<ul class="comment-list">
-				  <li><img src="<?php echo getAbsolutePath("resources/images/game.png"); ?>" alt="">
+				  <li><img src="resources/images/game.png" alt="">
 					 <div class="desc1">
 						<h5><a href="#">Expressions fran&ccedil;aise</a></h5>
 						<div class="extra">
@@ -21,7 +21,7 @@
 		   <div class="comment">
 				<h2>Les plus populaires</h2>
 				<ul class="comment-list">
-				  <li><img src="<?php echo getAbsolutePath("resources/images/game.png"); ?>" alt="">
+				  <li><img src="resources/images/game.png" alt="">
 					 <div class="desc1">
 						<h5><a href="#">Math&eacute;matiques CE1</a></h5>
 						<div class="extra">
@@ -35,7 +35,7 @@
 					</li>
 				</ul>
 				<ul class="comment-list">
-				  <li><img src="<?php echo getAbsolutePath("resources/images/game.png"); ?>" alt="">
+				  <li><img src="resources/images/game.png" alt="">
 					 <div class="desc1">
 						<h5><a href="#">Devinette fruits & l&eacute;gumes</a></h5>
 						<div class="extra">

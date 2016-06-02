@@ -9,4 +9,3 @@
             $this->db = DatabaseLayer::getInstance();
         }
     }
-?>

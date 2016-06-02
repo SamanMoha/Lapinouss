@@ -29,16 +29,18 @@
 					$_POST['password']
 				);
 				
-				if ($user == null) {
-					throw new WebException("Adresse e-mail/mot de passe incorrect !");
-				}
+				if ($user != null) {
+					$_SESSION['user'] = $user;
 
-				$_SESSION['user'] = $user;
-				
-				redirect('account');
+					redirect('account');
+
+				}
+				else {
+					new WebException("Adresse e-mail/mot de passe incorrect !");
+				}
 			}
 
-			require_once 'views/pages/accounts/login.php';
+			require_once 'views/pages/account/login.php';
 		}
 
 		public function register() {
@@ -52,7 +54,7 @@
 				);
 
 				if ($user == null) {
-					throw new WebException("Erreur lors de l'inscription");
+					 new WebException("Erreur lors de l'inscription");
 				}
 
 				$_SESSION['user'] = $user;
@@ -60,7 +62,7 @@
 				redirect('account');
 			}
 
-			require_once 'views/pages/accounts/register.php';
+			require_once 'views/pages/account/register.php';
 		}
 
 		public function settings() {
@@ -73,7 +75,7 @@
 				);
 
 				if ($user == null) {
-					throw new WebException("Erreur lors de l'inscription.");
+					 new WebException("Erreur lors de l'inscription.");
 				}
 
 				$_SESSION['user'] = $user;
@@ -81,7 +83,7 @@
 				redirect('account');
 			}
 
-			require_once 'views/pages/accounts/settings.php';
+			require_once 'views/pages/account/settings.php';
 		}
 
 		public function delete() {
@@ -92,7 +94,7 @@
 				);
 
 				if (!$delete) {
-					throw new WebException("Erreur lors de la suppression du compte.");
+					 new WebException("Erreur lors de la suppression du compte.");
 				}
 
 				$this->logout();
@@ -108,4 +110,3 @@
 			redirect('home');
 		}
 	}
-?>

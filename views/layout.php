@@ -31,7 +31,11 @@
 						<li class="active"><a href="<?php echo action('home'); ?>">Accueil</a></li>
 						<li><a href="<?php echo action('store'); ?>">Store</a></li>
 						<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
-						<li><a href="<?php echo action('account'); ?>">Mon compte</a></li>
+						<li>
+							<a href="<?php echo action('account'); ?>">
+								<?php echo isset($_SESSION['user']) ? 'Mon compte' : 'Connexion'; ?>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
