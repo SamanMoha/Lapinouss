@@ -4,7 +4,7 @@
 			$action = 'index';
 		}
 
-		header('Location: ?controller='.$controller.'&action='.$action);
+		header('Location: ' . action($controller, $action));
 	}
 
 	function call($controller, $action = 'index') {
@@ -15,26 +15,26 @@
 		require_once 'controllers/'.$controller.'_controller.php';
 
 		switch ($controller) {
-			case 'pages':
-				$controller = new PagesController();
+			case 'home':
+				$controller = new HomeController();
 				break;
 
-			case 'accounts':
+			case 'account':
 				require_once('models/account.php');
-				$controller = new AccountsController();
+				$controller = new AccountController();
 				break;
 		}
 
 		$controller->{ $action }();
 	}
 
-	$controllers = array('pages'
+	$controllers = array('home'
 	=> [
 			'index',
 			'error'
 		],
 
-		'accounts'
+		'account'
 		=> [
 			'index',
 			'login',
@@ -48,6 +48,6 @@
 		call($controller, $action);
 	}
 	else {
-		call('pages', 'error');
+		call('home', 'error');
 	}
 ?>

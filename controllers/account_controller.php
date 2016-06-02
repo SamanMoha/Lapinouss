@@ -1,7 +1,7 @@
 <?php
 	require_once 'repositories/account_repository.php';
 
-	class AccountsController {
+	class AccountController {
 
 		private $accountRepository;
 
@@ -15,11 +15,11 @@
 
 		public function index() {
 			if (!isset($_SESSION['user']))
-				redirect('accounts', 'login');
+				redirect('account', 'login');
 			
 			$account = $_SESSION['user'];
 
-			require_once 'views/pages/accounts/index.php';
+			require_once 'views/pages/account/index.php';
 		}
 		
 		public function login() {
@@ -35,7 +35,7 @@
 
 				$_SESSION['user'] = $user;
 				
-				redirect('accounts');
+				redirect('account');
 			}
 
 			require_once 'views/pages/accounts/login.php';
@@ -57,7 +57,7 @@
 
 				$_SESSION['user'] = $user;
 
-				redirect('accounts');
+				redirect('account');
 			}
 
 			require_once 'views/pages/accounts/register.php';
@@ -78,7 +78,7 @@
 
 				$_SESSION['user'] = $user;
 
-				redirect('accounts');
+				redirect('account');
 			}
 
 			require_once 'views/pages/accounts/settings.php';

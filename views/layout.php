@@ -28,10 +28,10 @@
 				<div class="top-nav wow bounce" data-wow-delay="0.4s">
 					<span class="menu"> </span>
 					<ul>
-						<li class="active"><a href="?">Accueil</a></li>
-						<li><a href="?controller=store">Store</a></li>
-						<li><a href="?controller=tutorials">Tutoriels</a></li>
-						<li><a href="?controller=account">Mon compte</a></li>
+						<li class="active"><a href="<?php echo action('home'); ?>">Accueil</a></li>
+						<li><a href="<?php echo action('store'); ?>">Store</a></li>
+						<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
+						<li><a href="<?php echo action('account'); ?>">Mon compte</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -47,7 +47,7 @@
 						<ul class="list1">
 							<h3>Menu</h3>
 							<li><a href="">Accueil</a></li>
-							<li><a href="views/">Store</a></li>
+							<li><a href="">Store</a></li>
 							<li><a href="#">Tutoriels</a></li>
 							<li><a href="#">Contact</a></li>
 						</ul>

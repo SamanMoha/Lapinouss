@@ -1,5 +1,5 @@
 <?php
-	class PagesController {
+	class HomeController {
 		
 		public function index() {
 			$name = 'Ismail';
