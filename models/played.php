@@ -1,0 +1,10 @@
+<?php
+    class Played {
+
+        public $id_played;
+        public $played_time;
+        public $date_game;
+        public $score;
+        public $id_game;
+        public $id_child_account;
+    }
