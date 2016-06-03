@@ -3,7 +3,7 @@
 		   <div class="comment">
 				<h2>En ce moment</h2>
 			   <ul class="comment-list">
-				   <li><img src="<?php echo $games[0]->picture; ?>" alt="">
+				   <li><img src="resources/images/actions/game.png" alt="">
 					   <div class="desc1">
 						   <h5><a href="#"><?php echo $games[0]->title; ?></a></h5>
 						   <div class="extra">
@@ -25,7 +25,7 @@
 						if ($game->Available == 1) {
 				?>
 						<ul class="comment-list">
-							<li><img src="<?php echo $game->picture; ?>" alt="">
+							<li><img src="resources/images/actions/game.png" alt="">
 								<div class="desc1">
 									<h5><a href="#"><?php echo $game->title; ?></a></h5>
 									<div class="extra">

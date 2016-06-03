@@ -1,12 +1,15 @@
 <?php
 	require_once 'repositories/account_repository.php';
+	require_once 'repositories/child_repository.php';
 
 	class AccountController {
 
 		private $accountRepository;
+		private $childRepository;
 
 		public function __construct() {
 			$this->accountRepository = new AccountRepository();
+			$this->childRepository = new ChildRepository();
 
 			if (isset($_SESSION['user'])) {
 				//TODO: Instanciate repositories for user
@@ -23,24 +26,49 @@
 		}
 		
 		public function login() {
-			if (isset($_POST['login'])) {
-				$user = $this->accountRepository->login(
-					$_POST['email'],
-					$_POST['password']
-				);
-				
-				if ($user != null) {
-					$_SESSION['user'] = $user;
+			if (isset($_POST['login-parent'])) {
+				$this->loginParent();
+			}
 
-					redirect('account');
-
-				}
-				else {
-					new WebException("Adresse e-mail/mot de passe incorrect !");
-				}
+			if (isset($_POST['login-child'])) {
+				$this->loginChild();
 			}
 
 			require_once 'views/pages/account/login.php';
+		}
+
+		private function loginParent() {
+			$user = $this->accountRepository->login(
+				$_POST['email'],
+				$_POST['password']
+			);
+
+			if ($user != null) {
+				$_SESSION['user'] = $user;
+
+				redirect('account');
+
+			}
+			else {
+				new WebException("Adresse e-mail/mot de passe incorrect !");
+			}
+		}
+
+		private function loginChild() {
+			$user = $this->childRepository->login(
+				$_POST['email'],
+				$_POST['password']
+			);
+
+			if ($user != null) {
+				$_SESSION['user'] = $user;
+
+				redirect('account');
+
+			}
+			else {
+				new WebException("Adresse e-mail/mot de passe incorrect !");
+			}
 		}
 
 		public function register() {

@@ -27,26 +27,27 @@
             return null;
         }
 
-        public function register($firstname, $lastname, $age, $email, $password) {
+        public function register($firstname, $lastname, $permission, $birth, $email, $password) {
             if (!empty($firstname)
                 && !empty($lastname)
-                && !empty($age)
+                && !empty($permission)
+                && !empty($birth)
                 && !empty($email)
                 && !empty($password)) {
 
-                $token = md5(uniqid(rand(), true));
+                $uid = DataUtil::generateUid();
+                $created = DateUtil::now();
 
                 $register = $this->db->prepare(AccountQueries::REGISTER);
 
-                $register->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-                $register->bindParam(':lastname', $lastname, PDO::PARAM_STR);
-
-                //TODO: Use a date of birth instead of age
-                $register->bindParam(':age', $age, PDO::PARAM_INT);
-
+                $register->bindParam(':permission', $permission, PDO::PARAM_STR);
+                $register->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $register->bindParam(':email', $email, PDO::PARAM_STR);
                 $register->bindParam(':password', $password, PDO::PARAM_STR);
-                $register->bindParam(':token', $token, PDO::PARAM_STR);
+                $register->bindParam(':first_name', $firstname, PDO::PARAM_STR);
+                $register->bindParam(':first_name', $lastname, PDO::PARAM_STR);
+                $register->bindParam(':birth_date', $birth, PDO::PARAM_STR);
+                $register->bindParam(':created_date', $created, PDO::PARAM_STR);
 
                 if ($register
                     && !($register instanceof PDOException)
@@ -59,21 +60,20 @@
             return null;
         }
 
-        public function update($firstname, $lastname, $email, $password) {
+        public function update($firstname, $lastname, $email, $password, $uid) {
             if (!empty($firstname)
                 && !empty($lastname)
                 && !empty($email)
-                && !empty($password)) {
-
-                $token = md5(uniqid(rand(), true));
+                && !empty($password)
+                && !empty($uid)) {
 
                 $update = $this->db->prepare(AccountQueries::UPDATE);
 
-                $update->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-                $update->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+                $update->bindParam(':first_name', $firstname, PDO::PARAM_STR);
+                $update->bindParam(':last_name', $lastname, PDO::PARAM_STR);
                 $update->bindParam(':email', $email, PDO::PARAM_STR);
                 $update->bindParam(':password', $password, PDO::PARAM_STR);
-                $update->bindParam(':token', $token, PDO::PARAM_STR);
+                $update->bindParam(':uid', $uid, PDO::PARAM_STR);
 
                 if ($update
                     && !($update instanceof PDOException)
@@ -86,20 +86,20 @@
             return null;
         }
         
-        public function delete($token, $email) {
-            if (!empty($token)
+        public function delete($uid, $email) {
+            if (!empty($uid)
                 && !empty($email)) {
 
                 $delete = $this->db->prepare(AccountQueries::DELETE);
 
-                $delete->bindParam(':token', $token, PDO::PARAM_STR);
+                $delete->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $delete->bindParam(':email', $email, PDO::PARAM_STR);
 
                 if ($delete
                     && !($delete instanceof PDOException)
                     && $delete->execute()) {
 
-                    return true;;
+                    return true;
                 }
             }
 

@@ -8,6 +8,25 @@
                       AND password = :password
                 ;";
 
-        const REGISTER = "INSERT INTO account (permission, uid, email, password, first_name, last_name, birth_date, created_date)
-                            VALUES (:permission, :uid, :email, :password, :first_name, :last_name, :birth_date, :created_date);";
+        const REGISTER = "INSERT INTO account 
+                            (
+                                permission, 
+                                uid, 
+                                email, 
+                                password, 
+                                first_name, 
+                                first_name, 
+                                birth_date, 
+                                created_date
+                            )
+                            VALUES (
+                                :permission, 
+                                :uid, 
+                                :email,
+                                :password, 
+                                :first_name,
+                                :last_name, 
+                                :birth_date, 
+                                :created_date
+                            );";
     }

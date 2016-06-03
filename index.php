@@ -7,6 +7,8 @@
 	require_once 'common/exceptions/web_exception.php';
 
 	require_once 'common/utils/session_util.php';
+	require_once 'common/utils/date_util.php';
+	require_once 'common/utils/data_util.php';
 
 	function action($controller, $action = 'index') {
 		if (empty($action)) {

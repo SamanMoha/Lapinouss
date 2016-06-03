@@ -922,7 +922,7 @@ ul.comment-list .desc1 h5 a:hover {
 	left: 8px;
 	top: 42px;
 }
-.comments-area input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
 	padding: 15px 15px;
 	width: 55%;
 	color: #999;
@@ -932,7 +932,7 @@ ul.comment-list .desc1 h5 a:hover {
 	outline: none;
 	display: block;
 }
-.comments-area textarea {
+textarea {
 	padding:15px 15px;
 	width: 70%;
 	color: #999;

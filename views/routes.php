@@ -21,6 +21,7 @@
 
 			case 'account':
 				require_once('models/account.php');
+				require_once('models/child_account.php');
 				$controller = new AccountController();
 				break;
 
