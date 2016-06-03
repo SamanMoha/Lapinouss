@@ -23,22 +23,53 @@
 				require_once('models/account.php');
 				$controller = new AccountController();
 				break;
+
+			case 'contact':
+				$controller = new ContactController();
+				break;
+
+			case 'tutorial':
+				$controller = new TutorialController();
+				break;
+
+			case 'game':
+				require_once('models/game.php');
+				$controller = new GameController();
+				break;
 		}
 
 		$controller->{ $action }();
 	}
 
-	$controllers = array('home'
-	=> [
+	$controllers = array(
+		'home'
+		=> [
 			'index',
 			'error'
+		],
+
+		'contact'
+		=> [
+			'index'
+		],
+
+		'tutorial'
+		=> [
+			'index'
 		],
 
 		'account'
 		=> [
 			'index',
 			'login',
-			'register'
+			'register',
+			'logout'
+		],
+
+		'game'
+		=> [
+			'index',
+			'store'
 		]
 	);
 

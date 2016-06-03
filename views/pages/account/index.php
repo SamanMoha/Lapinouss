@@ -1,7 +1,7 @@
 	<div class="grid_1">
 	   <div class="container">
 		  <div class="box_1">
-			<h3>Salut mon ami !</h3>
+			<h3>Salut <?php echo $account->first_name; ?> !</h3>
 			<h4>Que veux tu faire aujourd'hui ?</h4>
 		  </div>
 		  <div class="about-grids">

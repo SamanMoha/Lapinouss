@@ -29,7 +29,7 @@
 					<span class="menu"> </span>
 					<ul>
 						<li class="active"><a href="<?php echo action('home'); ?>">Accueil</a></li>
-						<li><a href="<?php echo action('store'); ?>">Store</a></li>
+						<li><a href="<?php echo action('game', 'store'); ?>">Store</a></li>
 						<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
 						<li>
 							<a href="<?php echo action('account'); ?>">
@@ -42,7 +42,9 @@
 			</div>
 		</div>
 
-		<?php require_once 'routes.php'; ?>
+		<?php
+			require_once 'routes.php';
+		?>
 		
 		<div class="footer wow fadeInRight" data-wow-delay="0.4s">
 			<div class="container">
@@ -50,10 +52,10 @@
 					<div class="col-sm-3">
 						<ul class="list1">
 							<h3>Menu</h3>
-							<li><a href="">Accueil</a></li>
-							<li><a href="">Store</a></li>
-							<li><a href="#">Tutoriels</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="<?php echo action('home'); ?>">Accueil</a></li>
+							<li><a href="<?php echo action('game', 'store'); ?>">Store</a></li>
+							<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
+							<li><a href="<?php echo action('contact'); ?>">Contact</a></li>
 						</ul>
 					</div>
 					
@@ -73,7 +75,7 @@
 							<li><a href="#">Qui sommes nous ?</a></li>
 							<li><a href="#">Recrutement</a></li>
 							<li><a href="#">Conditions d'utilisations</a></li>
-							<li><a href="#">Nous contacter</a></li>
+							<li><a href="<?php echo action('contact'); ?>">Nous contacter</a></li>
 						</ul>
 					</div>
 					

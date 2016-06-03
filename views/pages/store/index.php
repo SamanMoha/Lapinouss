@@ -1,53 +1,47 @@
-   <div class="grid_4">
+	<div class="grid_4">
 		<div class="container">    
 		   <div class="comment">
 				<h2>En ce moment</h2>
-				<ul class="comment-list">
-				  <li><img src="resources/images/game.png" alt="">
-					 <div class="desc1">
-						<h5><a href="#">Expressions fran&ccedil;aise</a></h5>
-						<div class="extra">
-						  <time pubdate="" datetime="2014-03-30T14:47:59">
-							 Cr&eacute;e par Damien DELOCHE le 23 Juin 2016</time>
-						</div>
-						<p>Viens apprendre les expressions fran&eacute;aise les plus r&eacute;pandus.</p>
-						<div class="reply"><a class="comment-reply-link" href="#">T&eacute;l&eacute;charger</a></div>
+			   <ul class="comment-list">
+				   <li><img src="<?php echo $games[0]->picture; ?>" alt="">
+					   <div class="desc1">
+						   <h5><a href="#"><?php echo $games[0]->title; ?></a></h5>
+						   <div class="extra">
+							   <time pubdate="" datetime="2014-03-30T14:47:59">
+								   Cr&eacute;e le <?php echo $games[0]->created_date; ?></time>
+						   </div>
+						   <p><?php echo $games[0]->description; ?></p>
+						   <div class="reply"><a class="comment-reply-link" href="#">T&eacute;l&eacute;charger</a></div>
 					   </div>
 					   <div class="clearfix"></div>
-					</li>
-				</ul>
+				   </li>
+			   </ul>
 		  </div>
 
 		   <div class="comment">
 				<h2>Les plus populaires</h2>
-				<ul class="comment-list">
-				  <li><img src="resources/images/game.png" alt="">
-					 <div class="desc1">
-						<h5><a href="#">Math&eacute;matiques CE1</a></h5>
-						<div class="extra">
-						  <time pubdate="" datetime="2014-03-30T14:47:59">
-							 Cr&eacute;e par Ismail NGUYEN le 23 Juin 2016</time>
-						</div>
-						<p>Calculs math&eacute;matiques de niveau CE1.</p>
-						<div class="reply"><a class="comment-reply-link" href="#">T&eacute;l&eacute;charger</a></div>
-					   </div>
-					   <div class="clearfix"></div>
-					</li>
-				</ul>
-				<ul class="comment-list">
-				  <li><img src="resources/images/game.png" alt="">
-					 <div class="desc1">
-						<h5><a href="#">Devinette fruits & l&eacute;gumes</a></h5>
-						<div class="extra">
-						  <time pubdate="" datetime="2014-03-30T14:47:59">
-							 Cr&eacute;e par Kevin DHORNE le 23 Juin 2016</time>
-						</div>
-						<p>Devine le nom des fruits et des l&eacute;umes ...</p>
-						<div class="reply"><a class="comment-reply-link" href="#">T&eacute;l&eacute;charger</a></div>
-					   </div>
-					   <div class="clearfix"></div>
-					</li>
-				</ul>
+			   <?php
+			   		foreach ($games as $game) {
+						if ($game->Available == 1) {
+				?>
+						<ul class="comment-list">
+							<li><img src="<?php echo $game->picture; ?>" alt="">
+								<div class="desc1">
+									<h5><a href="#"><?php echo $game->title; ?></a></h5>
+									<div class="extra">
+										<time pubdate="" datetime="2014-03-30T14:47:59">
+											Cr&eacute;e le <?php echo $game->created_date; ?></time>
+									</div>
+									<p><?php echo $game->description; ?></p>
+									<div class="reply"><a class="comment-reply-link" href="#">T&eacute;l&eacute;charger</a></div>
+								</div>
+								<div class="clearfix"></div>
+							</li>
+						</ul>
+			   <?php
+						}
+					}
+			   ?>
 		  </div>
 		  
 		  <div class="pagination">

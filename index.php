@@ -6,11 +6,17 @@
 	require_once 'common/exceptions/fatal_exception.php';
 	require_once 'common/exceptions/web_exception.php';
 
+	require_once 'common/utils/session_util.php';
+
 	function action($controller, $action = 'index') {
 		if (empty($action)) {
 			$action = 'index';
 		}
 		
+		if ($action == 'index') {
+			return BASE_PATH . $controller;
+		}
+
 		return BASE_PATH . $controller . '/' . $action;
 	}
 

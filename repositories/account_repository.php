@@ -20,7 +20,7 @@
                     && $login->execute()
                     && $login->rowCount() == 1) {
 
-                    return $login->fetch(PDO::FETCH_ASSOC);
+                    return $login->fetchObject('Account');
                 }
             }
 

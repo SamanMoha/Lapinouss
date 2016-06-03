@@ -16,8 +16,8 @@
 		public function index() {
 			if (!isset($_SESSION['user']))
 				redirect('account', 'login');
-			
-			$account = $_SESSION['user'];
+
+			$account = SessionUtil::fixObject($_SESSION['user']);
 
 			require_once 'views/pages/account/index.php';
 		}
