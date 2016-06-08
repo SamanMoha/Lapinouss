@@ -20,9 +20,24 @@
 			if (!isset($_SESSION['user']))
 				redirect('account', 'login');
 
-			$account = SessionUtil::fixObject($_SESSION['user']);
+			if ($_SESSION['user'] instanceof ChildAccount) {
+				$this->indexChild();
+			}
+			else {
+				$this->indexParent();
+			}
+		}
 
-			require_once 'views/pages/account/index.php';
+		private function indexParent() {
+			$account = SessionUtil::fixObject($_SESSION['user']);
+			$children = $this->accountRepository->children($_SESSION['user']);
+			
+			require_once 'views/pages/account/index_adult.php';
+		}
+
+		private function indexChild() {
+			$account = SessionUtil::fixObject($_SESSION['user']);
+			require_once 'views/pages/account/index_child.php';
 		}
 		
 		public function login() {

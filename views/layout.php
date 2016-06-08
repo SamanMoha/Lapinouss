@@ -36,6 +36,11 @@
 								<?php echo isset($_SESSION['user']) ? 'Mon compte' : 'Connexion'; ?>
 							</a>
 						</li>
+						<?php if (isset($_SESSION['user'])) {
+							echo '<li>';
+								echo '<a href="' . action('account', 'logout') . '">D&eacute;connexion</a>';
+							echo '</li>';
+						} ?>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>

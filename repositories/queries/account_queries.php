@@ -29,4 +29,12 @@
                                 :birth_date, 
                                 :created_date
                             );";
+
+
+        const FIND_ALL_CHILDREN = "
+                            SELECT *
+                            FROM child_account c
+                            LEFT JOIN parent_has_child phc ON phc.id_child_account = c.id_child_account
+                            WHERE phc.id_account = :id_account
+                    ";
     }

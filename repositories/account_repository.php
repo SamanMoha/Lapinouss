@@ -105,4 +105,18 @@
 
             return false;
         }
+        
+        public function children(Account $account) {
+            $children = $this->db->prepare(AccountQueries::FIND_ALL_CHILDREN);
+
+            $children->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+
+            if ($children
+                    && !($children instanceof PDOException)
+                    && $children->execute()) {
+                return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
+            }
+
+            return null;
+        }
     }
