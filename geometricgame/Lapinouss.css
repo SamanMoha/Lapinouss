@@ -1,0 +1,35 @@
+body {
+    background-color:  lightgrey;
+}
+div.displayscore {
+    background-color: #66d9ff;
+}
+
+table {
+    empty-cells: show;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+tr {
+    border: 1px solid black;
+}
+ 
+td.droppable{
+    width: 80%;
+}
+
+div.listgeometrics {
+    border: 1px solid black;
+}
+
+.zone-drop-active {
+    background-color: limegreen;
+}
+
+.zone-drop-survolee {
+    background-color: limegreen;
+}
