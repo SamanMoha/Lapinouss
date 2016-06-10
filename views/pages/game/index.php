@@ -36,7 +36,7 @@
 								<h3><a href="single.html"><?php echo $games[$i+1]->title; ?></a></h3>
 								<div class="links">
 									<ul>
-										<li><i class="fa blog-icon fa-calendar"> </i><span><?php echo $games[$i]->created_date; ?></span></li>
+										<li><i class="fa blog-icon fa-calendar"> </i><span><?php echo $games[$i+1]->created_date; ?></span></li>
 										<li><i class="fa blog-icon fa-user"> </i><span>admin</span></li>
 										<li><i class="fa blog-icon fa-comment"> </i><a href="#"><span>No comments</span></a></li>
 									</ul>
@@ -44,7 +44,7 @@
 								<p><?php echo $games[$i+1]->description; ?></p>
 								<?php
 								if ($_SESSION['user'] instanceof ChildAccount) {
-									echo '<a href="#" class="btn1 btn-8 btn-8c">Jouer</a>';
+									echo '<a href="' . action('game', 'play', $games[$i+1]->uid) . '" class="btn1 btn-8 btn-8c">Jouer</a>';
 								} else {
 									echo '<a href="#" class="btn1 btn-8 btn-8c">Supprimer</a>';
 								}

@@ -13,7 +13,7 @@
         ";
 
         const FIND_ALL_BY_CHILD = "
-                SELECT * 
+                SELECT *, g.uid as uid
                 FROM game g 
                 LEFT JOIN account a ON a.id_account = g.id_account
                 LEFT JOIN parent_has_child phc ON phc.id_account = a.id_account
@@ -22,7 +22,7 @@
         ";
 
         const FIND_BY_CHILD = "
-                SELECT *
+                SELECT *, g.uid as uid
                 FROM game g
                 LEFT JOIN account a ON a.id_account = g.id_account
                 LEFT JOIN parent_has_child phc ON phc.id_account = a.id_account
