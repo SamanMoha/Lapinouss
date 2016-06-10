@@ -29,7 +29,14 @@
 					<span class="menu"> </span>
 					<ul>
 						<li class="active"><a href="<?php echo action('home'); ?>">Accueil</a></li>
-						<li><a href="<?php echo action('game', 'store'); ?>">Store</a></li>
+						<li>
+							<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof ChildAccount) {
+								echo '<a href="' . action('game') . '">Mes jeux</a>';
+							} else {
+								echo '<a href="' . action('game', 'store') . '">Store</a>';
+							}
+							?>
+						</li>
 						<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
 						<li>
 							<a href="<?php echo action('account'); ?>">

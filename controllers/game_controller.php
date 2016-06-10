@@ -13,12 +13,32 @@
             if (!isset($_SESSION['user']))
                 redirect('game', 'store');
 
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $games = $this->gameRepository->findAllByChild($_SESSION['user']);
+            }
+            else {
+                $games = $this->gameRepository->findAllByParent($_SESSION['user']);
+            }
+
             require_once 'views/pages/game/index.php';
         }
 
         public function store() {
             $games = $this->gameRepository->all();
 
-            require_once 'views/pages/store/index.php';
+            require_once 'views/pages/game/index.php';
+        }
+
+        public function play() {
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                call('home', 'error');
+            }
+
+            $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
+            if ($game == null) {
+                call('home', 'error');
+            }
+
+            require_once 'views/pages/game/play.php';
         }
     }

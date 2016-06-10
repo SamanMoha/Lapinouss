@@ -29,14 +29,14 @@
 		}
 
 		private function indexParent() {
-			$account = SessionUtil::fixObject($_SESSION['user']);
-			$children = $this->accountRepository->children($_SESSION['user']);
+			$account = $_SESSION['user'];
+			$children = $this->accountRepository->children($account);
 			
 			require_once 'views/pages/account/index_adult.php';
 		}
 
 		private function indexChild() {
-			$account = SessionUtil::fixObject($_SESSION['user']);
+			$account = $_SESSION['user'];
 			require_once 'views/pages/account/index_child.php';
 		}
 		

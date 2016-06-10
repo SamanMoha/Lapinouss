@@ -20,8 +20,6 @@
 				break;
 
 			case 'account':
-				require_once('models/account.php');
-				require_once('models/child_account.php');
 				$controller = new AccountController();
 				break;
 
@@ -34,7 +32,6 @@
 				break;
 
 			case 'game':
-				require_once('models/game.php');
 				$controller = new GameController();
 				break;
 		}
@@ -70,7 +67,8 @@
 		'game'
 		=> [
 			'index',
-			'store'
+			'store',
+			'play'
 		]
 	);
 

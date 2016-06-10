@@ -1,6 +1,11 @@
 <div class="advantages">
     <div class="box_1">
-        <h3>Salut <?php echo $account->first_name; ?> !</h3>
+        <h3>
+            <?php
+                echo date('H') > 18 || date('H') < 3 ? 'Bonsoir' : 'Bonjour';
+                echo ' ' . $account->first_name . ' !';
+            ?>
+        </h3>
         <h4>Comment allez vous aujourd'hui ?</h4>
         <br/>
         <br/>
@@ -47,7 +52,7 @@
                                     <?php
                                         $age = DateUtil::age($child->birth_date);
 
-                                        echo '(' . $age . ' '. ($age > 1 ? 'an' : 'ans') . ')';
+                                        echo '(' . $age . ' ' . ($age > 1 ? 'an' : 'ans') . ')';
                                     ?>
                                 </h4>
                                 <p>
