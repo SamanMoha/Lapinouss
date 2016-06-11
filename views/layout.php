@@ -37,7 +37,11 @@
 							}
 							?>
 						</li>
-						<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
+						<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
+							echo '<li>';
+							echo '<a href="' . action('tutorial') . '">Tutoriels</a>';
+							echo '</li>';
+						} ?>
 						<li>
 							<a href="<?php echo action('account'); ?>">
 								<?php echo isset($_SESSION['user']) ? 'Mon compte' : 'Connexion'; ?>
