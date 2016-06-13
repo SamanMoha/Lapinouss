@@ -1,0 +1,58 @@
+@font-face {
+  font-family: caricature;
+  src: url('font/caricature.TTF');
+}
+
+body {
+  background-color: #fff;
+  height: 100%;
+}
+
+#wrapper {
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  text-align: center;
+  padding: 50px;
+}
+
+#myTable {
+  border: 1px solid #DDD;
+  background-color: #fff;
+  width: 100%;
+}
+
+#myNumberTable {
+  border: 1px solid #DDD;
+  background-color: #fff;
+  width: 100%;
+}
+
+.caricature-font {
+  font-family: caricature;
+  font-size: 150pt;
+}
+
+#question {
+  color: red;
+  border-color: red;
+}
+
+#gabarit-box {
+  padding: 10px;
+  border: 1px solid #BABABA;
+  margin-top: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 0px;
+  font-size: 100pt;
+}
+
+#gabarit-box a {
+  text-decoration: none;
+}
+
+img {
+	cursor: pointer;
+}
