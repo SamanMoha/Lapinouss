@@ -1,0 +1,40 @@
+<link href="/Lapinouss/games/Geometry_Shapes/dist/css/magic.css" rel="stylesheet">
+<script src="/Lapinouss/scripts/angular.min.js"></script>
+
+     <div id="wrapper" ng-app="myApp" ng-controller="NumberController" ng-init="init()">
+        <h1 >Complete la formule magique !</h1>
+        <table id="myTable">
+            <tr>
+                <td>
+                    <p id="number1"></p>
+                </td>
+                <td>
+                    <p id="operator"></p>
+                </td>
+                <td>
+                    <p id="number2"></p>
+                </td>
+                <td>
+                    <p id="egal"> = </p>
+                </td>
+                <td>
+                    <p id="question" ng-bind-html="result"></p>
+                </td>
+            </tr>
+        </table>
+		<div>
+			<div class="alert alert-success" role="alert" ng-show="successMsg"> <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> BRAVO, tu as trouv&eacute; la bonne solution !!!</div>
+			<div class="alert alert-danger" role="alert" ng-show="errorMsg"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> ERREUR, courage tu peux y arriver ! Il te reste {{tries}} essai(s)</div>
+			<div class="alert alert-danger" id="gameOver" role="alert" ng-show="!countTry"> <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> DOMMAGE, tu n'as pas trouv&eacute; la solution...</div>
+		</div>
+        <div id="gabarit-box" ng-show="countTry">
+            <a href="#" id="soluce1" ng-click="error()"></a>
+            <a href="#" id="soluce2" ng-click="error()"></a>
+            <a href="#" id="soluce3" ng-click="bravo()"></a>
+        </div>
+		<div>
+			<img src="/Lapinouss/games/Geometry_Shapes/dist/img/next.png" ng-click="init()" ng-show="next">
+		</div>
+    </div>
+
+<script src="/Lapinouss/games/Geometry_Shapes/dist/script.js"></script>

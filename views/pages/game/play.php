@@ -6,7 +6,8 @@
             <li>
                 <div class="desc1">
                     <?php
-                        //require_once 'games/';
+                    $title = str_replace(' ', '_', $game->title);
+                    include 'games/' . $title . '/template.html';
                     ?>
                 </div>
                 <div class="clearfix"></div>

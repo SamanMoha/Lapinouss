@@ -3,10 +3,11 @@
 	<head>
 		<title>Viens t'amuser avec Lapinouss !</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+
 		<link href="styles/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="styles/jquery-ui.min.css" rel="stylesheet">
 		<link href="styles/style.css" rel="stylesheet" type="text/css" />
-		<link href="http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+		<!-- <link href="http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css"> -->
 		<link href="resources/fonts/css/font-awesome.min.css" rel="stylesheet">
 		<link href="styles/animate.css" rel="stylesheet" type="text/css" />
 		<link href="resources/images/logo/favicon.ico" rel="shortcut icon">
@@ -116,6 +117,7 @@
 		</div>
 		
 		<script src="scripts/jquery-1.11.1.min.js"></script>
+		<script src="scripts/jquery-ui.min.js"></script>
 		<script src="scripts/bootstrap.min.js"></script>
 		<script src="scripts/wow.min.js"></script>
 		
