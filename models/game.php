@@ -14,4 +14,8 @@
         public $purchased_date;
         public $activated;
         public $id_account;
+        
+        //Related object
+        public $account;
+        public $comments;
     }

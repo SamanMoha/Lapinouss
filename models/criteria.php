@@ -6,4 +6,7 @@
         public $objectif;
         public $uid;
         public $id_trophy;
+        
+        //Related object
+        public $trophy;
     }

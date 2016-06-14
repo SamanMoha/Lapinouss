@@ -22,7 +22,6 @@
 				<h2>Les plus populaires</h2>
 			   <?php
 			   		foreach ($games as $game) {
-						if ($game->Available == 1) {
 				?>
 						<ul class="comment-list">
 							<li><img src="resources/images/actions/game.png" alt="">
@@ -39,7 +38,6 @@
 							</li>
 						</ul>
 			   <?php
-						}
 					}
 			   ?>
 		  </div>

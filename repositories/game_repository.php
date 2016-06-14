@@ -1,11 +1,19 @@
 <?php
     require_once 'base_repository.php';
+    require_once 'account_repository.php';
+    require_once 'comment_repository.php';
     require_once 'queries/game_queries.php';
 
     class GameRepository extends BaseRepository {
 
+        private $accountRepository;
+        private $commentRepository;
+
         public function __construct() {
             parent::__construct();
+
+            $this->accountRepository = new AccountRepository();
+            $this->commentRepository = new CommentRepository();
         }
 
         public function all() {
@@ -15,7 +23,14 @@
                 && !($games instanceof PDOException)
                 && $games->execute()) {
 
-                return $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+                $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+
+                foreach ($games as $game) {
+                    $game->account = $this->accountRepository->findById($game->id_account);
+                    $game->comments = $this->commentRepository->findByGameId($game->id_game);
+                }
+
+                return $games;
             }
 
             return null;
@@ -30,7 +45,14 @@
                 && !($games instanceof PDOException)
                 && $games->execute()) {
 
-                return $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+                $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+
+                foreach ($games as $game) {
+                    $game->account = $this->accountRepository->findById($game->id_account);
+                    $game->comments = $this->commentRepository->findByGameId($game->id_game);
+                }
+
+                return $games;
             }
 
             return null;
@@ -45,7 +67,14 @@
                 && !($games instanceof PDOException)
                 && $games->execute()) {
 
-                return $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+                $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+
+                foreach ($games as $game) {
+                    $game->account = $this->accountRepository->findById($game->id_account);
+                    $game->comments = $this->commentRepository->findByGameId($game->id_game);
+                }
+
+                return $games;
             }
 
             return null;
@@ -61,7 +90,12 @@
                 && !($game instanceof PDOException)
                 && $game->execute()
                 && $game->rowCount() == 1) {
-                return $game->fetchObject('Game');
+
+                $game = $game->fetchObject('Game');
+                $game->account = $this->accountRepository->findById($game->id_account);
+                $game->comments = $this->commentRepository->findByGameId($game->id_game);
+
+                return $game;
             }
 
             return null;

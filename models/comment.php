@@ -6,4 +6,7 @@
         public $date_comment;
         public $id_account;
         public $id_game;
+
+        //Related object
+        public $account;
     }

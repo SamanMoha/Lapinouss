@@ -119,4 +119,18 @@
 
             return null;
         }
+
+        public function findById($id_account) {
+            $account = $this->db->prepare(AccountQueries::FIND_BY_ID);
+
+            $account->bindParam(':id_account', $id_account, PDO::PARAM_INT);
+
+            if ($account
+                && !($account instanceof PDOException)
+                && $account->execute()) {
+                return $account->fetchObject('Account');
+            }
+
+            return null;
+        }
     }

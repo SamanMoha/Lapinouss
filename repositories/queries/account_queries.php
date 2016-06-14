@@ -37,4 +37,10 @@
                             LEFT JOIN parent_has_child phc ON phc.id_child_account = c.id_child_account
                             WHERE phc.id_account = :id_account
                     ";
+
+        const FIND_BY_ID = "
+                    SELECT * 
+                    FROM account 
+                    WHERE id_account = :id_account
+            ";
     }
