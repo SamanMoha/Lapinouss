@@ -1,6 +1,6 @@
 @font-face {
   font-family: caricature;
-  src: url('/Lapinouss/games/Geometry_Shapes/font/caricature.TTF');
+  src: url('../../font/caricature.TTF');
 }
 
 #wrapper {
