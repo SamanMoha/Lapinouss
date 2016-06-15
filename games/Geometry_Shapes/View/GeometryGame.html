@@ -1,0 +1,44 @@
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="/Lapinouss/games/Geometry_Shapes/Lapinouss.css" type="text/css">
+        
+        <script type="text/javascript" src="/Lapinouss/games/Geometry_Shapes/jquery-2.2.4.min.js"></script>
+            
+        <script type="text/javascript" src="/Lapinouss/games/Geometry_Shapes/Controller/GeometryFormController.js"></script>
+        <script type="text/javascript" src="/Lapinouss/games/Geometry_Shapes/Model/GeometryFormModel.js"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                new GeometryFormController().init();
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div id="gametimer">
+        </div>
+        <div class="displayscore">
+            Votre score est de :<div id="score"></div></div>
+        <table>
+            <tr class="rectangle">
+                <td><input type="image" id="main" src="/Lapinouss/games/Geometry_Shapes/image/rectangle.png" /></td>
+                <td class="droppable"></td>
+            </tr>
+            <tr class="rond">
+                <td><input type="image" id="main" src="/Lapinouss/games/Geometry_Shapes/image/rond.png"/></td>
+                <td class="droppable"></td>
+            </tr>
+            <tr class="carre">
+                <td><input type="image" id="main" src="/Lapinouss/games/Geometry_Shapes/image/carre.png"/></td>
+                <td class="droppable"></td>
+            </tr>
+        </table>
+        <div id="listgeometric">
+            <img src="/Lapinouss/games/Geometry_Shapes/image/carre.png" draggable="true" />
+        </div>
+        <input type="button" id="playbutton" value="Play"/>
+        <input type="button" id="pausebutton" value="Pause"/>
+    </body>
+    
+</html>

@@ -8,7 +8,7 @@
                     <?php
                         $title = str_replace(' ', '_', $game->title);
 
-                        include 'games/' . $title . '/template.html';
+                        include 'games/' . $title . '/' . $game->file;
                     ?>
                 </div>
                 <div class="clearfix"></div>
