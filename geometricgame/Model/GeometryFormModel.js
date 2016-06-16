@@ -41,6 +41,8 @@ var GeometryFormModel = function () {
     function countDown() {
         if(gametimer == 0 && updatetimer != null){
             clearInterval(updatetimer);
+            $('#endscore').html(getScore());
+            $('#endmessage').show();
         }
         setGameTimer(gametimer);
         gametimer -= 1;
@@ -48,7 +50,6 @@ var GeometryFormModel = function () {
     
     function initListGeometric(){
         var randomform = Math.floor((Math.random() * 3));
-        console.log(randomform)
         
         if(randomform == 0){
             $('<img/>')         

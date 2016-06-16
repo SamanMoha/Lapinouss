@@ -35,6 +35,7 @@ var GeometryFormController = function (pModel) {
     }
     
     function init () {
+        $('#endmessage').hide();
         $('#playbutton').click(function(){play_clicked();});
         $('#pausebutton').click(function(){pause_clicked();});
         model.startGameTimer();
