@@ -4,6 +4,10 @@
         <link rel="stylesheet" href="../Lapinouss.css" type="text/css">
         
         <script type="text/javascript" src="../jquery-2.2.4.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js">
+        </script>
             
         <script type="text/javascript" src="../Controller/GeometryFormController.js"></script>
         <script type="text/javascript" src="../Model/GeometryFormModel.js"></script>
@@ -16,29 +20,41 @@
     </head>
     
     <body>
-        <div id="gametimer">
+        <div class="content" >
+            <div class="header">
+                <span id="gametimer"></span>
+                <span class="displayscore">
+                    Votre score est de :<span id="score">0</span>
+                </span>
+            </div>
+            <!--<div id="gamehome">
+                <span class="rules">
+                    Age conseille: 3ans<br>
+                    Regles:<br>
+                    <p>
+                        l objectif est de regrouper les differentes formes par type, c est a dire les carre avec les carrees etc ...
+                        On verras bien la place que ça prend okay au pire Blablabla
+                    </p>
+                </span>
+                <span class="menu">            
+                    <input type="button" id="playbutton" value="Play"/>
+                    <br>
+                    <input type="button" id="scorebutton" value="Score"/>
+                </span>
+            </div>-->
+            <div>
+                <span class="droppable" data-form="square">
+                    <img src="../image/square.png"/>
+                </span>
+                <span class="droppable" data-form="circle">
+                    <img src="../image/circle.png"/>
+                </span>
+                <span class="droppable" data-form="star">
+                    <img src="../image/star.png"/>
+                </span>
+            </div>
+            <div id="listgeometric"></div>
+            <!--<input type="button" id="pausebutton" value="Pause"/>-->
         </div>
-        <div class="displayscore">
-            Votre score est de :<div id="score"></div></div>
-        <table>
-            <tr class="rectangle">
-                <td><input type="image" id="main" src="../image/rectangle.png" /></td>
-                <td class="droppable"></td>
-            </tr>
-            <tr class="rond">
-                <td><input type="image" id="main" src="../image/rond.png"/></td>
-                <td class="droppable"></td>
-            </tr>
-            <tr class="carre">
-                <td><input type="image" id="main" src="../image/carre.png"/></td>
-                <td class="droppable"></td>
-            </tr>
-        </table>
-        <div id="listgeometric">
-            <img src="../image/carre.png" draggable="true" />
-        </div>
-        <input type="button" id="playbutton" value="Play"/>
-        <input type="button" id="pausebutton" value="Pause"/>
     </body>
-    
 </html>

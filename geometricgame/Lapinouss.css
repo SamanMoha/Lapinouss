@@ -1,35 +1,58 @@
 body {
-    background-color:  lightgrey;
-}
-div.displayscore {
-    background-color: #66d9ff;
+    background-color: lightgrey;
 }
 
-table {
-    empty-cells: show;
-    border: 1px solid black;
-}
-
-td {
-    border: 1px solid black;
-}
-
-tr {
-    border: 1px solid black;
+div.content {
+    background-color: white;
+    height: 94%;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
 }
  
-td.droppable{
-    width: 80%;
+span.droppable{
+    margin: 5px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
 }
 
-div.listgeometrics {
+div.listgeometric {
     border: 1px solid black;
 }
 
-.zone-drop-active {
-    background-color: limegreen;
+span.zone-drop-active {
+    background-color: dodgerblue;
+    margin: 5px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
 }
 
-.zone-drop-survolee {
+span.zone-drop-survolee {
     background-color: limegreen;
+    margin: 5px;
+    padding: 10px;
+    height: 200px;
+    width: 200px;
+}
+
+#gamehome {
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    background: #dfd;
+    width: 600;
+    height: 450;
+    z-index: 100;
+
+    border: 2px solid #333;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+    padding: 20px;
 }
