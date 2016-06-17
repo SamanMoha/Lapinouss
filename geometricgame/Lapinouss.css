@@ -11,31 +11,25 @@ div.content {
     margin-right: 2%;
 }
  
-span.droppable{
+.droppable{
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
 div.listgeometric {
     border: 1px solid black;
 }
 
-span.zone-drop-active {
+.zone-drop-active {
     background-color: dodgerblue;
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
-span.zone-drop-survolee {
+.zone-drop-survolee {
     background-color: limegreen;
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
 #endmessage {

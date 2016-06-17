@@ -2,7 +2,7 @@ var GeometryFormModel = function () {
     
     var updatetimer;
     var gametimer;
-    var score = 0;
+    var score;
     
     function startGameTimer() {
         /*if(gametimer == 0 || gametimer <0){
@@ -20,6 +20,7 @@ var GeometryFormModel = function () {
                 gametimer = 30;
             }
         }*/
+        score = 0;
         gametimer = 30;
         countDown();
         updatetimer = setInterval(countDown, 1000);
@@ -41,6 +42,7 @@ var GeometryFormModel = function () {
     function countDown() {
         if(gametimer == 0 && updatetimer != null){
             clearInterval(updatetimer);
+            $('img.draggable').draggable('disable');
             $('#endscore').html(getScore());
             $('#endmessage').show();
         }
@@ -54,6 +56,7 @@ var GeometryFormModel = function () {
         if(randomform == 0){
             $('<img/>')         
                 .attr('src','../image/green_square.png')
+                .addClass('draggable')
                 .data( 'form', 'square' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {
@@ -65,6 +68,7 @@ var GeometryFormModel = function () {
         }else if(randomform == 1) {
             $('<img/>')         
                 .attr('src','../image/blue_circle.png')
+                .addClass('draggable')
                 .data( 'form', 'circle' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {
@@ -76,6 +80,7 @@ var GeometryFormModel = function () {
         }else if(randomform == 2){
             $('<img/>')         
                 .attr('src','../image/yellow_star.png')
+                .addClass('draggable')
                 .data( 'form', 'star' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {

@@ -18,6 +18,14 @@ var GeometryFormController = function (pModel) {
         $('input#pausebutton').html(model.pauseGameTimer());
     }
     
+    function retry_clicked(){
+        $('#endmessage').hide();
+        model.startGameTimer();
+        $('#score').html(model.getScore());
+        $('#listgeometric').empty();
+        model.initListGeometric();
+    }
+    
     function handleFigureDrop( event, ui){
         var responseForm = ui.draggable.data('form');
         var mainForm = $(this).data('form');
@@ -36,8 +44,7 @@ var GeometryFormController = function (pModel) {
     
     function init () {
         $('#endmessage').hide();
-        $('#playbutton').click(function(){play_clicked();});
-        $('#pausebutton').click(function(){pause_clicked();});
+        $('#buttonretry').click(function(){retry_clicked();});
         model.startGameTimer();
         $('.droppable').droppable({
             accept:".ui-draggable",
