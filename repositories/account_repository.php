@@ -114,6 +114,7 @@
             if ($children
                     && !($children instanceof PDOException)
                     && $children->execute()) {
+                
                 return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
             }
 
@@ -128,9 +129,26 @@
             if ($account
                 && !($account instanceof PDOException)
                 && $account->execute()) {
+
                 return $account->fetchObject('Account');
             }
 
             return null;
+        }
+
+        public function existsParent($email) {
+            $account = $this->db->prepare(AccountQueries::EXISTS_PARENT);
+
+            $account->bindParam(':email', $email, PDO::PARAM_STR);
+
+            if ($account
+                && !($account instanceof PDOException)
+                && $account->execute()
+                && $account->rowCount() == 1) {
+
+                return true;
+            }
+
+            return false;
         }
     }

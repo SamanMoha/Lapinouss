@@ -62,7 +62,6 @@
 				$_SESSION['user'] = $user;
 
 				redirect('account');
-
 			}
 			else {
 				new WebException("Adresse e-mail/mot de passe incorrect !");
@@ -79,7 +78,6 @@
 				$_SESSION['user'] = $user;
 
 				redirect('account');
-
 			}
 			else {
 				new WebException("Adresse e-mail/mot de passe incorrect !");
@@ -87,25 +85,58 @@
 		}
 
 		public function register() {
-			if (isset($_POST['register'])) {
-				$user = $this->accountRepository->register(
-					$_POST['firstname'],
-					$_POST['lastname'],
-					$_POST['age'],
-					$_POST['email'],
-					$_POST['password']
-				);
+			if (isset($_POST['register-parent'])) {
+				$this->registerParent();
+			}
 
-				if ($user == null) {
-					 new WebException("Erreur lors de l'inscription");
-				}
+			if (isset($_POST['register-child'])) {
+				$this->registerChild();
+			}
 
+			require_once 'views/pages/account/register.php';
+		}
+
+		private function registerParent() {
+			$user = $this->accountRepository->registerParent(
+				$_POST['firstname'],
+				$_POST['lastname'],
+				$_POST['permission'],
+				$_POST['birth'],
+				$_POST['email'],
+				$_POST['password'],
+				$_POST['re-password']
+			);
+
+			if ($user != null) {
 				$_SESSION['user'] = $user;
 
 				redirect('account');
 			}
+			else {
+				new WebException("Adresse e-mail/mot de passe incorrect !");
+			}
+		}
 
-			require_once 'views/pages/account/register.php';
+		private function registerChild() {
+			$user = $this->accountRepository->registerChild(
+				$_POST['firstname'],
+				$_POST['lastname'],
+				'Enfant',
+				$_POST['birth'],
+				$_POST['email'],
+				$_POST['password'],
+				$_POST['re-password'],
+				$_POST['parent-mail']
+			);
+
+			if ($user != null) {
+				$_SESSION['user'] = $user;
+
+				redirect('account');
+			}
+			else {
+				new WebException("Adresse e-mail/mot de passe incorrect !");
+			}
 		}
 
 		public function settings() {
@@ -151,5 +182,13 @@
 			session_destroy();
 
 			redirect('home');
+		}
+		
+		public function existsParent() {
+			$user = $this->accountRepository->existsParent(
+				$_GET['email']
+			);
+
+			http_response_code($user ? 200 : 404);
 		}
 	}

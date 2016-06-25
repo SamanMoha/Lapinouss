@@ -43,4 +43,10 @@
                     FROM account 
                     WHERE id_account = :id_account
             ";
+
+        const EXISTS_PARENT = "
+                    SELECT *
+                    FROM account
+                    WHERE email = :email
+                ;";
     }

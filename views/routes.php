@@ -1,10 +1,23 @@
 <?php
-	function redirect($controller, $action = 'index') {
+	function redirect($controller, $action = 'index', $id = '', $anchor = '') {
 		if (empty($action)) {
 			$action = 'index';
 		}
 
-		header('Location: ' . action($controller, $action));
+		if (!empty($id)) {
+			if (!empty($anchor)) {
+				header('Location: ' . action($controller, $action, $id, $anchor));
+			}
+			else {
+				header('Location: ' . action($controller, $action, $id));
+			}
+		}
+		else if (empty($id) && !empty($anchor)) {
+			header('Location: ' . action($controller, $action, 0, $anchor));
+		}
+		else {
+			header('Location: ' . action($controller, $action));
+		}
 	}
 
 	function call($controller, $action = 'index') {
@@ -61,7 +74,8 @@
 			'index',
 			'login',
 			'register',
-			'logout'
+			'logout',
+			'existsParent'
 		],
 
 		'game'
