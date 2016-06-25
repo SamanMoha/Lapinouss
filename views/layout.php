@@ -11,6 +11,11 @@
 		<link href="resources/fonts/css/font-awesome.min.css" rel="stylesheet">
 		<link href="styles/animate.css" rel="stylesheet" type="text/css" />
 		<link href="resources/images/logo/favicon.ico" rel="shortcut icon">
+
+		<script src="scripts/jquery-1.11.1.min.js"></script>
+		<script src="scripts/jquery-ui.min.js"></script>
+		<script src="scripts/bootstrap.min.js"></script>
+		<script src="scripts/wow.min.js"></script>
 	</head>
 
 	<body>
@@ -51,6 +56,11 @@
 						<?php if (isset($_SESSION['user'])) {
 							echo '<li>';
 								echo '<a href="' . action('account', 'logout') . '">D&eacute;connexion</a>';
+							echo '</li>';
+						}
+						else {
+							echo '<li>';
+							echo '<a href="' . action('account', 'register') . '">Inscription</a>';
 							echo '</li>';
 						} ?>
 					</ul>
@@ -115,11 +125,6 @@
 		<div class="copy">
 			<p>&copy; 2016 - <a href="http://lapinouss.com" target="_blank">Lapinouss</a></p>
 		</div>
-		
-		<script src="scripts/jquery-1.11.1.min.js"></script>
-		<script src="scripts/jquery-ui.min.js"></script>
-		<script src="scripts/bootstrap.min.js"></script>
-		<script src="scripts/wow.min.js"></script>
 		
 		<script>
 			addEventListener(
