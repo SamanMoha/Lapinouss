@@ -23,7 +23,7 @@
 	require_once 'common/utils/date_util.php';
 	require_once 'common/utils/data_util.php';
 
-	function action($controller, $action = 'index', $id = null) {
+	function action($controller, $action = 'index', $id = null, $anchor = null) {
 		if (empty($action)) {
 			$action = 'index';
 		}
@@ -36,6 +36,10 @@
 
 		if ($id != null) {
 			$path .=  '/' . $id;
+		}
+
+		if ($anchor != null) {
+			$path .=  '#' . $anchor;
 		}
 		
 		return $path;
@@ -54,4 +58,9 @@
 		$action = 'index';
 	}
 
-	require_once 'views/layout.php';
+	if (isset($_GET['json']) || isset($_POST['json'])) {
+		require_once 'views/routes.php';
+	}
+	else {
+		require_once 'views/layout.php';
+	}
