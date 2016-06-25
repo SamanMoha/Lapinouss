@@ -918,7 +918,7 @@ ul.comment-list .desc1 h5 a:hover {
 	left: 8px;
 	top: 42px;
 }
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], .account-select {
 	padding: 15px 15px;
 	width: 55%;
 	color: #999;
@@ -928,6 +928,11 @@ input[type="text"], input[type="password"], input[type="email"] {
 	outline: none;
 	display: block;
 }
+
+.ui-datepicker-year {
+	color: black;
+}
+
 textarea {
 	padding:15px 15px;
 	width: 70%;
@@ -1297,7 +1302,7 @@ h3.m_3 {
 ul.comment-list .desc1 {
 	width: 76%;
 }
-.comments-area input[type="text"] {
+.comments-area input[type="text"], .account-select {
 	padding:10px;
 	width: 75%;
 }
