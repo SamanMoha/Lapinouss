@@ -5,7 +5,7 @@ var GeometryFormModel = function () {
     var score = 0;
     
     function startGameTimer() {
-        if(gametimer == 0 || gametimer <0){
+        /*if(gametimer == 0 || gametimer <0){
             gametimer = 30;
             countDown();
             updatetimer = setInterval(countDown, 1000);
@@ -19,7 +19,10 @@ var GeometryFormModel = function () {
             if(response == true){
                 gametimer = 30;
             }
-        }
+        }*/
+        gametimer = 30;
+        countDown();
+        updatetimer = setInterval(countDown, 1000);
     }
     
     function pauseGameTimer() {
@@ -38,14 +41,50 @@ var GeometryFormModel = function () {
     function countDown() {
         if(gametimer == 0 && updatetimer != null){
             clearInterval(updatetimer);
+            $('#endscore').html(getScore());
+            $('#endmessage').show();
         }
         setGameTimer(gametimer);
         gametimer -= 1;
     }
     
     function initListGeometric(){
-        console.log($('listgeometric').html());
-        $('listgeometric').html("<img src=\"/Lapinouss/games/Geometry_Shapes/image/carre.png\" draggable=\"true\">");
+        var randomform = Math.floor((Math.random() * 3));
+        
+        if(randomform == 0){
+            $('<img/>')         
+                .attr('src','/Lapinouss/games/Geometry_Shapes/image/green_square.png')
+                .data( 'form', 'square' )
+                .appendTo( 'div#listgeometric' )
+                .draggable( {
+                    containment: 'div#content',
+                    stack: '#listgeometric div',
+                    cursor: 'move',
+                    revert: true
+                } );
+        }else if(randomform == 1) {
+            $('<img/>')         
+                .attr('src','/Lapinouss/games/Geometry_Shapes/image/blue_circle.png')
+                .data( 'form', 'circle' )
+                .appendTo( 'div#listgeometric' )
+                .draggable( {
+                    containment: 'div#content',
+                    stack: '#listgeometric div',
+                    cursor: 'move',
+                    revert: true
+                } );
+        }else if(randomform == 2){
+            $('<img/>')         
+                .attr('src','/Lapinouss/games/Geometry_Shapes/image/yellow_star.png')
+                .data( 'form', 'star' )
+                .appendTo( 'div#listgeometric' )
+                .draggable( {
+                    containment: 'div#content',
+                    stack: '#listgeometric div',
+                    cursor: 'move',
+                    revert: true
+                } );
+        }
     }
     
     function getGameTimer() {
@@ -57,16 +96,17 @@ var GeometryFormModel = function () {
     }
     
     function getScore() {
-        return $('#score').html();
+        return score;
     }
     
     function setScore(value) {
-        $('#score').html(value);
+        score = value;
     }
     
     return {
         startGameTimer : startGameTimer,
         pauseGameTimer : pauseGameTimer,
+        initListGeometric : initListGeometric,
         getScore : getScore,
         setScore : setScore,
         countDown : countDown
