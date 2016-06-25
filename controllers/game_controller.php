@@ -26,7 +26,20 @@
         public function store() {
             $games = $this->gameRepository->all();
 
-            require_once 'views/pages/game/index.php';
+            require_once 'views/pages/game/store.php';
+        }
+
+        public function download() {
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                call('game', 'store');
+            }
+
+            $game = $this->gameRepository->downloadGameType($_SESSION['user'], $_GET['id']);
+            if ($game == false) {
+                call('home', 'error');
+            }
+
+            redirect('game', 'store', null, $_GET['id']);
         }
 
         public function play() {

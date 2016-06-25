@@ -41,4 +41,14 @@
                   AND Available = 1 
                   AND activated = 1
         ";
+
+        const DOWNLOAD_GAME_TYPE = "INSERT INTO downloaded_game_type
+                            (
+                                id_account, 
+                                id_game_type
+                            )
+                            VALUES (
+                                :id_account, 
+                                :id_game_type
+                            );";
     }

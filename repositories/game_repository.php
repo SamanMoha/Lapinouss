@@ -100,4 +100,20 @@
 
             return null;
         }
+        
+        public function downloadGameType(Account $account, $id_game_type) {
+            $download = $this->db->prepare(GameQueries::DOWNLOAD_GAME_TYPE);
+
+            $download->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+            $download->bindParam(':id_game_type', $id_game_type, PDO::PARAM_INT);
+
+            if ($download
+                && !($download instanceof PDOException)
+                && $download->execute()) {
+
+                return true;
+            }
+
+            return false;
+        }
     }
