@@ -1,0 +1,38 @@
+<html ng-app="myApp">
+<head>
+    <link href="dist/style.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-controller="ColorController" ng-init="init()">
+<div id="couleur">
+	<table border="2">
+		<tr>
+			<td id="bleu" style="background-color:blue;" ng-click="tap('bleu')"></td>
+			<td style="background-color:red;" ng-click="tap('rouge')"></td>
+		</tr>
+		<tr>
+			<td style="background-color:yellow;" ng-click="tap('jaune')"></td>
+			<td style="background-color:green;" ng-click="tap('vert')"></td>
+		</tr>
+		<tr>
+			<td style="background-color:orange;" ng-click="tap('orange')"></td>
+			<td style="background-color:black;" ng-click="tap('noir')"></td>
+		</tr>
+	</table>
+</div>
+<div id="message">
+	<div class="alert alert-success" role="alert" ng-show="successMsg"> 
+		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> BRAVO, tu as trouv&eacute;  la bonne solution !!!
+	</div>
+	<div class="alert alert-danger" role="alert" ng-show="errorMsg">
+		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> ERREUR, courage tu peux y arriver !
+	</div>
+</div>
+<div id="sound">
+	<audio id="player" ng-src="{{playUrl}}"></audio>
+	<img src="dist/img/play.png" onclick="document.getElementById('player').play()" ng-show="!next">
+	<img src="dist/img/next.png" ng-click="init()" ng-show="next">
+</div>
+<script src="dist/script.js"></script>
+</body>
+</html>
