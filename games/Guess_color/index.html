@@ -25,7 +25,10 @@
 		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> BRAVO, tu as trouv&eacute;  la bonne solution !!!
 	</div>
 	<div class="alert alert-danger" role="alert" ng-show="errorMsg">
-		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> ERREUR, courage tu peux y arriver !
+		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> ERREUR, courage tu peux y arriver ! Il te reste {{tries}} essai(s)
+	</div>
+	<div class="alert alert-danger" role="alert" ng-show="!countTry">
+		<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> DOMMAGE, tu n'as pas trouv&eacute; la solution...
 	</div>
 </div>
 <div id="sound">
