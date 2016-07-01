@@ -44,15 +44,6 @@ $("span.menu").click(function(){
     );
 });
 
-$(function() {
-    $('.about-grid a')
-        .Chocolat(
-            {
-                linkImages:false
-            }
-        );
-});
-
 $(document).ready(function(){
     $(".top-nav li a").click(function(){
         $(this)

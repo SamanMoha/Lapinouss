@@ -1,4 +1,4 @@
-	<div class="row">
+<div class="container">
 		<h1 class="blog_head">Mes jeux</h1>
 
 		<?php

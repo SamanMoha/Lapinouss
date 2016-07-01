@@ -10,32 +10,26 @@ div.content {
     margin-bottom: 2%;
     margin-right: 2%;
 }
- 
-span.droppable{
+
+.droppable{
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
 div.listgeometric {
     border: 1px solid black;
 }
 
-span.zone-drop-active {
+.zone-drop-active {
     background-color: dodgerblue;
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
-span.zone-drop-survolee {
+.zone-drop-survolee {
     background-color: limegreen;
     margin: 5px;
     padding: 10px;
-    height: 200px;
-    width: 200px;
 }
 
 #endmessage {
@@ -43,8 +37,8 @@ span.zone-drop-survolee {
     left: 20%;
     right: 20%;
     background: #dfd;
-    width: 300px;
-    height: 80px;
+    width: 300;
+    height: 80;
     z-index: 100;
 
     border: 2px solid #333;
@@ -62,8 +56,8 @@ span.zone-drop-survolee {
     left: 20%;
     right: 20%;
     background: #dfd;
-    width: 600px;
-    height: 450px;
+    width: 600;
+    height: 450;
     z-index: 100;
 
     border: 2px solid #333;

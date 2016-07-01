@@ -1,30 +1,31 @@
 var GeometryFormModel = function () {
-    
+
     var updatetimer;
     var gametimer;
-    var score = 0;
-    
+    var score;
+
     function startGameTimer() {
         /*if(gametimer == 0 || gametimer <0){
-            gametimer = 30;
-            countDown();
-            updatetimer = setInterval(countDown, 1000);
-        }else if( gametimer == null){
-            initListGeometric();
-            gametimer = 30;
-            countDown();
-            updatetimer = setInterval(countDown, 1000);
-        }else{
-            response = confirm('The game isn\'t finish yet, Do you want to retry ?');
-            if(response == true){
-                gametimer = 30;
-            }
-        }*/
+         gametimer = 30;
+         countDown();
+         updatetimer = setInterval(countDown, 1000);
+         }else if( gametimer == null){
+         initListGeometric();
+         gametimer = 30;
+         countDown();
+         updatetimer = setInterval(countDown, 1000);
+         }else{
+         response = confirm('The game isn\'t finish yet, Do you want to retry ?');
+         if(response == true){
+         gametimer = 30;
+         }
+         }*/
+        score = 0;
         gametimer = 30;
         countDown();
         updatetimer = setInterval(countDown, 1000);
     }
-    
+
     function pauseGameTimer() {
         var result;
         if(updatetimer != null){
@@ -37,23 +38,25 @@ var GeometryFormModel = function () {
         }
         return result;
     }
-    
+
     function countDown() {
         if(gametimer == 0 && updatetimer != null){
             clearInterval(updatetimer);
+            $('img.draggable').draggable('disable');
             $('#endscore').html(getScore());
             $('#endmessage').show();
         }
         setGameTimer(gametimer);
         gametimer -= 1;
     }
-    
+
     function initListGeometric(){
         var randomform = Math.floor((Math.random() * 3));
-        
+
         if(randomform == 0){
-            $('<img/>')         
+            $('<img/>')
                 .attr('src','/Lapinouss/games/Geometry_Shapes/image/green_square.png')
+                .addClass('draggable')
                 .data( 'form', 'square' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {
@@ -63,8 +66,9 @@ var GeometryFormModel = function () {
                     revert: true
                 } );
         }else if(randomform == 1) {
-            $('<img/>')         
+            $('<img/>')
                 .attr('src','/Lapinouss/games/Geometry_Shapes/image/blue_circle.png')
+                .addClass('draggable')
                 .data( 'form', 'circle' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {
@@ -74,8 +78,9 @@ var GeometryFormModel = function () {
                     revert: true
                 } );
         }else if(randomform == 2){
-            $('<img/>')         
+            $('<img/>')
                 .attr('src','/Lapinouss/games/Geometry_Shapes/image/yellow_star.png')
+                .addClass('draggable')
                 .data( 'form', 'star' )
                 .appendTo( 'div#listgeometric' )
                 .draggable( {
@@ -86,23 +91,23 @@ var GeometryFormModel = function () {
                 } );
         }
     }
-    
+
     function getGameTimer() {
         return $('#gametimer').html("");
     }
-    
+
     function setGameTimer(value) {
         $('#gametimer').html(value);
     }
-    
+
     function getScore() {
         return score;
     }
-    
+
     function setScore(value) {
         score = value;
     }
-    
+
     return {
         startGameTimer : startGameTimer,
         pauseGameTimer : pauseGameTimer,

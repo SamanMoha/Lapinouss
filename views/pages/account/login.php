@@ -34,9 +34,9 @@
 					<h3>Tu es un enfant ?</h3>
 					<form method="POST" action="<?php echo action('account', 'login'); ?>">
 						<p>
-							<label>Adresse e-mail</label>
+							<label>Identifiant</label>
 							<span>*</span>
-							<input type="email" name="email" placeholder="Entre ton adresse email ici" required>
+							<input type="text" name="username" placeholder="Entre ton identifiant ici" required>
 						</p>
 						<p>
 							<label>Mot de passe</label>

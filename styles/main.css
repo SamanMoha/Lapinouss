@@ -119,10 +119,10 @@ span.main {
 	right: 9%;
 }
 .fixed{
-	position: fixed;
+	/*position: fixed;*/
+	margin-bottom: 50px;
 	top: 0;
 	width: 100%;
-	margin: 0 auto;
 	left:0;
 }
 .top-nav span.menu{

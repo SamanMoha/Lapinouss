@@ -73,9 +73,11 @@
 
 
 		<div class="wow bounceInRight" data-wow-delay="0.1s">
-			<?php
+			<div class="box_2">
+				<?php
 				require_once 'routes.php';
-			?>
+				?>
+			</div>
 		</div>
 
 		<div class="footer wow fadeInRight" data-wow-delay="0.4s">
