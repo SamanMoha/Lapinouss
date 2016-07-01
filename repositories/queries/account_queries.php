@@ -15,7 +15,7 @@
                                 email, 
                                 password, 
                                 first_name, 
-                                first_name, 
+                                last_name, 
                                 birth_date, 
                                 created_date
                             )
@@ -30,7 +30,6 @@
                                 :created_date
                             );";
 
-
         const FIND_ALL_CHILDREN = "
                             SELECT *
                             FROM child_account c
@@ -44,7 +43,7 @@
                     WHERE id_account = :id_account
             ";
 
-        const EXISTS_PARENT = "
+        const EXISTS = "
                     SELECT *
                     FROM account
                     WHERE email = :email

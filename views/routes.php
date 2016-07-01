@@ -74,8 +74,10 @@
 			'index',
 			'login',
 			'register',
+			'registerChild',
 			'logout',
-			'existsParent'
+			'existsParent',
+			'children'
 		],
 
 		'game'

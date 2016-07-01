@@ -104,6 +104,13 @@ span.main {
 	-ms-transform: rotateY(70deg);
 	transform: rotateY(70deg);
 }
+.navbar-blink {
+	border-color: #ffde00;
+	border-radius: 5px;
+	border-width: 1px;
+	border-style: dashed;
+}
+
 .border-side{
 	position: absolute;
 	border-right: 1px solid #FFF;

@@ -4,18 +4,20 @@
 		<title>Viens t'amuser avec Lapinouss !</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link href="styles/bootstrap.css" rel="stylesheet" type="text/css" />
-		<link href="styles/jquery-ui.min.css" rel="stylesheet">
-		<link href="styles/style.css" rel="stylesheet" type="text/css" />
 		<link href="resources/fonts/css/lato.css" rel="stylesheet" type="text/css">
 		<link href="resources/fonts/css/font-awesome.min.css" rel="stylesheet">
+		<link href="styles/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="styles/jquery-ui.min.css" rel="stylesheet">
 		<link href="styles/animate.css" rel="stylesheet" type="text/css" />
+		<link href="styles/main.css" rel="stylesheet" type="text/css" />
+		
 		<link href="resources/images/logo/favicon.ico" rel="shortcut icon">
 
-		<script src="scripts/jquery-1.11.1.min.js"></script>
+		<script src="scripts/jquery-2.2.4.js"></script>
 		<script src="scripts/jquery-ui.min.js"></script>
 		<script src="scripts/bootstrap.min.js"></script>
 		<script src="scripts/wow.min.js"></script>
+		<script src="scripts/main.js"></script>
 	</head>
 
 	<body>
@@ -59,7 +61,7 @@
 							echo '</li>';
 						}
 						else {
-							echo '<li>';
+							echo '<li class="navbar-blink">';
 							echo '<a href="' . action('account', 'register') . '">Inscription</a>';
 							echo '</li>';
 						} ?>
@@ -69,10 +71,13 @@
 			</div>
 		</div>
 
-		<?php
-			require_once 'routes.php';
-		?>
-		
+
+		<div class="wow bounceInRight" data-wow-delay="0.1s">
+			<?php
+				require_once 'routes.php';
+			?>
+		</div>
+
 		<div class="footer wow fadeInRight" data-wow-delay="0.4s">
 			<div class="container">
 				<div class="footer_top">
@@ -125,57 +130,6 @@
 		<div class="copy">
 			<p>&copy; 2016 - <a href="http://lapinouss.com" target="_blank">Lapinouss</a></p>
 		</div>
-		
-		<script>
-			addEventListener(
-				"load", 
-				function() {
-					setTimeout(hideURLbar, 0);
-				}, 
-				false
-			);
-			
-			function hideURLbar() {
-				window.scrollTo(0, 1);
-			}
-		
-			new WOW().init();
-		
-			$("span.menu").click(function(){
-				$(".top-nav ul").slideToggle(
-					500, 
-					function() { }
-				);
-			});
-			
-			$(function() {
-				$('.about-grid a')
-					.Chocolat(
-						{
-							linkImages:false
-						}
-					);
-			});
-			
-			$(document).ready(function(){
-				$(".top-nav li a").click(function(){
-					$(this)
-						.parent()
-						.addClass("active")
-						.siblings()
-						.removeClass("active");
-				});
-
-				 $(window).scroll(function(){
-					$(".header-home")
-						[$(window).scrollTop() >= $(".header-home").offset().top 
-							? "addClass" 
-							: "removeClass"]
-						("fixed")
-				 });
-				 
-			});
-		</script>
 		
 	</body>
 </html>

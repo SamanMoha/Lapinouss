@@ -8,11 +8,11 @@
             parent::__construct();
         }
 
-        public function login($email, $password) {
-            if (!empty($email) && !empty($password)) {
+        public function login($username, $password) {
+            if (!empty($username) && !empty($password)) {
                 $login = $this->db->prepare(ChildQueries::LOGIN);
 
-                $login->bindParam(':email', $email, PDO::PARAM_STR);
+                $login->bindParam(':uid', $username, PDO::PARAM_STR);
                 $login->bindParam(':password', $password, PDO::PARAM_STR);
 
                 if ($login
@@ -27,37 +27,35 @@
             return null;
         }
 
-        public function register($firstname, $lastname, $birth, $email, $password) {
+        public function register($firstname, $lastname, $birth, $username, $password, Account $account) {
             if (!empty($firstname)
                 && !empty($lastname)
                 && !empty($birth)
-                && !empty($email)
+                && !empty($username)
                 && !empty($password)) {
 
-                $uid = DataUtil::generateUid();
                 $created = DateUtil::now();
-                $permission = 'Enfant';
+                $birth = DateUtil::format($birth);
 
-                $register = $this->db->prepare(AccountQueries::REGISTER);
+                $register = $this->db->prepare(ChildQueries::REGISTER);
 
-                $register->bindParam(':permission', $permission, PDO::PARAM_STR);
-                $register->bindParam(':uid', $uid, PDO::PARAM_STR);
-                $register->bindParam(':email', $email, PDO::PARAM_STR);
+                $register->bindParam(':uid', $username, PDO::PARAM_STR);
                 $register->bindParam(':password', $password, PDO::PARAM_STR);
                 $register->bindParam(':first_name', $firstname, PDO::PARAM_STR);
-                $register->bindParam(':first_name', $lastname, PDO::PARAM_STR);
+                $register->bindParam(':last_name', $lastname, PDO::PARAM_STR);
                 $register->bindParam(':birth_date', $birth, PDO::PARAM_STR);
                 $register->bindParam(':created_date', $created, PDO::PARAM_STR);
-
-                if ($register
+                $register->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+                
+                 if ($register
                     && !($register instanceof PDOException)
                     && $register->execute()) {
 
-                    return $register;
+                    return true;
                 }
             }
 
-            return null;
+            return false;
         }
 
         public function update($firstname, $lastname, $email, $password, $uid) {
@@ -67,7 +65,7 @@
                 && !empty($password)
                 && !empty($uid)) {
 
-                $update = $this->db->prepare(AccountQueries::UPDATE);
+                $update = $this->db->prepare(ChildQueries::UPDATE);
 
                 $update->bindParam(':first_name', $firstname, PDO::PARAM_STR);
                 $update->bindParam(':last_name', $lastname, PDO::PARAM_STR);
@@ -90,7 +88,7 @@
             if (!empty($uid)
                 && !empty($email)) {
 
-                $delete = $this->db->prepare(AccountQueries::DELETE);
+                $delete = $this->db->prepare(ChildQueries::DELETE);
 
                 $delete->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $delete->bindParam(':email', $email, PDO::PARAM_STR);
@@ -101,6 +99,22 @@
 
                     return true;
                 }
+            }
+
+            return false;
+        }
+
+        public function exists($uid) {
+            $child = $this->db->prepare(ChildQueries::EXISTS);
+
+            $child->bindParam(':uid', $uid, PDO::PARAM_STR);
+
+            if ($child
+                && !($child instanceof PDOException)
+                && $child->execute()
+                && $child->rowCount() == 1) {
+
+                return true;
             }
 
             return false;

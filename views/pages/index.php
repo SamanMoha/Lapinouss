@@ -57,7 +57,10 @@
 				</div>
 			</div>
 		</div>
-		
+
+		<br/><br/>
+		<br/><br/>
+
 		<div class="grid_2">
 			<div class="container"> 
 				<h3 class="head_1 wow rotateInUpLeft" data-wow-delay="0.4s">&agrave; vous de choisir</h3>

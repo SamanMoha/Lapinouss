@@ -52,7 +52,7 @@
                                     <?php
                                         $age = DateUtil::age($child->birth_date);
 
-                                        echo '(' . $age . ' ' . ($age > 1 ? 'an' : 'ans') . ')';
+                                        echo '(' . $age . ' ' . ($age > 1 ? 'ans' : 'an') . ')';
                                     ?>
                                 </h4>
                                 <p>
@@ -60,7 +60,6 @@
                                     ica, quam nunc putamus parum claram
                                 </p>
                             </li>
-                            <h4>Finibus Bonorum <span><a href="#">http://demolink.org</a></span></h4>
                             <div class="clearfix"> </div>
                         </ul>
                         <?php
@@ -70,6 +69,8 @@
                     echo "Aucun enfant, qu'attendez vous ?";
             }
             ?>
+
+            <a href="<?php echo action('account', 'children'); ?>" class="btn1 btn2 btn-8 btn-8c"">Voir plus</a>
 
         </div>
     </div>

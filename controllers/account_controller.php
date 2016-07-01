@@ -30,7 +30,7 @@
 
 		private function indexParent() {
 			$account = $_SESSION['user'];
-			$children = $this->accountRepository->children($account);
+			$children = array_slice($this->accountRepository->children($account), 0, 3);
 			
 			require_once 'views/pages/account/index_adult.php';
 		}
@@ -70,7 +70,7 @@
 
 		private function loginChild() {
 			$user = $this->childRepository->login(
-				$_POST['email'],
+				$_POST['username'],
 				$_POST['password']
 			);
 
@@ -85,58 +85,91 @@
 		}
 
 		public function register() {
-			if (isset($_POST['register-parent'])) {
-				$this->registerParent();
+			if (isset($_POST['register'])) {
+				if ($_POST['password'] == $_POST['re-password']) {
+					if (strlen($_POST['password']) >= 8) {
+						$user = $this->accountRepository->exists($_POST['email']);
+
+						if ($user == false) {
+							$user = $this->accountRepository->register(
+								$_POST['firstname'],
+								$_POST['lastname'],
+								$_POST['permission'],
+								$_POST['birth'],
+								$_POST['email'],
+								$_POST['password']
+							);
+
+							if ($user != null) {
+								$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
+
+								if ($user != null) {
+									$_SESSION['user'] = $user;
+
+									redirect('account');
+								}
+								else {
+									new WebException("Erreur lors de l'inscription.");
+								}
+							}
+							else {
+								new WebException("Erreur lors de l'inscription.");
+							}
+						}
+						else {
+							new WebException("L'adresse email est deja utlisée !");
+						}
+					}
+					else {
+						new WebException("Le mot de passe doit contenir au moins 8 caractères.");
+					}
+				}
+				else {
+					new WebException("Les mots de passes doivent etre identiques !");
+				}
 			}
 
-			if (isset($_POST['register-child'])) {
-				$this->registerChild();
-			}
-
-			require_once 'views/pages/account/register.php';
+			require_once 'views/pages/account/register_adult.php';
 		}
 
-		private function registerParent() {
-			$user = $this->accountRepository->registerParent(
-				$_POST['firstname'],
-				$_POST['lastname'],
-				$_POST['permission'],
-				$_POST['birth'],
-				$_POST['email'],
-				$_POST['password'],
-				$_POST['re-password']
-			);
+		public function registerChild() {
+			if (isset($_POST['register'])) {
+				if ($_POST['password'] == $_POST['re-password']) {
+					if (strlen($_POST['password']) >= 6) {
+						$user = $this->childRepository->exists($_POST['username']);
 
-			if ($user != null) {
-				$_SESSION['user'] = $user;
+						if ($user == false) {
+							$user = $this->childRepository->register(
+								$_POST['firstname'],
+								$_POST['lastname'],
+								$_POST['birth'],
+								$_POST['username'],
+								$_POST['password'],
+								$_SESSION['user']
+							);
 
-				redirect('account');
+							if ($user == true) {
+
+								redirect('account');
+							}
+							else {
+								new WebException("Oops une erreur est survenue lors de l'inscription :/");
+							}
+						}
+						else {
+							new WebException("L'adresse email est deja utlisée !");
+						}
+					}
+					else {
+						new WebException("Le mot de passe doit contenir au moins 6 caractères.");
+					}
+				}
+				else {
+					new WebException("Les mots de passes doivent etre identiques !");
+				}
 			}
-			else {
-				new WebException("Adresse e-mail/mot de passe incorrect !");
-			}
-		}
 
-		private function registerChild() {
-			$user = $this->accountRepository->registerChild(
-				$_POST['firstname'],
-				$_POST['lastname'],
-				'Enfant',
-				$_POST['birth'],
-				$_POST['email'],
-				$_POST['password'],
-				$_POST['re-password'],
-				$_POST['parent-mail']
-			);
-
-			if ($user != null) {
-				$_SESSION['user'] = $user;
-
-				redirect('account');
-			}
-			else {
-				new WebException("Adresse e-mail/mot de passe incorrect !");
-			}
+			require_once 'views/pages/account/register_child.php';
 		}
 
 		public function settings() {
@@ -185,10 +218,18 @@
 		}
 		
 		public function existsParent() {
-			$user = $this->accountRepository->existsParent(
-				$_GET['email']
-			);
+			if (isset($_POST['email'])) {
+				$user = $this->accountRepository->exists(
+					$_POST['email']
+				);
 
-			http_response_code($user ? 200 : 404);
+				http_response_code($user ? 200 : 404);
+			}
+		}
+
+		public function children() {
+			$children = $this->accountRepository->children($_SESSION['user']);
+
+			require_once 'views/pages/account/children.php';
 		}
 	}

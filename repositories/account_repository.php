@@ -37,15 +37,16 @@
 
                 $uid = DataUtil::generateUid();
                 $created = DateUtil::now();
+                $birth = DateUtil::format($birth);
 
-                $register = $this->db->prepare(AccountQueries::REGISTER);
+                $register = $this->db->prepare(AccountQueries::REGISTER_ADULT);
 
                 $register->bindParam(':permission', $permission, PDO::PARAM_STR);
                 $register->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $register->bindParam(':email', $email, PDO::PARAM_STR);
                 $register->bindParam(':password', $password, PDO::PARAM_STR);
                 $register->bindParam(':first_name', $firstname, PDO::PARAM_STR);
-                $register->bindParam(':first_name', $lastname, PDO::PARAM_STR);
+                $register->bindParam(':last_name', $lastname, PDO::PARAM_STR);
                 $register->bindParam(':birth_date', $birth, PDO::PARAM_STR);
                 $register->bindParam(':created_date', $created, PDO::PARAM_STR);
 
@@ -53,7 +54,7 @@
                     && !($register instanceof PDOException)
                     && $register->execute()) {
 
-                    return $register;
+                    return $this->login($email, $password);
                 }
             }
 
@@ -136,8 +137,8 @@
             return null;
         }
 
-        public function existsParent($email) {
-            $account = $this->db->prepare(AccountQueries::EXISTS_PARENT);
+        public function exists($email) {
+            $account = $this->db->prepare(AccountQueries::EXISTS);
 
             $account->bindParam(':email', $email, PDO::PARAM_STR);
 

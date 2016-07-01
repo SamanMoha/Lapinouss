@@ -1,5 +1,5 @@
-	<div class="grid_1">
-	   <div class="container">
+	<div class="container">
+	   <div class="row">
 		  <div class="box_1">
 			<h3>Salut <?php echo $account->first_name; ?> !</h3>
 			<h4>Que veux tu faire aujourd'hui ?</h4>
