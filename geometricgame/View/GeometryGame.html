@@ -20,40 +20,40 @@
     </head>
     
     <body>
-        <div class="content" >
-            <div class="header">
-                <span id="gametimer"></span>
-                <span class="displayscore">
-                    Votre score est de :<span id="score">0</span>
-                </span>
+        <div class="header">
+            <div class="displayscore">
+                Votre score est de :<span id="score">0</span>
             </div>
-            <div id="endmessage">
-                Le temps est termine!<br> 
-                Votre score est de <span id="endscore"></span><br>
-                <input type="button" id="buttonretry" value="Recommencer" />
-            </div>
-            <!--<div id="gamehome">
-                <span class="rules">
-                    Age conseille: 3ans<br>
-                    Regles:<br>
-                    <p>
-                        l objectif est de regrouper les differentes formes par type, c est a dire les carre avec les carrees etc ...
-                        On verras bien la place que ça prend okay au pire Blablabla
-                    </p>
-                </span>
-                <span class="menu">            
-                    <input type="button" id="playbutton" value="Play"/>
-                    <br>
-                    <input type="button" id="scorebutton" value="Score"/>
-                </span>
-            </div>-->
-            <div>
+            <div id="gametimer"></div>
+        </div>
+        <div id="endmessage">
+            Le temps est termine!<br> 
+            Votre score est de <span id="endscore"></span><br>
+            <input type="button" id="buttonretry" value="Recommencer" />
+        </div>
+        <div class="core">
+            <div class="mainForm">
                 <img src="../image/square.png" class="droppable" data-form="square"/>
                 <img src="../image/circle.png" class="droppable" data-form="circle"/>
                 <img src="../image/star.png" class="droppable" data-form="star"/>
             </div>
+            <div class="good">
+                <img src="../image/valid.png" class="answer">
+                <span class="answer">
+                    Bravo!<br>
+                    Tu as trouvé la bonne réponse et gagné 20 points supplémentaire!<br>
+                    Essaye encore avec la prochaine forme.
+                </span>
+            </div>
+            <div class="wrong">
+                <img src="../image/error.png" class="answer">
+                <span class="answer">
+                    Dommage!<br>
+                    Tu t'es trompé de réponse donc tu as perdu 10 points!<br>
+                    Essaye encore avec la même forme.
+                </span>
+            </div>
             <div id="listgeometric"></div>
-            <!--<input type="button" id="pausebutton" value="Pause"/>-->
         </div>
     </body>
 </html>

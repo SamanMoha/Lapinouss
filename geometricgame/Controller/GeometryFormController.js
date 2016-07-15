@@ -33,17 +33,23 @@ var GeometryFormController = function (pModel) {
         if(responseForm == mainForm){
             model.setScore(model.getScore() + 20);
             $('span#score').html(model.getScore());
-            $(ui.draggable).remove();
+            $(ui.draggable).hide();
+            $('.good').show();
+            $('.wrong').hide();
             model.initListGeometric();
         }else{
             if(model.getScore() >= 10)
             model.setScore(model.getScore() - 10);
+            $('.wrong').show();
+            $('.good').hide();
             $('span#score').html(model.getScore());
         }
     }
     
     function init () {
         $('#endmessage').hide();
+        $('.good').hide();
+        $('.wrong').hide();
         $('#buttonretry').click(function(){retry_clicked();});
         model.startGameTimer();
         $('.droppable').droppable({
