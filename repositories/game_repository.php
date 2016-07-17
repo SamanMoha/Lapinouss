@@ -6,13 +6,11 @@
 
     class GameRepository extends BaseRepository {
 
-        private $accountRepository;
         private $commentRepository;
 
         public function __construct() {
             parent::__construct();
 
-            $this->accountRepository = new AccountRepository();
             $this->commentRepository = new CommentRepository();
         }
 
@@ -26,7 +24,6 @@
 
             $game = $game->fetchObject('Game');
 
-            $game->account = $this->accountRepository->findById($game->id_account);
             $game->comments = $this->commentRepository->findByGameId($game->id_game);
 
             return $game;
@@ -43,7 +40,6 @@
             $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
 
             foreach ($games as $game) {
-                $game->account = $this->accountRepository->findById($game->id_account);
                 $game->comments = $this->commentRepository->findByGameId($game->id_game);
             }
 
@@ -61,7 +57,6 @@
             $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
 
             foreach ($games as $game) {
-                $game->account = $this->accountRepository->findById($game->id_account);
                 $game->comments = $this->commentRepository->findByGameId($game->id_game);
             }
 
@@ -78,10 +73,7 @@
                 return null;
 
             $game = $game->fetchObject('Game');
-
-            var_dump($game);
-            //$game->account = $this->accountRepository->findById($game->id_account);
-            //$game->comments = $this->commentRepository->findByGameId($game->id_game);
+            $game->comments = $this->commentRepository->findByGameId($game->id_game);
 
             return $game;
         }
@@ -97,7 +89,6 @@
             $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
 
             foreach ($games as $game) {
-                $game->account = $this->accountRepository->findById($game->id_account);
                 $game->comments = $this->commentRepository->findByGameId($game->id_game);
 
                 if ($account != null) {

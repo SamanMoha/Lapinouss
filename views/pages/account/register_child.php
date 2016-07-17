@@ -24,7 +24,7 @@
                     <input name="re-password" type="password" placeholder="Re-saisir le m&ecirc;me mot de passe" required>
                 </p>
                 <p>
-                    <label class="btn1 btn2 btn-8 btn-8c"><input type="submit" name="register" value="Valider"></label>
+                    <label class="btn1 btn2 btn-8 btn-8c"><input type="submit" name="register" value="Ajouter"></label>
                 </p>
             </form>
         </div>

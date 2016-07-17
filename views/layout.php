@@ -36,8 +36,8 @@
 				<div class="top-nav wow bounce" data-wow-delay="0.4s">
 					<span class="menu"> </span>
 					<ul>
-						<li class="active"><a href="<?php echo action('home'); ?>">Accueil</a></li>
-						<li>
+						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'home' ? 'class="active"' : ''; ?>><a href="<?php echo action('home'); ?>">Accueil</a></li>
+						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
 							<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof ChildAccount) {
 								echo '<a href="' . action('game') . '">Mes jeux</a>';
 							} else {
@@ -46,11 +46,12 @@
 							?>
 						</li>
 						<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
-							echo '<li>';
+							echo isset($_GET['controller']) && $_GET['controller'] == 'tutorial' ? '<li class="active">' : '<li>';
 							echo '<a href="' . action('tutorial') . '">Tutoriels</a>';
 							echo '</li>';
 						} ?>
-						<li>
+						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
+									&& (!isset($_GET['action']) || $_GET['action'] != 'register') ? 'class="active"' : ''; ?>>
 							<a href="<?php echo action('account'); ?>">
 								<?php echo isset($_SESSION['user']) ? 'Mon compte' : 'Connexion'; ?>
 							</a>
@@ -61,7 +62,8 @@
 							echo '</li>';
 						}
 						else {
-							echo '<li class="navbar-blink">';
+							echo isset($_GET['controller']) && $_GET['controller'] == 'account'
+							&& (isset($_GET['action']) && $_GET['action'] == 'register') ? '<li class="active">' : '<li class="navbar-blink">';
 							echo '<a href="' . action('account', 'register') . '">Inscription</a>';
 							echo '</li>';
 						} ?>
@@ -106,19 +108,14 @@
 					<div class="col-sm-3">
 						<ul class="list1">
 							<h3>&agrave; propos</h3>
-							<li><a href="#">Qui sommes nous ?</a></li>
-							<li><a href="#">Recrutement</a></li>
-							<li><a href="#">Conditions d'utilisations</a></li>
+							<li><a href="<?php echo action('contact'); ?>">Qui sommes nous ?</a></li>
+							<li><a href="<?php echo action('contact'); ?>">Recrutement</a></li>
+							<li><a href="<?php echo action('contact'); ?>">Conditions d'utilisations</a></li>
 							<li><a href="<?php echo action('contact'); ?>">Nous contacter</a></li>
 						</ul>
 					</div>
 					
 					<div class="col-sm-3">
-						<ul class="socials">
-							<li><a href="#"><i class="fa fb fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa tw fa-twitter"></i></a></li>
-						</ul>
-			
 						<ul class="list2">
 							<li><strong class="phone">+331 22 33 44 55</strong><br><small>Lun - Ven / 9h - 18h</small></li>
 							<li>Des questions? <a href="mailto:contact@lapinouss.com">contact(at)lapinouss.com</a></li>

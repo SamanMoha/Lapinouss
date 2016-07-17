@@ -13,7 +13,7 @@
                         <p><?php echo $games[0]->description; ?></p>
                         <div class="reply">
                             <?php
-                            if ($_SESSION['user'] instanceof Account) {
+                            if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
                                 if ($games[0]->isAlreadyBought) {
                                     echo '<a href="' . action('game', 'delete', 'game', $games[0]->uid) . '" class="comment-reply-link">Supprimer</a>';
                                 }
@@ -45,7 +45,7 @@
                             <p><?php echo $game->description; ?></p>
                             <div class="reply">
                                 <?php
-                                if ($_SESSION['user'] instanceof Account) {
+                                if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
                                     if ($game->isAlreadyBought) {
                                         echo '<a href="' . action('game', 'delete', 'game', $game->uid) . '" class="comment-reply-link">Supprimer</a>';
                                     }

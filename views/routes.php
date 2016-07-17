@@ -85,7 +85,8 @@
 			'registerChild',
 			'logout',
 			'existsParent',
-			'children'
+			'children',
+			'deleteChild'
 		],
 
 		'game'

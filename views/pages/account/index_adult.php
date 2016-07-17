@@ -13,7 +13,7 @@
     <div class="container">
         <div class="col-md-6">
             <h3 class="m_3">Tableau de bord</h3>
-            
+
             <div class="feature about_box1">
                 <i class="fa fa-globe"> </i>
                 <h4><a href="<?php echo action('game'); ?>">Mes jeux</a></h4>
@@ -48,17 +48,11 @@
                         <ul class="about_box span_1">
                             <li class="box_img"><img src="resources/images/character/kid.png" class="img-responsive" alt=""/></li>
                             <li class="box_desc">
-                                <h4>
+                                <h3>
                                     <?php echo $child->first_name . ' ' . $child->last_name; ?>
-                                    <?php
-                                        $age = DateUtil::age($child->birth_date);
-
-                                        echo '(' . $age . ' ' . ($age > 1 ? 'ans' : 'an') . ')';
-                                    ?>
-                                </h4>
+                                </h3>
                                 <p>
-                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera goth
-                                    ica, quam nunc putamus parum claram
+                                    Dernier jeu jou&eacute; le : 12 Juin 2016
                                 </p>
                             </li>
                             <div class="clearfix"> </div>

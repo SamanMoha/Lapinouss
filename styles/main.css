@@ -215,8 +215,9 @@ span.main {
 	line-height:1.8em;
 }
 .box_2{
+	margin-top: 2em;
 	margin-bottom:3em;
-} 
+}
 .feature:hover i, .desc:hover .more{
     transform: rotateY(360deg);
 	-webkit-transform: rotateY(360deg);
