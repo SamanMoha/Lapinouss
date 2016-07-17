@@ -25,20 +25,26 @@
 							<p><?php echo $game->description; ?></p>
 							<div class="reply">
 								<?php
-									echo '<a href="' . action('game', 'play', $game->id_game) . '" class="comment-reply-link btn-8c">';
+									echo '<a href="' . action('game', 'play', $game->id_game) . '" class="comment-reply-link navbar-blink">';
 									echo $_SESSION['user'] instanceof ChildAccount ? 'Jouer' : 'Demo';
 									echo '</a>';
 								?>
 								&nbsp;&nbsp;
 								<?php
 								if ($_SESSION['user'] instanceof Account) {
-									echo '<a href="' . action('game', 'delete', 'game', $game->id_game) . '" class="comment-reply-link">Supprimer</a>';
+									echo '<a href="' . action('game', 'delete', 'game', $game->id_game) . '" class="comment-reply-link btn-8c">Supprimer</a>';
 								}
 								?>
 								&nbsp;&nbsp;
 								<?php
 								if ($_SESSION['user'] instanceof Account) {
 									echo '<a href="' . action('game', 'setting', $game->id_game) . '" class="comment-reply-link navbar-blink">Permissions</a>';
+								}
+								?>
+								&nbsp;&nbsp;
+								<?php
+								if ($_SESSION['user'] instanceof ChildAccount) {
+									echo '<a href="' . action('game', 'detail', $game->id_game) . '" class="comment-reply-link">Scores</a>';
 								}
 								?>
 							</div>

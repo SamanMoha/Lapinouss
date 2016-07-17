@@ -1,5 +1,6 @@
 <div class="grid_4">
 	<div class="container-fluid">
+		<h2>Th&egrave;mes</h2>
 
 		<?php
 		foreach ($game_types as $game_type) {

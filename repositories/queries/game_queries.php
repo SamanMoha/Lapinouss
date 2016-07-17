@@ -4,12 +4,14 @@
         const ALL = "
                         SELECT *  
                         FROM game 
+                          AND available = 1 
                     ;";
 
         const FIND_BY_ID = "
                         SELECT *  
                         FROM game 
                         WHERE id_game = :id_game
+                          AND available = 1 
                     ;";
 
         const FIND_ALL_BY_PARENT = "
@@ -24,11 +26,8 @@
         const FIND_ALL_BY_CHILD = "
                 SELECT g.*
                 FROM game g 
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
-                INNER JOIN account a ON a.id_account = dgt.id_account
-                INNER JOIN parent_has_child phc ON phc.id_account = a.id_account
-                INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account 
+                INNER JOIN child_account_has_downloaded_game chg ON chg.downloaded_game_id_game = g.id_game
+                INNER JOIN child_account ca ON ca.id_child_account = chg.id_child_account
                 WHERE ca.id_child_account = :id_child_account 
                   AND available = 1 
         ;";
@@ -55,6 +54,7 @@
                         SELECT *  
                         FROM game 
                         WHERE id_game_type = :id_game_type
+                          AND available = 1 
                     ;";
 
         const BUY = "INSERT INTO downloaded_game
@@ -67,6 +67,46 @@
                                 :id_game
                             );";
 
+        const PLAYED = "
+                        SELECT *  
+                        FROM played 
+                        WHERE id_game = :id_game
+                          AND id_child_account = :id_child_account
+                    ;";
+
+        const PLAY_INSERT = "INSERT INTO played
+                            (
+                                played_time, 
+                                date_game, 
+                                id_game, 
+                                id_child_account
+                            )
+                            VALUES (
+                                0,
+                                NOW(),
+                                :id_game,
+                                :id_child_account 
+                            );";
+
+        const PLAY_UPDATE = "UPDATE played 
+                        SET played_time = played_time + 1
+                            AND date_game = NOW()
+                        WHERE id_game = :id_game
+                          AND id_child_account = :id_child_account
+                    ;";
+
+        const WIN  = "INSERT INTO success
+                            (obtention_date, id_trophy, id_child_account)
+                            SELECT
+                                NOW(),
+                                t.id_trophy,
+                                :id_child_account 
+                            FROM trophy t
+                            INNER JOIN game_has_trophy ght ON ght.id_trophy = t.id_trophy
+                            INNER JOIN game g ON g.id_game = ght.id_game
+                            WHERE g.id_game = :id_game
+                              AND t.name like :trophy_name
+                        ;";
 
         const DELETE = "DELETE FROM downloaded_game
                     WHERE id_account = :id_account 

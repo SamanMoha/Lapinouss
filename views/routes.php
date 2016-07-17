@@ -95,11 +95,13 @@
 			'store',
 			'games',
 			'play',
+			'played',
 			'buy',
 			'delete',
 			'setting',
 			'stats',
-			'comments'
+			'comments',
+			'detail'
 		]
 	);
 

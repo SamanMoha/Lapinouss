@@ -126,6 +126,50 @@
             return true;
         }
 
+        public function played(ChildAccount $account, $id_game) {
+            $played = $this->db->prepare(GameQueries::PLAYED);
+
+            $played->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
+            $played->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+
+            if (!$played || ($played instanceof PDOException) || !$played->execute())
+                return null;
+
+            return $played->fetchAll(PDO::FETCH_CLASS, 'Played');
+        }
+
+        public function play(ChildAccount $account, $id_game) {
+            $played = $this->played($account, $id_game);
+            
+            if ($played == null || count($played) == 0) {
+                $play = $this->db->prepare(GameQueries::PLAY_INSERT);
+            }
+            else {
+                $play = $this->db->prepare(GameQueries::PLAY_UPDATE);
+            }
+
+            $play->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
+            $play->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+
+            if (!$play || ($play instanceof PDOException) || !$play->execute())
+                return false;
+
+            return true;
+        }
+
+        public function win(ChildAccount $account, $id_game, $trophy_name) {
+            $win = $this->db->prepare(GameQueries::WIN);
+
+            $win->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
+            $win->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+            $win->bindParam(':trophy_name', $trophy_name, PDO::PARAM_STR);
+
+            if (!$win || ($win instanceof PDOException) || !$win->execute())
+                return false;
+
+            return true;
+        }
+
         public function delete(Account $account, $id_game) {
             $delete = $this->db->prepare(GameQueries::DELETE);
 

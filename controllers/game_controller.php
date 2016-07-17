@@ -169,13 +169,28 @@
             else {
                 $game = $this->gameRepository->findByParent($_SESSION['user'], $_GET['id']);
             }
-            
-            if ($game == null) {
-                call('home', 'error');
+
+            require_once 'views/pages/game/play.php';
+        }
+
+        public function played() {
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
                 return;
             }
 
-            require_once 'views/pages/game/play.php';
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $play = $this->gameRepository->play($_SESSION['user'], $_GET['id']);
+                if ($play == null) {
+                    return;
+                }
+
+                if (isset($_POST['trophy']) && !empty($_POST['trophy'])) {
+                    $trophy = $this->gameRepository->win($_SESSION['user'], $_GET['id'], $_POST['trophy']);
+                    if ($trophy == null) {
+                        return;
+                    }
+                }
+            }
         }
 
         public function setting() {
