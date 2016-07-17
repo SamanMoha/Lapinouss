@@ -1,19 +1,27 @@
 <?php
-	function redirect($controller, $action = 'index', $id = '', $anchor = '') {
+	function redirect($controller, $action = 'index', $key = '', $value = '', $anchor = '') {
 		if (empty($action)) {
 			$action = 'index';
 		}
 
-		if (!empty($id)) {
+		if (!empty($key) && !empty($value)) {
 			if (!empty($anchor)) {
-				header('Location: ' . action($controller, $action, $id, $anchor));
+				header('Location: ' . action($controller, $action, $key, $value, $anchor));
 			}
 			else {
-				header('Location: ' . action($controller, $action, $id));
+				header('Location: ' . action($controller, $action, $key, $value));
 			}
 		}
-		else if (empty($id) && !empty($anchor)) {
-			header('Location: ' . action($controller, $action, 0, $anchor));
+		else if (!empty($key)) {
+			if (!empty($anchor)) {
+				header('Location: ' . action($controller, $action, $key, '', $anchor));
+			}
+			else {
+				header('Location: ' . action($controller, $action, $key));
+			}
+		}
+		else if (!empty($anchor)) {
+			header('Location: ' . action($controller, $action, '', '', $anchor));
 		}
 		else {
 			header('Location: ' . action($controller, $action));
@@ -84,7 +92,12 @@
 		=> [
 			'index',
 			'store',
-			'play'
+			'games',
+			'play',
+			'buy',
+			'delete',
+			'settings',
+			'stats'
 		]
 	);
 

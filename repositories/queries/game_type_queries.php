@@ -1,18 +1,18 @@
 <?php
-    class GameQueries {
+class GameTypeQueries {
 
-        const ALL = "
+    const ALL = "
                         SELECT *  
-                        FROM game 
+                        FROM game_type 
                     ;";
 
-        const FIND_BY_ID = "
+    const FIND_BY_ID = "
                         SELECT *  
-                        FROM game 
-                        WHERE id_game = :id_game
+                        FROM game_type 
+                        WHERE id_game_type = :id_game_type
                     ;";
 
-        const FIND_ALL_BY_PARENT = "
+    const FIND_ALL_BY_PARENT = "
                 SELECT g.*
                 FROM game g
                 INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
@@ -22,7 +22,7 @@
                   AND available = 1 
         ";
 
-        const FIND_ALL_BY_CHILD = "
+    const FIND_ALL_BY_CHILD = "
                 SELECT g.*
                 FROM game g 
                 INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
@@ -31,10 +31,10 @@
                 INNER JOIN parent_has_child phc ON phc.id_account = a.id_account
                 INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account 
                 WHERE ca.id_child_account = :id_child_account 
-                  AND available = 1 
+                  AND Available = 1 
         ";
 
-        const FIND_BY_CHILD = "
+    const FIND_BY_CHILD = "
                 SELECT g.*
                 FROM game g
                 INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
@@ -47,32 +47,25 @@
                   AND available = 1 
         ";
 
-        const FIND_ALL_BY_TYPE = "
-                        SELECT *  
-                        FROM game 
-                        WHERE id_game_type = :id_game_type
-                    ;";
-
-        const BUY = "INSERT INTO downloaded_game
+    const BUY = "INSERT INTO downloaded_game_type
                             (
                                 id_account, 
-                                id_game
+                                id_game_type
                             )
                             VALUES (
                                 :id_account, 
-                                :id_game
+                                :id_game_type
                             );";
 
-
-        const DELETE = "DELETE FROM downloaded_game
+    const DELETE = "DELETE FROM downloaded_game_type
                     WHERE id_account = :id_account 
-                        AND id_game = :id_game
+                        AND id_game_type = :id_game_type
                     ;";
 
     const IS_ALREADY_BOUGHT = "
                         SELECT *  
-                        FROM downloaded_game
-                        WHERE id_game = :id_game
+                        FROM downloaded_game_type 
+                        WHERE id_game_type = :id_game_type
                           AND id_account = :id_account
                     ;";
-    }
+}

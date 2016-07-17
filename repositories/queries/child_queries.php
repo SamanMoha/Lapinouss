@@ -2,30 +2,26 @@
     class ChildQueries {
 
         const LOGIN = "
-                        SELECT *
-                        FROM child_account
-                        WHERE uid = :uid
-                          AND password = :password
+                        SELECT ca.*
+                        FROM child_account ca
+                        INNER JOIN parent_has_child phc ON phc.id_child_account = ca.id_child_account
+                        INNER JOIN account a ON a.id_account = phc.id_account
+                        WHERE ca.first_name LIKE :first_name
+                          AND ca.last_name LIKE :last_name
+                          AND ca.password = :password
+                          AND a.email = :parent_email
                     ;";
 
         const REGISTER = "INSERT INTO child_account 
                             (
-                                permission, 
-                                uid,
                                 password, 
                                 first_name, 
-                                last_name, 
-                                birth_date, 
-                                created_date
+                                last_name
                             )
                             VALUES (
-                                'Enfant', 
-                                :uid,
                                 :password, 
                                 :first_name,
-                                :last_name, 
-                                :birth_date, 
-                                :created_date
+                                :last_name
                             );
                             
                             INSERT INTO parent_has_child
@@ -40,8 +36,13 @@
                             );";
 
         const EXISTS = "
-                    SELECT *
-                    FROM child_account
-                    WHERE uid = :uid
-                ;";
+                        SELECT ca.*
+                        FROM child_account ca
+                        INNER JOIN parent_has_child phc ON phc.id_child_account = ca.id_child_account
+                        INNER JOIN account a ON a.id_account = phc.id_account
+                        WHERE ca.first_name LIKE :first_name
+                          AND ca.last_name LIKE :last_name
+                          AND ca.password = :password
+                          AND a.id_account = :id_account
+                    ;";
     }

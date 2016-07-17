@@ -4,7 +4,6 @@
         public $id_criteria;
         public $type;
         public $objectif;
-        public $uid;
         public $id_trophy;
         
         //Related object

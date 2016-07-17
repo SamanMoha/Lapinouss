@@ -8,115 +8,65 @@
             parent::__construct();
         }
 
-        public function login($username, $password) {
-            if (!empty($username) && !empty($password)) {
-                $login = $this->db->prepare(ChildQueries::LOGIN);
+        public function login($parent_email, $first_name, $last_name, $password) {
+            if (empty($parent_email)|| empty($first_name)|| empty($last_name) || empty($password))
+                return null;
 
-                $login->bindParam(':uid', $username, PDO::PARAM_STR);
-                $login->bindParam(':password', $password, PDO::PARAM_STR);
+            $login = $this->db->prepare(ChildQueries::LOGIN);
 
-                if ($login
-                    && !($login instanceof PDOException)
-                    && $login->execute()
-                    && $login->rowCount() == 1) {
+            $login->bindParam(':parent_email', $parent_email, PDO::PARAM_STR);
+            $login->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $login->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $login->bindParam(':password', $password, PDO::PARAM_STR);
 
-                    return $login->fetchObject('ChildAccount');
-                }
-            }
+            if (!$login || ($login instanceof PDOException) || !$login->execute() || $login->rowCount() != 1)
+                return null;
 
-            return null;
+            return $login->fetchObject('ChildAccount');
         }
 
-        public function register($firstname, $lastname, $birth, $username, $password, Account $account) {
-            if (!empty($firstname)
-                && !empty($lastname)
-                && !empty($birth)
-                && !empty($username)
-                && !empty($password)) {
+        public function register($first_name, $last_name, $password, Account $account) {
+            if (empty($first_name) || empty($last_name) || empty($password))
+                return false;
 
-                $created = DateUtil::now();
-                $birth = DateUtil::format($birth);
+            $register = $this->db->prepare(ChildQueries::REGISTER);
+            
+            $register->bindParam(':password', $password, PDO::PARAM_STR);
+            $register->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $register->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $register->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
 
-                $register = $this->db->prepare(ChildQueries::REGISTER);
+            if (!$register || ($register instanceof PDOException) || !$register->execute())
+                return false;
 
-                $register->bindParam(':uid', $username, PDO::PARAM_STR);
-                $register->bindParam(':password', $password, PDO::PARAM_STR);
-                $register->bindParam(':first_name', $firstname, PDO::PARAM_STR);
-                $register->bindParam(':last_name', $lastname, PDO::PARAM_STR);
-                $register->bindParam(':birth_date', $birth, PDO::PARAM_STR);
-                $register->bindParam(':created_date', $created, PDO::PARAM_STR);
-                $register->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
-                
-                 if ($register
-                    && !($register instanceof PDOException)
-                    && $register->execute()) {
-
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public function update($firstname, $lastname, $email, $password, $uid) {
-            if (!empty($firstname)
-                && !empty($lastname)
-                && !empty($email)
-                && !empty($password)
-                && !empty($uid)) {
-
-                $update = $this->db->prepare(ChildQueries::UPDATE);
-
-                $update->bindParam(':first_name', $firstname, PDO::PARAM_STR);
-                $update->bindParam(':last_name', $lastname, PDO::PARAM_STR);
-                $update->bindParam(':email', $email, PDO::PARAM_STR);
-                $update->bindParam(':password', $password, PDO::PARAM_STR);
-                $update->bindParam(':uid', $uid, PDO::PARAM_STR);
-
-                if ($update
-                    && !($update instanceof PDOException)
-                    && $update->execute()) {
-
-                    return $update;
-                }
-            }
-
-            return null;
+            return true;
         }
 
         public function delete($uid, $email) {
-            if (!empty($uid)
-                && !empty($email)) {
+            if (empty($uid) || empty($email))
+                return false;
 
                 $delete = $this->db->prepare(ChildQueries::DELETE);
 
                 $delete->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $delete->bindParam(':email', $email, PDO::PARAM_STR);
 
-                if ($delete
-                    && !($delete instanceof PDOException)
-                    && $delete->execute()) {
+                if (!$delete || ($delete instanceof PDOException) || !$delete->execute())
+                    return false;
 
-                    return true;
-                }
-            }
-
-            return false;
+            return true;
         }
 
-        public function exists($uid) {
+        public function exists($first_name, $last_name, Account $account) {
             $child = $this->db->prepare(ChildQueries::EXISTS);
 
-            $child->bindParam(':uid', $uid, PDO::PARAM_STR);
+            $child->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $child->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $child->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
 
-            if ($child
-                && !($child instanceof PDOException)
-                && $child->execute()
-                && $child->rowCount() == 1) {
+            if (!$child || ($child instanceof PDOException) || !$child->execute() || $child->rowCount() != 1)
+                return false;
 
-                return true;
-            }
-
-            return false;
+            return true;
         }
     }

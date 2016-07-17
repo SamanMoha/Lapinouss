@@ -22,11 +22,6 @@
 						<input name="lastname" type="text" placeholder="Votre nom" required>
 					</p>
 					<p>
-						<label>Date de naissance</label>
-						<span>*</span>
-						<input name="birth" type="text" id="birthDatePicker" placeholder="JJ/MM/YYYY" required>
-					</p>
-					<p>
 						<label>Adresse e-mail</label>
 						<span>*</span>
 						<input name="email" type="email" placeholder="nom@domaine.com" required>
@@ -42,11 +37,9 @@
 						<input name="re-password" type="password" placeholder="Re-saisir le m&ecirc;me mot de passe" required>
 					</p>
 					<p>
-						<label class="btn1 btn2 btn-8 btn-8c"><input type="submit" name="register" value="Valider"></label>
+						<label class="btn1 btn2 btn-8 btn-8c"><input type="submit" name="register" value="Inscription"></label>
 					</p>
 				</form>
 			</div>
 		</div>
 	</div>
-
-	<script src="scripts/account/register.js"></script>

@@ -7,8 +7,8 @@
 			?>
 				<div class="blog_grid span2 col-lg-6">
 					<div class="blog_box">
-						<a href="single.html" class="mask"><img src="resources/images/actions/game.png" alt="image" width="200px" height="200px" class="img-responsive zoom-img" alt=""/></a>
-						<h3><a href="single.html"><?php echo $game->title; ?></a></h3>
+						<img src="resources/images/actions/game.png" alt="image" width="200px" height="200px" class="img-responsive zoom-img" alt=""/>
+						<h3><?php echo $game->title; ?></h3>
 						<div class="links">
 							<ul>
 								<li><i class="fa blog-icon fa-calendar"> </i><span><?php echo date('j M Y', strtotime($game->created_date)); ?></span></li>
@@ -23,7 +23,7 @@
 							if ($_SESSION['user'] instanceof ChildAccount) {
 								echo '<a href="' . action('game', 'play', $game->uid) . '" class="btn1 btn-8 btn-8c">Jouer</a>';
 							} else {
-								echo '<a href="#" class="btn1 btn-8 btn-8c">Supprimer</a>';
+								echo '<a href="' . action('game', 'delete', 'game', $game->uid) . '" class="btn1 btn-8 btn-8c">Supprimer</a>';
 							}
 						?>
 					</div>

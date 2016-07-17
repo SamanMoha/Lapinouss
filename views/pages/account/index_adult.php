@@ -12,26 +12,27 @@
     </div>
     <div class="container">
         <div class="col-md-6">
-            <h3 class="m_3">Mes jeux</h3>
+            <h3 class="m_3">Tableau de bord</h3>
+            
             <div class="feature about_box1">
                 <i class="fa fa-globe"> </i>
-                <h4>Ut wisi enim ad minim</h4>
+                <h4><a href="<?php echo action('game'); ?>">Mes jeux</a></h4>
                 <p>
-                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+                    Consulter la liste des jeux achet&eacute;s, et en  acheter d'avantage.
                 </p>
             </div>
             <div class="feature about_box1">
                 <i class="fa fa-heart"> </i>
-                <h4>Claritas est etiam processus</h4>
+                <h4><a href="<?php echo action('game', 'stats'); ?>">Statistiques</a></h4>
                 <p>
-                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+                    Suivez le parcours de vos enfants sur les diff&eacute;rents jeux.
                 </p>
             </div>
-            <div class="feature">
+            <div class="feature about_box1">
                 <i class="fa fa-gears"> </i>
-                <h4>Mirum est notare quam</h4>
+                <h4><a href="<?php echo action('game', 'settings'); ?>">Permissions de jeux</a></h4>
                 <p>
-                    Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+                    Accorder &agrave; vos enfants la possibilit&eacute; de ne jouer qu'&agrave; certains jeux.
                 </p>
             </div>
         </div>

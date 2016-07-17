@@ -1,4 +1,4 @@
-		<div class="header wow fadeInUpBig" data-wow-delay="0.4s">
+		<div class="header wow fadeInUpBig" data-wow-delay="0.4s" style="margin:0px 150px; 150px 0px">
 		   <div class="container">
 			  <div class="header_top">
 				<h1>Salut,</h1>

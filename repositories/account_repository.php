@@ -9,102 +9,37 @@
         }
 
         public function login($email, $password) {
-            if (!empty($email) && !empty($password)) {
-                $login = $this->db->prepare(AccountQueries::LOGIN);
+            if (empty($email) || empty($password))
+                return null;
 
-                $login->bindParam(':email', $email, PDO::PARAM_STR);
-                $login->bindParam(':password', $password, PDO::PARAM_STR);
+            $login = $this->db->prepare(AccountQueries::LOGIN);
 
-                if ($login
-                    && !($login instanceof PDOException)
-                    && $login->execute()
-                    && $login->rowCount() == 1) {
+            $login->bindParam(':email', $email, PDO::PARAM_STR);
+            $login->bindParam(':password', $password, PDO::PARAM_STR);
 
-                    return $login->fetchObject('Account');
-                }
-            }
+            if (!$login || ($login instanceof PDOException) || !$login->execute() || $login->rowCount() != 1)
+                return null;
 
-            return null;
+            return $login->fetchObject('Account');
         }
 
-        public function register($firstname, $lastname, $permission, $birth, $email, $password) {
-            if (!empty($firstname)
-                && !empty($lastname)
-                && !empty($permission)
-                && !empty($birth)
-                && !empty($email)
-                && !empty($password)) {
+        public function register($firstname, $lastname, $permission, $email, $password) {
+            if (empty($firstname) || empty($lastname) || empty($permission)  || empty($email) || empty($password))
+                return null;
 
-                $uid = DataUtil::generateUid();
-                $created = DateUtil::now();
-                $birth = DateUtil::format($birth);
-
-                $register = $this->db->prepare(AccountQueries::REGISTER_ADULT);
+                $register = $this->db->prepare(AccountQueries::REGISTER);
 
                 $register->bindParam(':permission', $permission, PDO::PARAM_STR);
-                $register->bindParam(':uid', $uid, PDO::PARAM_STR);
                 $register->bindParam(':email', $email, PDO::PARAM_STR);
                 $register->bindParam(':password', $password, PDO::PARAM_STR);
                 $register->bindParam(':first_name', $firstname, PDO::PARAM_STR);
                 $register->bindParam(':last_name', $lastname, PDO::PARAM_STR);
-                $register->bindParam(':birth_date', $birth, PDO::PARAM_STR);
-                $register->bindParam(':created_date', $created, PDO::PARAM_STR);
 
-                if ($register
-                    && !($register instanceof PDOException)
-                    && $register->execute()) {
+                if (!$register ||($register instanceof PDOException) || !$register->execute())
+                    return null;
 
-                    return $this->login($email, $password);
-                }
-            }
-
-            return null;
-        }
-
-        public function update($firstname, $lastname, $email, $password, $uid) {
-            if (!empty($firstname)
-                && !empty($lastname)
-                && !empty($email)
-                && !empty($password)
-                && !empty($uid)) {
-
-                $update = $this->db->prepare(AccountQueries::UPDATE);
-
-                $update->bindParam(':first_name', $firstname, PDO::PARAM_STR);
-                $update->bindParam(':last_name', $lastname, PDO::PARAM_STR);
-                $update->bindParam(':email', $email, PDO::PARAM_STR);
-                $update->bindParam(':password', $password, PDO::PARAM_STR);
-                $update->bindParam(':uid', $uid, PDO::PARAM_STR);
-
-                if ($update
-                    && !($update instanceof PDOException)
-                    && $update->execute()) {
-
-                    return $update;
-                }
-            }
-
-            return null;
-        }
-        
-        public function delete($uid, $email) {
-            if (!empty($uid)
-                && !empty($email)) {
-
-                $delete = $this->db->prepare(AccountQueries::DELETE);
-
-                $delete->bindParam(':uid', $uid, PDO::PARAM_STR);
-                $delete->bindParam(':email', $email, PDO::PARAM_STR);
-
-                if ($delete
-                    && !($delete instanceof PDOException)
-                    && $delete->execute()) {
-
-                    return true;
-                }
-            }
-
-            return false;
+            // If registration was successful, proceed to login
+            return $this->login($email, $password);
         }
         
         public function children(Account $account) {
@@ -112,14 +47,10 @@
 
             $children->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
 
-            if ($children
-                    && !($children instanceof PDOException)
-                    && $children->execute()) {
-                
-                return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
-            }
+            if (!$children || ($children instanceof PDOException) || !$children->execute())
+                return null;
 
-            return null;
+            return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
         }
 
         public function findById($id_account) {
@@ -127,14 +58,10 @@
 
             $account->bindParam(':id_account', $id_account, PDO::PARAM_INT);
 
-            if ($account
-                && !($account instanceof PDOException)
-                && $account->execute()) {
+            if (!$account || ($account instanceof PDOException) || !$account->execute())
+                return null;
 
-                return $account->fetchObject('Account');
-            }
-
-            return null;
+            return $account->fetchObject('Account');
         }
 
         public function exists($email) {
@@ -142,14 +69,9 @@
 
             $account->bindParam(':email', $email, PDO::PARAM_STR);
 
-            if ($account
-                && !($account instanceof PDOException)
-                && $account->execute()
-                && $account->rowCount() == 1) {
+            if (!$account || ($account instanceof PDOException) || !$account->execute() || $account->rowCount() != 1)
+                return false;
 
-                return true;
-            }
-
-            return false;
+            return true;
         }
     }

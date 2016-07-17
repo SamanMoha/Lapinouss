@@ -10,10 +10,6 @@
 		public function __construct() {
 			$this->accountRepository = new AccountRepository();
 			$this->childRepository = new ChildRepository();
-
-			if (isset($_SESSION['user'])) {
-				//TODO: Instanciate repositories for user
-			}
 		}
 
 		public function index() {
@@ -58,118 +54,105 @@
 				$_POST['password']
 			);
 
-			if ($user != null) {
-				$_SESSION['user'] = $user;
-
-				redirect('account');
-			}
-			else {
+			if ($user == null) {
 				new WebException("Adresse e-mail/mot de passe incorrect !");
+				return;
 			}
+
+			$_SESSION['user'] = $user;
+
+			redirect('account');
 		}
 
 		private function loginChild() {
 			$user = $this->childRepository->login(
-				$_POST['username'],
+				$_POST['parent_email'],
+				$_POST['firstname'],
+				$_POST['lastname'],
 				$_POST['password']
 			);
 
-			if ($user != null) {
-				$_SESSION['user'] = $user;
+			if ($user == null) {
+				new WebException("Utilisateur non reconnu !");
+				return;
+			}
 
-				redirect('account');
-			}
-			else {
-				new WebException("Adresse e-mail/mot de passe incorrect !");
-			}
+			$_SESSION['user'] = $user;
+
+			redirect('account');
 		}
 
 		public function register() {
-			if (isset($_POST['register'])) {
-				if ($_POST['password'] == $_POST['re-password']) {
-					if (strlen($_POST['password']) >= 8) {
-						$user = $this->accountRepository->exists($_POST['email']);
-
-						if ($user == false) {
-							$user = $this->accountRepository->register(
-								$_POST['firstname'],
-								$_POST['lastname'],
-								$_POST['permission'],
-								$_POST['birth'],
-								$_POST['email'],
-								$_POST['password']
-							);
-
-							if ($user != null) {
-								$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
-
-								if ($user != null) {
-									$_SESSION['user'] = $user;
-
-									redirect('account');
-								}
-								else {
-									new WebException("Erreur lors de l'inscription.");
-								}
-							}
-							else {
-								new WebException("Erreur lors de l'inscription.");
-							}
-						}
-						else {
-							new WebException("L'adresse email est deja utlisée !");
-						}
-					}
-					else {
-						new WebException("Le mot de passe doit contenir au moins 8 caractères.");
-					}
-				}
-				else {
-					new WebException("Les mots de passes doivent etre identiques !");
-				}
-			}
-
 			require_once 'views/pages/account/register_adult.php';
+
+			if (isset($_POST['register'])) {
+				if ($_POST['password'] != $_POST['re-password']) {
+					new WebException("Les mots de passes doivent etre identiques !");
+					return;
+				}
+
+				if (strlen($_POST['password']) < 8) {
+					new WebException("Le mot de passe doit contenir au moins 8 caracteres.");
+					return;
+				}
+
+				if ($this->accountRepository->exists($_POST['email'])) {
+					new WebException("L'adresse email est deja utlisée !");
+					return;
+				}
+
+				$user = $this->accountRepository->register(
+					$_POST['firstname'],
+					$_POST['lastname'],
+					$_POST['permission'],
+					$_POST['email'],
+					$_POST['password']
+				);
+
+				if ($user == null) {
+					new WebException("Erreur lors de l'inscription.");
+					return;
+				}
+
+				$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
+				if ($user == null) {
+					new WebException("Erreur lors de l'inscription.");
+					return;
+				}
+
+				$_SESSION['user'] = $user;
+				redirect('account');
+			}
 		}
 
 		public function registerChild() {
-			if (isset($_POST['register'])) {
-				if ($_POST['password'] == $_POST['re-password']) {
-					if (strlen($_POST['password']) >= 6) {
-						$user = $this->childRepository->exists($_POST['username']);
-
-						if ($user == false) {
-							$user = $this->childRepository->register(
-								$_POST['firstname'],
-								$_POST['lastname'],
-								$_POST['birth'],
-								$_POST['username'],
-								$_POST['password'],
-								$_SESSION['user']
-							);
-
-							if ($user == true) {
-
-								redirect('account');
-							}
-							else {
-								new WebException("Oops une erreur est survenue lors de l'inscription :/");
-							}
-						}
-						else {
-							new WebException("L'adresse email est deja utlisée !");
-						}
-					}
-					else {
-						new WebException("Le mot de passe doit contenir au moins 6 caractères.");
-					}
-				}
-				else {
-					new WebException("Les mots de passes doivent etre identiques !");
-				}
-			}
-
 			require_once 'views/pages/account/register_child.php';
+
+			if (isset($_POST['register'])) {
+				if ($_POST['password'] != $_POST['re-password']) {
+					new WebException("Les mots de passes doivent etre identiques !");
+					return;
+				}
+
+				if (strlen($_POST['password']) < 6) {
+					new WebException("Le mot de passe doit contenir au moins 6 caractères.");
+					return;
+				}
+
+				$user = $this->childRepository->register(
+					$_POST['firstname'],
+					$_POST['lastname'],
+					$_POST['password'],
+					$_SESSION['user']
+				);
+
+				if ($user == false) {
+					new WebException("Oops une erreur est survenue lors de l'inscription :/");
+					return;
+				}
+
+				redirect('account');
+			}
 		}
 
 		public function settings() {

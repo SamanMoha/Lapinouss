@@ -10,24 +10,18 @@
 
         const REGISTER = "INSERT INTO account 
                             (
-                                permission, 
-                                uid, 
+                                permission,
                                 email, 
                                 password, 
                                 first_name, 
-                                last_name, 
-                                birth_date, 
-                                created_date
+                                last_name
                             )
                             VALUES (
-                                :permission, 
-                                :uid, 
+                                :permission,
                                 :email,
                                 :password, 
                                 :first_name,
-                                :last_name, 
-                                :birth_date, 
-                                :created_date
+                                :last_name
                             );";
 
         const FIND_ALL_CHILDREN = "

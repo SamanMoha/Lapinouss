@@ -4,6 +4,8 @@
 	require_once 'models/comment.php';
 	require_once 'models/criteria.php';
 	require_once 'models/downloaded_game_type.php';
+	require_once 'models/downloaded_game.php';
+	require_once 'models/child_account_has_downloaded_game.php';
 	require_once 'models/game.php';
 	require_once 'models/game_has_trophy.php';
 	require_once 'models/game_type.php';
@@ -23,7 +25,7 @@
 	require_once 'common/utils/date_util.php';
 	require_once 'common/utils/data_util.php';
 
-	function action($controller, $action = 'index', $id = null, $anchor = null) {
+	function action($controller, $action = 'index', $key = null, $value = null, $anchor = null) {
 		if (empty($action)) {
 			$action = 'index';
 		}
@@ -34,8 +36,12 @@
 			$path .= '/' . $action;
 		}
 
-		if ($id != null) {
-			$path .=  '/' . $id;
+		if ($key != null) {
+			$path .=  '/' . $key;
+		}
+
+		if ($value != null) {
+			$path .=  '/' . $value;
 		}
 
 		if ($anchor != null) {
