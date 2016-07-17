@@ -73,10 +73,28 @@
                         AND id_game = :id_game
                     ;";
 
-    const IS_ALREADY_BOUGHT = "
-                        SELECT *  
-                        FROM downloaded_game
-                        WHERE id_game = :id_game
-                          AND id_account = :id_account
+        const IS_ALREADY_BOUGHT = "
+                            SELECT *  
+                            FROM downloaded_game
+                            WHERE id_game = :id_game
+                              AND id_account = :id_account
+                        ;";
+
+        const ALLOW_GAME_FOR_CHILD = "INSERT INTO child_account_has_downloaded_game
+                            (
+                                id_child_account, 
+                                downloaded_game_id_game,
+                                downloaded_game_id_account
+                            )
+                            VALUES (
+                                :id_child_account, 
+                                :id_game,
+                                :id_account
+                            );";
+
+        const DECLINE_GAME_FOR_CHILD = "DELETE FROM child_account_has_downloaded_game
+                    WHERE id_child_account = :id_child_account 
+                        AND downloaded_game_id_game = :id_game 
+                        AND downloaded_game_id_account = :id_account
                     ;";
     }

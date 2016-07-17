@@ -1,4 +1,4 @@
-<div class="advantages">
+<div class="row">
     <div class="box_1">
         <h3>
             <?php
@@ -30,7 +30,7 @@
             </div>
             <div class="feature about_box1">
                 <i class="fa fa-gears"> </i>
-                <h4><a href="<?php echo action('game', 'settings'); ?>">Permissions de jeux</a></h4>
+                <h4><a href="<?php echo action('game'); ?>">Permissions de jeux</a></h4>
                 <p>
                     Accorder &agrave; vos enfants la possibilit&eacute; de ne jouer qu'&agrave; certains jeux.
                 </p>

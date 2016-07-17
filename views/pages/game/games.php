@@ -21,7 +21,7 @@
                         <p><?php echo $games[0]->description; ?></p>
                         <div class="reply">
                             <?php
-                            if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
+                            if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account && $game_type != null && $game_type->isAlreadyBought) {
                                 if ($games[0]->isAlreadyBought) {
                                     echo '<a href="' . action('game', 'delete', 'game', $games[0]->id_game) . '" class="comment-reply-link">Supprimer</a>';
                                 }
@@ -59,7 +59,7 @@
                             <p><?php echo $game->description; ?></p>
                             <div class="reply">
                                 <?php
-                                if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
+                                if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account && $game_type != null && $game_type->isAlreadyBought) {
                                     if ($game->isAlreadyBought) {
                                         echo '<a href="' . action('game', 'delete', 'game', $game->id_game) . '" class="comment-reply-link">Supprimer</a>';
                                     }

@@ -25,7 +25,7 @@
 							<p><?php echo $game->description; ?></p>
 							<div class="reply">
 								<?php
-									echo '<a href="' . action('game', 'play', $game->id_game) . '" class="comment-reply-link">';
+									echo '<a href="' . action('game', 'play', $game->id_game) . '" class="comment-reply-link btn-8c">';
 									echo $_SESSION['user'] instanceof ChildAccount ? 'Jouer' : 'Demo';
 									echo '</a>';
 								?>
@@ -33,6 +33,12 @@
 								<?php
 								if ($_SESSION['user'] instanceof Account) {
 									echo '<a href="' . action('game', 'delete', 'game', $game->id_game) . '" class="comment-reply-link">Supprimer</a>';
+								}
+								?>
+								&nbsp;&nbsp;
+								<?php
+								if ($_SESSION['user'] instanceof Account) {
+									echo '<a href="' . action('game', 'setting', $game->id_game) . '" class="comment-reply-link navbar-blink">Permissions</a>';
 								}
 								?>
 							</div>

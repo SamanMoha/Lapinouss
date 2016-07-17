@@ -53,6 +53,18 @@
             return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
         }
 
+        public function childrenPermissions(Account $account, Game $game) {
+            $children = $this->db->prepare(AccountQueries::FIND_ALL_CHILDREN_PERMISSIONS);
+
+            $children->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+            $children->bindParam(':id_game', $game->id_game, PDO::PARAM_INT);
+
+            if (!$children || ($children instanceof PDOException) || !$children->execute())
+                return null;
+
+            return $children->fetchAll(PDO::FETCH_CLASS, 'ChildAccount');
+        }
+
         public function findById($id_account) {
             $account = $this->db->prepare(AccountQueries::FIND_BY_ID);
 

@@ -1,17 +1,20 @@
 <?php
     require_once 'repositories/game_repository.php';
     require_once 'repositories/game_type_repository.php';
+    require_once 'repositories/account_repository.php';
 
     class GameController {
 
         private $gameRepository;
         private $gameTypeRepository;
         private $commentRepository;
+        private $accountRepository;
         
         public function __construct() {
             $this->gameRepository = new GameRepository();
             $this->gameTypeRepository = new GameTypeRepository();
             $this->commentRepository = new CommentRepository();
+            $this->accountRepository = new AccountRepository();
         }
 
         public function index() {
@@ -142,12 +145,13 @@
             require_once 'views/pages/game/store.php';
         }
 
-        private function gamesList($gameType) {
+        private function gamesList($game_type) {
             if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
-                $games = $this->gameRepository->findAllByType($gameType, $_SESSION['user']);
+                $games = $this->gameRepository->findAllByType($game_type, $_SESSION['user']);
+                $game_type = $this->gameTypeRepository->findById($game_type, $_SESSION['user']);
             }
             else {
-                $games = $this->gameRepository->findAllByType($gameType);
+                $games = $this->gameRepository->findAllByType($game_type);
             }
 
             require_once 'views/pages/game/games.php';
@@ -174,6 +178,49 @@
             require_once 'views/pages/game/play.php';
         }
 
+        public function setting() {
+            if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Account)) {
+                redirect('account');
+                return;
+            }
+
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                redirect('game');
+                return;
+            }
+
+            $game = $this->gameRepository->findById($_GET['id']);
+            if ($game == null) {
+                call('home', 'error');
+                return;
+            }
+
+            $children = $this->accountRepository->children($_SESSION['user']);
+            $childrenPermissions = $this->accountRepository->childrenPermissions($_SESSION['user'], $game);
+
+            if (isset($_POST['allow'])) {
+                $allow = $this->gameRepository->allowGame($_POST['child'], $game, $_SESSION['user']);
+                if ($allow == false) {
+                    new WebException("Erreur lors de l'accord de permission");
+                    return;
+                }
+
+                redirect('game', 'setting', $game->id_game, '', $_POST['child']);
+            }
+
+            if (isset($_POST['decline'])) {
+                $decline = $this->gameRepository->declineGame($_POST['child'], $game, $_SESSION['user']);
+                if ($decline == false) {
+                    new WebException("Erreur lors de l'accord de permission");
+                    return;
+                }
+
+                redirect('game', 'setting', $game->id_game, '', $_POST['child']);
+            }
+
+            require_once 'views/pages/game/setting.php';
+        }
+
         public function comments() {
             if (!isset($_GET['id']) || empty($_GET['id'])) {
                 redirect('game');
@@ -188,7 +235,7 @@
 
             require_once 'views/pages/game/comments.php';
             
-            if (isset($_POST['comment'])) {
+            if (isset($_POST['comment']) && ($_SESSION['user'] instanceof Account)) {
                 if (empty($_POST['message']))
                     return;
 

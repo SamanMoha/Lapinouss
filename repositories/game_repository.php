@@ -149,4 +149,30 @@
 
             return true;
         }
+
+        public function allowGame($id_child_account, Game $game, Account $account) {
+            $allow = $this->db->prepare(GameQueries::ALLOW_GAME_FOR_CHILD);
+
+            $allow->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
+            $allow->bindParam(':id_game', $game->id_game, PDO::PARAM_INT);
+            $allow->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+
+            if (!$allow || ($allow instanceof PDOException) || !$allow->execute())
+                return false;
+
+            return true;
+        }
+
+        public function declineGame($id_child_account, Game $game, Account $account) {
+            $decline = $this->db->prepare(GameQueries::DECLINE_GAME_FOR_CHILD);
+
+            $decline->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
+            $decline->bindParam(':id_game', $game->id_game, PDO::PARAM_INT);
+            $decline->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+            
+            if (!$decline || ($decline instanceof PDOException) || !$decline->execute())
+                return false;
+
+            return true;
+        }
     }

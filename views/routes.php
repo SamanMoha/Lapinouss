@@ -97,7 +97,7 @@
 			'play',
 			'buy',
 			'delete',
-			'settings',
+			'setting',
 			'stats',
 			'comments'
 		]

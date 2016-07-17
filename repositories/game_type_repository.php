@@ -35,7 +35,7 @@
             return $game_types;
         }
 
-        public function findById($id_game_type) {
+        public function findById($id_game_type, Account $account = null) {
             $game_type = $this->db->prepare(GameTypeQueries::FIND_BY_ID);
 
             $game_type->bindParam(':id_game_type', $id_game_type, PDO::PARAM_INT);
@@ -46,6 +46,10 @@
             $game_type = $game_type->fetchObject('GameType');
 
             $game_type->games = $this->gameRepository->findAllByType($game_type->id_game_type);
+
+            if ($account != null) {
+                $game_type->isAlreadyBought = $this->isAlreadyBought($account, $game_type->id_game_type);
+            }
 
             return $game_type;
         }
