@@ -26,7 +26,7 @@
 
 				<div class="comments-area">
 					<h4>Pas encore de compte ?</h4>
-					<label class="btn1 btn2 btn-8 btn-8c"><a href="<?php echo action('account', 'register'); ?>">Inscription</a></label>
+					<a href="<?php echo action('account', 'register'); ?>"><label class="btn1 btn2 btn-8 btn-8c">Inscription</label></a>
 					<br/><br/>
 				</div>
 			</div>

@@ -20,9 +20,7 @@
             return $age;
         }
 
-        static function format($birth) {
-            $birth = explode('/', $birth);
-            
-            return $birth[2] . '-' . $birth[1] . '-' . $birth[0];
+        static function format($date) {
+            return date('j M Y', strtotime($date));
         }
     }

@@ -98,7 +98,8 @@
 			'buy',
 			'delete',
 			'settings',
-			'stats'
+			'stats',
+			'comments'
 		]
 	);
 

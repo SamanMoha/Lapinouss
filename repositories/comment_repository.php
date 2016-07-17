@@ -17,20 +17,35 @@
 
             $comments->bindParam(':id_game', $id_game, PDO::PARAM_INT);
     
-            if ($comments
-                && !($comments instanceof PDOException)
-                && $comments->execute()
-                && $comments->rowCount() > 0) {
+            if (!$comments || ($comments instanceof PDOException) || !$comments->execute())
+                return null;
 
-                $comments = $comments->fetchAll(PDO::FETCH_CLASS, 'Comment');
+            $comments = $comments->fetchAll(PDO::FETCH_CLASS, 'Comment');
 
-                foreach ($comments as $comment) {
-                    $comment->account = $comment->account = $this->accountRepository->findById($comment->id_account);
-                }
-
-                return $comments;
+            foreach ($comments as $comment) {
+                $comment->account = $comment->account = $this->accountRepository->findById($comment->id_account);
             }
-    
-            return null;
+
+            return $comments;
+        }
+        
+        public function add(Account $account, Game $game, $message) {
+            if ($account == null || $game == null || empty($message))
+                return false;
+
+            $date = DateUtil::now();
+
+            $comment = $this->db->prepare(CommentQueries::ADD);
+
+            $comment->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+            $comment->bindParam(':id_game', $game->id_game, PDO::PARAM_INT);
+            $comment->bindParam(':date_comment', $date, PDO::PARAM_STR);
+            $comment->bindParam(':comment', $message, PDO::PARAM_STR);
+
+            if (!$comment || ($comment instanceof PDOException) || !$comment->execute()) {
+                return false;
+            }
+
+            return true;
         }
     }

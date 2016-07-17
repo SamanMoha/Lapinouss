@@ -15,12 +15,11 @@
         const FIND_ALL_BY_PARENT = "
                 SELECT g.*
                 FROM game g
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
+                INNER JOIN downloaded_game dgt ON dgt.id_game = g.id_game 
                 INNER JOIN account a ON a.id_account = dgt.id_account 
                 WHERE a.id_account = :id_account
                   AND available = 1 
-        ";
+        ;";
 
         const FIND_ALL_BY_CHILD = "
                 SELECT g.*
@@ -32,20 +31,25 @@
                 INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account 
                 WHERE ca.id_child_account = :id_child_account 
                   AND available = 1 
-        ";
+        ;";
 
         const FIND_BY_CHILD = "
                 SELECT g.*
                 FROM game g
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
-                INNER JOIN account a ON a.id_account = dgt.id_account
-                INNER JOIN parent_has_child phc ON phc.id_account = a.id_account
-                INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account
-                WHERE ca.id_child_account = :id_child_account
+                INNER JOIN child_account_has_downloaded_game chg ON chg.downloaded_game_id_game = g.id_game
+                WHERE chg.id_child_account = :id_child_account
                   AND g.id_game = :id_game 
-                  AND available = 1 
-        ";
+                  AND g.available = 1 
+       ; ";
+
+        const FIND_BY_PARENT = "
+                SELECT g.*
+                FROM game g
+                INNER JOIN downloaded_game dg ON dg.id_game = g.id_game 
+                WHERE dg.id_account = :id_account
+                  AND g.id_game = :id_game 
+                  AND g.available = 1 
+        ;";
 
         const FIND_ALL_BY_TYPE = "
                         SELECT *  

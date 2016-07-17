@@ -67,9 +67,24 @@
             $game = $this->db->prepare(GameQueries::FIND_BY_CHILD);
 
             $game->bindParam(':id_child_account', $child_account->id_child_account, PDO::PARAM_INT);
-            $game->bindParam(':game_uid', $uid, PDO::PARAM_STR);
+            $game->bindParam(':id_game', $uid, PDO::PARAM_INT);
 
-            if ($game || !($game instanceof PDOException) || $game->execute() ||$game->rowCount() != 1)
+            if (!$game || ($game instanceof PDOException) || !$game->execute() ||$game->rowCount() != 1)
+                return null;
+
+            $game = $game->fetchObject('Game');
+            $game->comments = $this->commentRepository->findByGameId($game->id_game);
+
+            return $game;
+        }
+
+        public function findByParent(Account $account, $id_game) {
+            $game = $this->db->prepare(GameQueries::FIND_BY_PARENT);
+
+            $game->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
+            $game->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+
+            if (!$game || ($game instanceof PDOException) || !$game->execute() || $game->rowCount() != 1)
                 return null;
 
             $game = $game->fetchObject('Game');
@@ -92,7 +107,7 @@
                 $game->comments = $this->commentRepository->findByGameId($game->id_game);
 
                 if ($account != null) {
-                    $game->isAlreadyBought = $this->isAlreadyBought($account, $game->id_game_type);
+                    $game->isAlreadyBought = $this->isAlreadyBought($account, $game);
                 }
             }
 
@@ -123,11 +138,11 @@
             return true;
         }
 
-        public function isAlreadyBought(Account $account, $id_game) {
+        public function isAlreadyBought(Account $account, Game $game) {
             $check = $this->db->prepare(GameQueries::IS_ALREADY_BOUGHT);
 
             $check->bindParam(':id_account', $account->id_account, PDO::PARAM_INT);
-            $check->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+            $check->bindParam(':id_game', $game->id_game, PDO::PARAM_INT);
 
             if (!$check || ($check instanceof PDOException) || !$check->execute() || $check->rowCount() != 1)
                 return false;

@@ -6,10 +6,12 @@
 
         private $gameRepository;
         private $gameTypeRepository;
-
+        private $commentRepository;
+        
         public function __construct() {
             $this->gameRepository = new GameRepository();
             $this->gameTypeRepository = new GameTypeRepository();
+            $this->commentRepository = new CommentRepository();
         }
 
         public function index() {
@@ -36,13 +38,13 @@
         }
 
         public function buy() {
-            if (!isset($_GET['type']) || empty($_GET['type'])) {
-                call('home', 'store');
+            if ((!isset($_GET['type']) || empty($_GET['type'])) && (!isset($_GET['id']) || empty($_GET['id']))) {
+                call('game', 'store');
                 return;
             }
 
-            if (isset($_GET['game']) && !empty($_GET['game'])) {
-                $this->buyGame($_GET['type'], $_GET['game']);
+            if (isset($_GET['id'])) {
+                $this->buyGame($_GET['id']);
             }
             else {
                 $this->buyType($_GET['type']);
@@ -65,8 +67,8 @@
             require_once 'views/pages/game/buy_type.php';
         }
 
-        private function buyGame($game_type, $game) {
-            if (empty($game_type) || empty($game)) {
+        private function buyGame($game) {
+            if (empty($game)) {
                 call('home', 'store');
                 return;
             }
@@ -77,7 +79,13 @@
                 return;
             }
 
-            redirect('game', 'store', 'type', $game_type, $game);
+            $game = $this->gameRepository->findById($game);
+            if ($game == null) {
+                call('game', 'store');
+                return;
+            }
+
+            redirect('game', 'store', 'type', $game->id_game_type, $game->id_game);
         }
 
         public function delete() {
@@ -115,8 +123,10 @@
                 return;
 
             $buy = $this->gameRepository->delete($_SESSION['user'], $game);
-            if ($buy == false)
+            if ($buy == false) {
                 call('home', 'error');
+                return;
+            }
 
             redirect('game', 'store', 'type', $game_type);
         }
@@ -149,10 +159,44 @@
                 return;
             }
 
-            $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
-            //if ($game == null)
-                //call('home', 'error');
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
+            }
+            else {
+                $game = $this->gameRepository->findByParent($_SESSION['user'], $_GET['id']);
+            }
+            
+            if ($game == null) {
+                call('home', 'error');
+                return;
+            }
 
             require_once 'views/pages/game/play.php';
+        }
+
+        public function comments() {
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                redirect('game');
+                return;
+            }
+
+            $game = $this->gameRepository->findById($_GET['id']);
+            if ($game == null) {
+                call('home', 'error');
+                return;
+            }
+
+            require_once 'views/pages/game/comments.php';
+            
+            if (isset($_POST['comment'])) {
+                if (empty($_POST['message']))
+                    return;
+
+                $comment = $this->commentRepository->add($_SESSION['user'], $game, $_POST['message']);
+                if ($comment == false) {
+                    new WebException("Erreur lors de l'ajout du commentaire");
+                    return;
+                }
+            }
         }
     }

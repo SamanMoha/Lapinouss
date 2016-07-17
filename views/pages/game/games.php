@@ -7,18 +7,18 @@
                     <div class="desc1">
                         <h5><a id="<?php echo $games[0]->id_game; ?>"><?php echo $games[0]->title; ?></a></h5>
                         <div class="extra">
-                            <time pubdate="" datetime="2014-03-30T14:47:59">
-                                Cr&eacute;e le <?php echo $games[0]->created_date; ?></time>
+                            <time datetime="<?php echo DateUtil::format($games[0]->created_date); ?>">
+                                Cr&eacute;e le <?php echo DateUtil::format($games[0]->created_date); ?></time>
                         </div>
                         <p><?php echo $games[0]->description; ?></p>
                         <div class="reply">
                             <?php
                             if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
                                 if ($games[0]->isAlreadyBought) {
-                                    echo '<a href="' . action('game', 'delete', 'game', $games[0]->uid) . '" class="comment-reply-link">Supprimer</a>';
+                                    echo '<a href="' . action('game', 'delete', 'game', $games[0]->id_game) . '" class="comment-reply-link">Supprimer</a>';
                                 }
                                 else {
-                                    echo '<a href="' . action('game', 'buy', 'game', $games[0]->uid) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
+                                    echo '<a href="' . action('game', 'buy', $games[0]->id_game) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
                                 }
                             }
                             ?>
@@ -39,18 +39,18 @@
                         <div class="desc1">
                             <h5><a id="<?php echo $game->id_game; ?>"><?php echo $game->title; ?></a></h5>
                             <div class="extra">
-                                <time pubdate="" datetime="2014-03-30T14:47:59">
-                                    Cr&eacute;e le <?php echo $game->created_date; ?></time>
+                                <time datetime="<?php echo $game->created_date; ?>">
+                                    Cr&eacute;e le <?php echo DateUtil::format($game->created_date); ?></time>
                             </div>
                             <p><?php echo $game->description; ?></p>
                             <div class="reply">
                                 <?php
                                 if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
                                     if ($game->isAlreadyBought) {
-                                        echo '<a href="' . action('game', 'delete', 'game', $game->uid) . '" class="comment-reply-link">Supprimer</a>';
+                                        echo '<a href="' . action('game', 'delete', 'game', $game->id_game) . '" class="comment-reply-link">Supprimer</a>';
                                     }
                                     else {
-                                        echo '<a href="' . action('game', 'buy', 'game', $game->uid) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
+                                        echo '<a href="' . action('game', 'buy', $game->id_game) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
                                     }
                                 }
                                 ?>
