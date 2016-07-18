@@ -21,7 +21,7 @@
                                         Nombre de parties jou&eacute;es : <?php echo $played->played_time; ?>
                                     </p>
                                     <p>
-                                        Derni&egrave;re partie jou&eacute;e le : <?php echo $played->date_game; ?>
+                                        Derni&egrave;re partie jou&eacute;e le : <?php echo DateUtil::format($played->date_game); ?>
                                     </p>
                             <?php
                                 }

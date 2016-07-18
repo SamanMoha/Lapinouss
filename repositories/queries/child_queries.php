@@ -58,7 +58,7 @@
                     FROM success s
                     INNER JOIN trophy t ON t.id_trophy = s.id_trophy
                     INNER JOIN game_has_trophy ght ON ght.id_trophy = t.id_trophy
-                    INNER JOIN game g ON p.id_game = ght.id_game
+                    INNER JOIN game g ON g.id_game = ght.id_game
                     WHERE g.id_game = :id_game
                       AND s.id_child_account = :id_child_account
                 ";

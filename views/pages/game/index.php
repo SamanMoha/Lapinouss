@@ -47,6 +47,12 @@
 									echo '<a href="' . action('game', 'detail', $game->id_game) . '" class="comment-reply-link">Scores</a>';
 								}
 								?>
+								&nbsp;&nbsp;
+								<?php
+								if ($_SESSION['user'] instanceof Account) {
+									echo '<a href="' . action('game', 'stats', $game->id_game) . '" class="comment-reply-link navbar-blink">Statistiques</a>';
+								}
+								?>
 							</div>
 						</div>
 						<div class="clearfix"></div>

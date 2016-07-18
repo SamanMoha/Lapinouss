@@ -166,22 +166,8 @@
                 return;
             }
 
-            if ($_SESSION['user'] instanceof ChildAccount) {
-                $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
-            }
-            else {
-                $game = $this->gameRepository->findByParent($_SESSION['user'], $_GET['id']);
-            }
-
-            require_once 'views/pages/game/play.php';
-        }
-
-        public function played() {
-            if (!isset($_GET['id']) || empty($_GET['id'])) {
-                return;
-            }
-
-            if ($_SESSION['user'] instanceof ChildAccount) {
+            // If call is from ajax
+            if ($_SESSION['user'] instanceof ChildAccount && isset($_POST['played'])) {
                 $play = $this->gameRepository->play($_SESSION['user'], $_GET['id']);
                 if ($play == null) {
                     return;
@@ -193,7 +179,18 @@
                         return;
                     }
                 }
+
+                return;
             }
+
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
+            }
+            else {
+                $game = $this->gameRepository->findByParent($_SESSION['user'], $_GET['id']);
+            }
+
+            require_once 'views/pages/game/play.php';
         }
 
         public function detail() {
@@ -217,6 +214,47 @@
             $trophies = $this->childRepository->trophy($_SESSION['user']->id_child_account, $_GET['id']);
 
             require_once 'views/pages/game/detail.php';
+        }
+
+        public function stats() {
+            if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof Account)) {
+                redirect('account');
+                return;
+            }
+
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                redirect('game');
+                return;
+            }
+
+            $game = $this->gameRepository->findByParent($_SESSION['user'], $_GET['id']);
+            if ($game == null) {
+                call('home', 'error');
+                return;
+            }
+
+            $children = $this->accountRepository->children($_SESSION['user']);
+
+            foreach ($children as $child) {
+                $child->played = $this->childRepository->played($child->id_child_account, $_GET['id']);
+                $child->trophies = $this->childRepository->trophy($child->id_child_account, $_GET['id']);
+            }
+
+            $total_played = 0;
+            foreach ($children as $child) {
+                if ($child->played != null) {
+                    $total_played += $child->played->played_time;
+                }
+            }
+            
+            $total_trophies = 0;
+            foreach ($children as $child) {
+                foreach ($child->trophies as $trophy) {
+                    $total_trophies++;
+                }
+            }
+            
+            require_once 'views/pages/game/stats.php';
         }
 
         public function setting() {

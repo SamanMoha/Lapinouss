@@ -89,8 +89,7 @@
                             );";
 
         const PLAY_UPDATE = "UPDATE played 
-                        SET played_time = played_time + 1
-                            AND date_game = NOW()
+                        SET played_time = played_time + 1, date_game = NOW()
                         WHERE id_game = :id_game
                           AND id_child_account = :id_child_account
                     ;";
@@ -106,6 +105,12 @@
                             INNER JOIN game g ON g.id_game = ght.id_game
                             WHERE g.id_game = :id_game
                               AND t.name like :trophy_name
+                              AND NOT EXISTS (
+                                SELECT id_trophy 
+                                FROM success 
+                                WHERE id_trophy = t.id_trophy 
+                                  AND id_child_account = :id_child_account
+                                )
                         ;";
 
         const DELETE = "DELETE FROM downloaded_game

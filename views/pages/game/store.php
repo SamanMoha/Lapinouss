@@ -3,7 +3,7 @@
 		<h2>Th&egrave;mes</h2>
 
 		<?php
-		if ($game_type != null)
+		if ($game_types != null)
 		foreach ($game_types as $game_type) {
 			?>
 
