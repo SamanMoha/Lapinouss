@@ -13,6 +13,23 @@
                             </ul>
                         </div>
                         <p><?php echo $game->description; ?></p>
+                        <div class="reply">
+                            <?php
+                                if ($played != null) {
+                                    ?>
+                                    <p>
+                                        Nombre de parties jou&eacute;es : <?php echo $played->played_time; ?>
+                                    </p>
+                                    <p>
+                                        Derni&egrave;re partie jou&eacute;e le : <?php echo $played->date_game; ?>
+                                    </p>
+                            <?php
+                                }
+                                else {
+                                    echo 'Aucune partie jou&eacute;e';
+                                }
+                            ?>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 </li>
@@ -20,37 +37,26 @@
         </div>
 
         <div class="comment">
-            <h2>Accorder une permission</h2>
+            <h2>Mes troph&eacute;es</h2>
             <?php
-            if (count($children) == 0) {
-                echo '<small>Aucun enfant</small>';
+            if (count($trophies) == 0) {
+                echo '<small>Aucun troph&eacute;e</small>';
             }
-            foreach ($children as $child) {
-                ?>
-                <ul class="comment-list">
-                    <li><img src="resources/images/character/kid.png" alt="">
-                        <div class="desc1">
-                            <h5><a id="<?php echo $child->id_child_account; ?>"><?php echo $child->first_name . ' ' . $child->last_name; ?></a></h5>
-                        </div>
-                        <p><br/><br/></p>
-                        <div class="reply">
-                            <form method="post">
-                                <input type="hidden" name="child" value="<?php echo $child->id_child_account; ?>">
-                                <?php
-                                if (in_array($child, $childrenPermissions)) {
-                                    echo '<input type="submit" name="decline" class="comment-reply-link navbar-blink" value="D&eacute;cliner" />';
-                                }
-                                else {
-                                    echo '<input type="submit" name="allow" class="comment-reply-link navbar-blink" value="Autoriser" />';
-                                }
-                                ?>
-                            </form>
-                        </div>
-                        <div class="clearfix"></div>
-                    </li>
-                </ul>
-                <?php
-            }
+            
+            if ($trophies  != null)
+                foreach ($trophies as $trophy) {
+                    ?>
+                    <ul class="comment-list">
+                        <li><img src="resources/images/egg_small.png" alt="">
+                            <div class="desc1">
+                                <h5><a><?php echo $trophy->name; ?></a></h5>
+                            </div>
+                            <p><?php echo $trophy->description; ?></p>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                    <?php
+                }
             ?>
 
         </div>

@@ -63,11 +63,11 @@
             return $games;
         }
         
-        public function findByChild(ChildAccount $child_account, $uid) {
+        public function findByChild(ChildAccount $child_account, $id_game) {
             $game = $this->db->prepare(GameQueries::FIND_BY_CHILD);
 
             $game->bindParam(':id_child_account', $child_account->id_child_account, PDO::PARAM_INT);
-            $game->bindParam(':id_game', $uid, PDO::PARAM_INT);
+            $game->bindParam(':id_game', $id_game, PDO::PARAM_INT);
 
             if (!$game || ($game instanceof PDOException) || !$game->execute() ||$game->rowCount() != 1)
                 return null;

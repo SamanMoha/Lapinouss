@@ -25,6 +25,8 @@
             if (count($children) == 0) {
                 echo '<small>Aucun enfant</small>';
             }
+            
+            if ($children != null)
             foreach ($children as $child) {
                 ?>
                 <ul class="comment-list">

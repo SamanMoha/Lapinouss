@@ -42,17 +42,16 @@
             return true;
         }
 
-        public function delete($uid, $email) {
-            if (empty($uid) || empty($email))
+        public function delete($id_child_account) {
+            if (empty($id_child_account))
                 return false;
 
-                $delete = $this->db->prepare(ChildQueries::DELETE);
+            $delete = $this->db->prepare(ChildQueries::DELETE);
 
-                $delete->bindParam(':uid', $uid, PDO::PARAM_STR);
-                $delete->bindParam(':email', $email, PDO::PARAM_STR);
+            $delete->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
 
-                if (!$delete || ($delete instanceof PDOException) || !$delete->execute())
-                    return false;
+            if (!$delete || ($delete instanceof PDOException) || !$delete->execute())
+                return false;
 
             return true;
         }
@@ -68,5 +67,29 @@
                 return false;
 
             return true;
+        }
+
+        public function played($id_child_account, $id_game) {
+            $played = $this->db->prepare(ChildQueries::PLAYED);
+
+            $played->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
+            $played->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+
+            if (!$played || ($played instanceof PDOException) || !$played->execute())
+                return null;
+
+            return $played->fetchObject('Played');
+        }
+
+        public function trophy($id_child_account, $id_game) {
+            $trophy = $this->db->prepare(ChildQueries::TROPHY);
+
+            $trophy->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
+            $trophy->bindParam(':id_game', $id_game, PDO::PARAM_INT);
+
+            if (!$trophy || ($trophy instanceof PDOException) || !$trophy->execute())
+                return null;
+
+            return $trophy->fetchAll(PDO::FETCH_CLASS, 'Trophy');
         }
     }

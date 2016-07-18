@@ -1,45 +1,53 @@
 <div class="container">
     <div class="row">
-        <div class="comment">
-            <h2>En ce moment</h2>
-            <?php
-            $comments_count = count($games[0]->comments);
-            ?>
-            <ul class="comment-list">
-                <li><img src="resources/images/actions/game.png" alt="">
-                    <div class="desc1">
-                        <h5><a id="<?php echo $games[0]->id_game; ?>"><?php echo $games[0]->title; ?></a></h5>
-                        <div class="links">
-                            <ul>
-                                <li><i class="fa blog-icon fa-calendar"> </i><span><?php echo DateUtil::format($games[0]->created_date); ?></span></li>
-                                <li><i class="fa blog-icon fa-money"> </i><span><?php echo $games[0]->price > 0 ? $games[0]->price . ' euros' : 'Gratuit'; ?></span></li>
-                                <li>
-                                    <i class="fa blog-icon fa-comment"> </i><a href="<?php echo action('game', 'comments', $games[0]->id_game); ?>"><span><?php echo $comments_count . ' commentaire' . ($comments_count > 1 ? 's' : ''); ?></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <p><?php echo $games[0]->description; ?></p>
-                        <div class="reply">
-                            <?php
-                            if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account && $game_type != null && $game_type->isAlreadyBought) {
-                                if ($games[0]->isAlreadyBought) {
-                                    echo '<a href="' . action('game', 'delete', 'game', $games[0]->id_game) . '" class="comment-reply-link">Supprimer</a>';
+
+        <?php
+            if ($games != null) {
+        ?>
+            <div class="comment">
+                <h2>En ce moment</h2>
+                <?php
+                    $comments_count = count($games[0]->comments);
+                ?>
+                <ul class="comment-list">
+                    <li><img src="resources/images/actions/game.png" alt="">
+                        <div class="desc1">
+                            <h5><a id="<?php echo $games[0]->id_game; ?>"><?php echo $games[0]->title; ?></a></h5>
+                            <div class="links">
+                                <ul>
+                                    <li><i class="fa blog-icon fa-calendar"> </i><span><?php echo DateUtil::format($games[0]->created_date); ?></span></li>
+                                    <li><i class="fa blog-icon fa-money"> </i><span><?php echo $games[0]->price > 0 ? $games[0]->price . ' euros' : 'Gratuit'; ?></span></li>
+                                    <li>
+                                        <i class="fa blog-icon fa-comment"> </i><a href="<?php echo action('game', 'comments', $games[0]->id_game); ?>"><span><?php echo $comments_count . ' commentaire' . ($comments_count > 1 ? 's' : ''); ?></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p><?php echo $games[0]->description; ?></p>
+                            <div class="reply">
+                                <?php
+                                if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account && $game_type != null && $game_type->isAlreadyBought) {
+                                    if ($games[0]->isAlreadyBought) {
+                                        echo '<a href="' . action('game', 'delete', 'game', $games[0]->id_game) . '" class="comment-reply-link">Supprimer</a>';
+                                    }
+                                    else {
+                                        echo '<a href="' . action('game', 'buy', $games[0]->id_game) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
+                                    }
                                 }
-                                else {
-                                    echo '<a href="' . action('game', 'buy', $games[0]->id_game) . '" class="comment-reply-link">T&eacute;l&eacute;charger</a>';
-                                }
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-            </ul>
-        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                </ul>
+            </div>
+        <?php
+        }
+        ?>
 
         <div class="comment">
             <h2>Les plus populaires</h2>
             <?php
+            if ($games != null)
             foreach ($games as $game) {
                 $comments_count = count($game->comments);
                 ?>

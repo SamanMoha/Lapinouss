@@ -45,4 +45,38 @@
                           AND ca.password = :password
                           AND a.id_account = :id_account
                     ;";
+
+        const PLAYED = "
+                    SELECT *
+                    FROM played 
+                    WHERE id_game = :id_game
+                      AND id_child_account = :id_child_account
+                ";
+
+        const TROPHY = "
+                    SELECT t.*, s.*
+                    FROM success s
+                    INNER JOIN trophy t ON t.id_trophy = s.id_trophy
+                    INNER JOIN game_has_trophy ght ON ght.id_trophy = t.id_trophy
+                    INNER JOIN game g ON p.id_game = ght.id_game
+                    WHERE g.id_game = :id_game
+                      AND s.id_child_account = :id_child_account
+                ";
+
+        const DELETE = "
+                        DELETE FROM success
+                        WHERE id_child_account = :id_child_account;
+                        
+                        DELETE FROM played
+                        WHERE id_child_account = :id_child_account;
+                        
+                        DELETE FROM child_account_has_downloaded_game
+                        WHERE id_child_account = :id_child_account;
+                        
+                        DELETE FROM parent_has_child
+                        WHERE id_child_account = :id_child_account;
+                        
+                        DELETE FROM child_account
+                        WHERE id_child_account = :id_child_account;
+                ;";
     }

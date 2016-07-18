@@ -82,7 +82,7 @@
                                 id_child_account
                             )
                             VALUES (
-                                0,
+                                1,
                                 NOW(),
                                 :id_game,
                                 :id_child_account 

@@ -32,8 +32,7 @@
 		}
 
 		private function indexChild() {
-			$account = $_SESSION['user'];
-			require_once 'views/pages/account/index_child.php';
+			redirect('game');
 		}
 		
 		public function login() {

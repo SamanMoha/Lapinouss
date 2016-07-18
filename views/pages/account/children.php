@@ -6,6 +6,8 @@
             if (count($children) == 0) {
                 echo 'Aucun enfant trouv&eacute;';
             }
+
+            if ($children != null)
             foreach ($children as $child) {
                 ?>
                 <ul class="comment-list">

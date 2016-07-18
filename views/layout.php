@@ -36,48 +36,105 @@
 				<div class="top-nav wow bounce" data-wow-delay="0.4s">
 					<span class="menu"> </span>
 					<ul>
-						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'home' ? 'class="active"' : ''; ?>><a href="<?php echo action('home'); ?>">Accueil</a></li>
-						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
-							<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof ChildAccount) {
-								echo '<a href="' . action('game') . '">Mes jeux</a>';
-							} else {
-								echo '<a href="' . action('game', 'store') . '">Store</a>';
-							}
+						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'home' ? 'class="active"' : ''; ?>>
+							<a href="<?php echo action('home'); ?>">Accueil</a>
+						</li>
+
+						<?php
+						if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof Account)) {
 							?>
-						</li>
-						<?php if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Account) {
-							echo isset($_GET['controller']) && $_GET['controller'] == 'tutorial' ? '<li class="active">' : '<li>';
-							echo '<a href="' . action('tutorial') . '">Tutoriels</a>';
-							echo '</li>';
-						} ?>
-						<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
-									&& (!isset($_GET['action']) || $_GET['action'] != 'register') ? 'class="active"' : ''; ?>>
-							<a href="<?php echo action('account'); ?>">
-								<?php echo isset($_SESSION['user']) ? 'Mon compte' : 'Connexion'; ?>
-							</a>
-						</li>
-						<?php if (isset($_SESSION['user'])) {
-							echo '<li>';
-								echo '<a href="' . action('account', 'logout') . '">D&eacute;connexion</a>';
-							echo '</li>';
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
+								<a href="<?php echo action('game', 'store'); ?>">
+									Store
+								</a>
+							</li>
+							<?php
 						}
-						else {
-							echo isset($_GET['controller']) && $_GET['controller'] == 'account'
-							&& (isset($_GET['action']) && $_GET['action'] == 'register') ? '<li class="active">' : '<li class="navbar-blink">';
-							echo '<a href="' . action('account', 'register') . '">Inscription</a>';
-							echo '</li>';
-						} ?>
+						?>
+
+						<?php
+						if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof ChildAccount)) {
+							?>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
+								<a href="<?php echo action('game'); ?>">
+									Mes jeux
+								</a>
+							</li>
+							<?php
+						}
+						?>
+
+						<?php
+						if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof Account)) {
+							?>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'tutorial' ? 'class="active"' : ''; ?>>
+								<a href="<?php echo action('tutorial'); ?>">
+									Tutoriels
+								</a>
+							</li>
+							<?php
+						}
+						?>
+
+						<?php
+							if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof Account)) {
+						?>
+								<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account' ? 'class="active"' : ''; ?>>
+									<a href="<?php echo action('account'); ?>">
+										Mon compte
+									</a>
+								</li>
+						<?php
+							}
+						?>
+
+						<?php
+						if (!isset($_SESSION['user'])) {
+							?>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
+							&& isset($_GET['action']) && $_GET['action'] == 'login' ? 'class="active"' : ''; ?>>
+								<a href="<?php echo action('account', 'login'); ?>">
+									Connexion
+								</a>
+							</li>
+							<?php
+						}
+						?>
+
+						<?php
+						if (!isset($_SESSION['user'])) {
+							?>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
+								&& isset($_GET['action']) && $_GET['action'] == 'login' ? 'class="active"' : 'class="navbar-blink"'; ?>>
+								<a href="<?php echo action('account', 'register'); ?>">
+									Inscription
+								</a>
+							</li>
+							<?php
+						}
+						?>
+
+						<?php
+						if (isset($_SESSION['user'])) {
+							?>
+							<li>
+								<a href="<?php echo action('account', 'logout'); ?>">
+									D&eacute;connexion
+								</a>
+							</li>
+							<?php
+						}
+						?>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 
-
 		<div class="wow bounceInRight" data-wow-delay="0.1s">
 			<div class="box_2">
 				<?php
-				require_once 'routes.php';
+					require_once 'routes.php';
 				?>
 			</div>
 		</div>
@@ -127,7 +184,7 @@
 		</div>
 		
 		<div class="copy">
-			<p>&copy; 2016 - <a href="http://lapinouss.com" target="_blank">Lapinouss</a></p>
+			<p>&copy; 2016 - <a href="http://www.lapinouss.com" target="_blank">Lapinouss</a></p>
 		</div>
 		
 	</body>

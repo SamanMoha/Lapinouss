@@ -2,6 +2,7 @@
     require_once 'repositories/game_repository.php';
     require_once 'repositories/game_type_repository.php';
     require_once 'repositories/account_repository.php';
+    require_once 'repositories/child_repository.php';
 
     class GameController {
 
@@ -9,12 +10,14 @@
         private $gameTypeRepository;
         private $commentRepository;
         private $accountRepository;
+        private $childRepository;
         
         public function __construct() {
             $this->gameRepository = new GameRepository();
             $this->gameTypeRepository = new GameTypeRepository();
             $this->commentRepository = new CommentRepository();
             $this->accountRepository = new AccountRepository();
+            $this->childRepository = new ChildRepository();
         }
 
         public function index() {
@@ -191,6 +194,29 @@
                     }
                 }
             }
+        }
+
+        public function detail() {
+            if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof ChildAccount)) {
+                redirect('account');
+                return;
+            }
+
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                redirect('game');
+                return;
+            }
+
+            $game = $this->gameRepository->findByChild($_SESSION['user'], $_GET['id']);
+            if ($game == null) {
+                call('home', 'error');
+                return;
+            }
+
+            $played = $this->childRepository->played($_SESSION['user']->id_child_account, $_GET['id']);
+            $trophies = $this->childRepository->trophy($_SESSION['user']->id_child_account, $_GET['id']);
+
+            require_once 'views/pages/game/detail.php';
         }
 
         public function setting() {
