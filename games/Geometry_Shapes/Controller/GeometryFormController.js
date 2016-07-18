@@ -39,7 +39,9 @@ var GeometryFormController = function (pModel) {
             $('.wrong').hide();
             model.initListGeometric();
 
+            // Trophée par defaut lors d'une victoire
             var trophy = 'Assidus';
+
             if (Number($('#gametimer').text()) < 5) {
                 trophy = 'Flash';
             }

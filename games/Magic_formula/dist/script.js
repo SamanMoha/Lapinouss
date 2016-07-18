@@ -7,6 +7,7 @@ app.controller('NumberController', function($scope) {
     $scope.successMsg = false;
     $scope.errorMsg = false;
     $scope.next = false;
+    $scope.score = 0;
 
     $scope.init = function(){
         $scope.tries = 3;
@@ -14,6 +15,7 @@ app.controller('NumberController', function($scope) {
         $scope.successMsg = false;
         $scope.errorMsg = false;
         $scope.next = false;
+        $scope.score = 0;
 
         randomNumber();
         randomColor();
@@ -76,9 +78,9 @@ app.controller('NumberController', function($scope) {
     }
 
     $scope.choice = function (position) {
-        //window.alert(this);
         var response = $('#soluce' + position).text();
 
+        // Si la partie est gagnée
         if (response == $scope.result) {
             $('#question').text($scope.result);
             $scope.errorMsg = false;
@@ -87,17 +89,56 @@ app.controller('NumberController', function($scope) {
             $scope.next = true;
 
             $('#gameOver').hide();
+
+            // Obtention du score maximum
+            $scope.score += 20;
+
+            // Trophée par defaut lors d'une victoire
+            var trophy = 'Champignon en Chocolat';
+            
+            if ($scope.score == 10) {
+                trophy = 'Champignon en Bronze';
+            }
+            else if ($scope.score == 15) {
+                trophy = 'Champignon en Argent';
+            }
+            else if ($scope.score == 20) {
+                trophy = 'Champignon en ArgentChampignon en Or';
+            }
+
+            // Mise à jour des statistiques (trophée gagné)
+            $.post(window.location, { played: true, trophy: trophy });
         }
+
+            // Si la partie est perdue
         else {
+            // S'il reste encore des essais
             if ($scope.tries > 1 ){
                 $scope.tries -= 1;
                 $scope.errorMsg = true;
                 $scope.countTry = true;
-            } else {
+
+                if ($scope.tries == 1) {
+                    $scope.score -= 15;
+                }
+                else if ($scope.tries == 2) {
+                    $scope.score -= 10;
+                }
+                else if ($scope.tries == 3) {
+                    $scope.score -= 5;
+                }
+            }
+                // S'il ne reste plus d'essais
+            else {
                 $scope.errorMsg = false;
                 $scope.countTry = false;
                 $scope.next = true;
                 $('#question').text($scope.result);
+
+                $scope.score = 0;
+
+                // Mise à jour des statistiques (1 partie jouée)
+                $.post(window.location, { played: true });
             }
         }
     };
