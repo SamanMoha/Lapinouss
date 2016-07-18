@@ -55,7 +55,9 @@ var GeometryFormModel = function () {
 
         if(randomform == 0){
             $('<img/>')
-                .attr('src','/Lapinouss/games/Geometry_Shapes/image/green_square.png')
+                .attr('src', '/Lapinouss/games/Geometry_Shapes/image/green_square.png')
+                .attr('height', '200')
+                .attr('width', '200')
                 .addClass('draggable')
                 .data( 'form', 'square' )
                 .appendTo( 'div#listgeometric' )
@@ -67,7 +69,9 @@ var GeometryFormModel = function () {
                 } );
         }else if(randomform == 1) {
             $('<img/>')
-                .attr('src','/Lapinouss/games/Geometry_Shapes/image/blue_circle.png')
+                .attr('src', '/Lapinouss/games/Geometry_Shapes/image/blue_circle.png')
+                .attr('height', '200')
+                .attr('width', '200')
                 .addClass('draggable')
                 .data( 'form', 'circle' )
                 .appendTo( 'div#listgeometric' )
@@ -79,7 +83,9 @@ var GeometryFormModel = function () {
                 } );
         }else if(randomform == 2){
             $('<img/>')
-                .attr('src','/Lapinouss/games/Geometry_Shapes/image/yellow_star.png')
+                .attr('src', '/Lapinouss/games/Geometry_Shapes/image/yellow_star.png')
+                .attr('height', '200')
+                .attr('width', '200')
                 .addClass('draggable')
                 .data( 'form', 'star' )
                 .appendTo( 'div#listgeometric' )

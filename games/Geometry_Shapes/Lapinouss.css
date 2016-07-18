@@ -1,14 +1,19 @@
-body {
-    background-color: lightgrey;
+#gametimer{
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    padding: 25px;
+    background: black;
+    color: white;
 }
 
-div.content {
-    background-color: white;
-    height: 94%;
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-bottom: 2%;
-    margin-right: 2%;
+.displayscore{
+    font-weight: bold;
+    font-size: 24px;
+    float: right;
+    padding: 10px;
 }
 
 .droppable{
@@ -34,11 +39,10 @@ div.listgeometric {
 
 #endmessage {
     position: absolute;
-    left: 20%;
-    right: 20%;
-    background: #dfd;
-    width: 300;
-    height: 80;
+    top: 35%;
+    left: 40%;
+    right: 25%;
+    background: green;
     z-index: 100;
 
     border: 2px solid #333;
@@ -51,21 +55,36 @@ div.listgeometric {
     padding: 20px;
 }
 
-#gamehome {
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    background: #dfd;
-    width: 600;
-    height: 450;
-    z-index: 100;
+#endmessage p {
+    color: white;
+}
 
-    border: 2px solid #333;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-    -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-    box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+img.answer{
+    float: left;
+}
+
+span.answer{
+    float: left;
+    color: white;
     padding: 20px;
+}
+
+.good{
+    border: 2px solid green;
+    display: inline-block;
+    background-color: green;
+}
+
+.wrong{
+    border: 2px solid red;
+    display: inline-block;
+    background-color: red;
+}
+
+.core{
+    top: 35%;
+    left: 35%;
+    padding: 50px;
+
+    border: 1px solid black;
 }
