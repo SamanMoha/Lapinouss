@@ -1,0 +1,25 @@
+#couleur table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#couleur td {
+	cursor: pointer;
+	height: 150px;
+	width: 50%;
+}
+
+#sound {
+	padding-top: 20px;
+	height: calc(50% - 20px);
+	text-align: center;
+}
+
+#sound img {
+	cursor: pointer;
+}
+
+#message {
+    text-align: center;
+}

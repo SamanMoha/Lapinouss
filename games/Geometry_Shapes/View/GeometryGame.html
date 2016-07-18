@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="games/Geometry_Shapes/Lapinouss.css" type="text/css">
+
+
+<script type="text/javascript" src="games/Geometry_Shapes/Controller/GeometryFormController.js"></script>
+<script type="text/javascript" src="games/Geometry_Shapes/Model/GeometryFormModel.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        new GeometryFormController().init();
+    });
+</script>
+
+    <div class="game-box">
+        <div class="game-header">
+            <div class="displayscore">
+                Ton score est de :<span id="score">0</span>
+            </div>
+            <div id="gametimer"></div>
+        </div>
+        <div id="endmessage">
+            <p>
+                Le temps est termin&eacute;!<br>
+                Ton score est de <span id="endscore"></span><br><br>
+            </p>
+
+            <input class="btn1 btn2 btn-8 btn-8c" type="button" id="buttonretry" value="Recommencer" />
+        </div>
+        <div class="core">
+            <div class="mainForm">
+                <img src="games/Geometry_Shapes/image/square.png" width="200" height="200" class="droppable" data-form="square"/>
+                <img src="games/Geometry_Shapes/image/circle.png" width="200" height="200" class="droppable" data-form="circle"/>
+                <img src="games/Geometry_Shapes/image/star.png" width="200" height="200" class="droppable" data-form="star"/>
+            </div>
+            <div class="good">
+                <img src="games/Geometry_Shapes/image/valid.png" class="answer">
+                    <span class="answer">
+                        Bravo!<br>
+                        Tu as trouv&eacute; la bonne r&eacute;ponse et gagn&eacute; 20 points suppl&eacute;mentaires!<br>
+                        Essais encore avec la prochaine forme.
+                    </span>
+            </div>
+            <div class="wrong">
+                <img src="games/Geometry_Shapes/image/error.png" class="answer">
+                    <span class="answer">
+                        Dommage!<br>
+                        Tu t'es tromp&eacute; de r&eacute;ponse donc tu as perdu 10 points!<br>
+                        Essais encore avec la m&ecirc;me forme.
+                    </span>
+            </div>
+            <div id="listgeometric"></div>
+        </div>
+    </div>
