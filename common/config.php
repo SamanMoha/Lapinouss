@@ -1,6 +1,6 @@
 <?php
     // SQL Database
-    const DB_HOST = 'localhost';
-    const DB_NAME = 'lapinouss_db';
-    const DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_HOST = 'nguyenisyuroot.mysql.db';
+    const DB_NAME = 'nguyenisyuroot';
+    const DB_USER = 'nguyenisyuroot';
+    const DB_PASS = 'Lapinouss16';

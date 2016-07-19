@@ -105,7 +105,7 @@
 						if (!isset($_SESSION['user'])) {
 							?>
 							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
-								&& isset($_GET['action']) && $_GET['action'] == 'login' ? 'class="active"' : 'class="navbar-blink"'; ?>>
+								&& isset($_GET['action']) && $_GET['action'] == 'register' ? 'class="active"' : 'class="navbar-blink"'; ?>>
 								<a href="<?php echo action('account', 'register'); ?>">
 									Inscription
 								</a>

@@ -16,7 +16,7 @@
 
 	session_start();
 	
-	define('BASE_PATH', '/Lapinouss/');
+	define('BASE_PATH', '/');
 
 	require_once 'common/exceptions/fatal_exception.php';
 	require_once 'common/exceptions/web_exception.php';
