@@ -1,13 +1,12 @@
 @font-face {
   font-family: caricature;
-  src: url('../../font/caricature.TTF');
+  src: url('../../font/caricature.ttf');
 }
 
 #wrapper {
   width: calc(100% - 50px);
   height: calc(100% - 50px);
   text-align: center;
-  padding: 50px;
 }
 
 #wrapper p {

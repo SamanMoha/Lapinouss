@@ -51,7 +51,7 @@
                                     <?php echo $child->first_name . ' ' . $child->last_name; ?>
                                 </h3>
                                 <p>
-                                    Dernier jeu jou&eacute; le : <?php echo DateUtil::format(end($child->played)->date_game); ?>
+                                    <?php echo count($child->played) > 0 ? 'Dernier jeu jou&eacute; le : ' . DateUtil::format(end($child->played)->date_game) : 'Pas encore de partie jou&eacute;e'; ?>
                                 </p>
                             </li>
                             <div class="clearfix"> </div>

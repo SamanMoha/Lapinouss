@@ -18,7 +18,7 @@ ENGINE = InnoDB;
 --
 
 INSERT INTO `game_type` (`id_game_type`, `name`, `description`) VALUES
-(1, 'Mathématique', 'Envie de défier Albert Einstein ? C''est par ici !'),
+(1, 'Mathématique', 'Envie de d&eacute;fier Albert Einstein ? C''est par ici !'),
 (2, 'Dessin', 'Formes, couleurs, animations sont par ici.');
 
 -- -----------------------------------------------------
@@ -46,9 +46,9 @@ ENGINE = InnoDB;
 --
 
 INSERT INTO `game` (`id_game`, `title`, `picture`, `description`, `price`, `created_date`, `file`, `id_game_type`, `available`) VALUES
-(1, 'Geometry Shapes', 'photo.jpg', 'Rendons à sa forme ce qui appartient à son contour.', 0, '2015-07-03', 'View/GeometryGame.html', 2, 1),
+(1, 'Geometry Shapes', 'photo.jpg', 'Rendons &agrave; sa forme ce qui appartient &agrave; son contour.', 0, '2015-07-03', 'View/GeometryGame.html', 2, 1),
 (2, 'Guess color', 'logo.jpg', 'Sauras tu retrouver les couleurs que tu entends ?', 0, '2015-10-19', 'index.html', 2, 1),
-(3, 'Magic formula', 'logo_jeu.jpg', 'Viens trouver la solution magique à ce problème !', 0, '2015-07-03', 'template.html', 1, 1);
+(3, 'Magic formula', 'logo_jeu.jpg', 'Viens trouver la solution magique &agrave; ce probl&egrave;me !', 0, '2015-07-03', 'template.html', 1, 1);
 
 -- -----------------------------------------------------
 -- Table `trophy`
@@ -65,19 +65,19 @@ ENGINE = InnoDB;
 --
 
 INSERT INTO `trophy` (`id_trophy`, `name`, `description`) VALUES
-(1, 'Champignon en Or', '15 à 20 points.'),
-(2, 'Champignon en Argent', '10 à 15 points.'),
-(3, 'Champignon en Bronze', '5 à 10 points.'),
-(4, 'Champignon en Chocolat', '0 à 10 points.'),
+(1, 'Champignon en Or', '15 &agrave; 20 points'),
+(2, 'Champignon en Argent', '10 &agrave; 15 points'),
+(3, 'Champignon en Bronze', '5 &agrave; 10 points'),
+(4, 'Champignon en Chocolat', '0 &agrave; 10 points'),
 
-(5, 'Arc-en-ciel', 'une série sans fautes'),
-(6, 'Licorne', 'a joué 5 parties'),
+(5, 'Arc-en-ciel', 'une s&eacute;rie sans fautes'),
+(6, 'Licorne', 'a jou&eacute; 5 parties'),
 
 (7, 'Cheval', 'finit la partie en 3 minutes'),
 (8, 'Flash', 'finit la partie en moins d’une minute'),
 (9, 'Escargot', 'finit la partie au bout de 5 minutes ou +'),
-(10, 'Génie', 'gagne le max de points.'),
-(11, 'Assidus', 'a joué 5 parties'),
+(10, 'Génie', 'gagne le max de points'),
+(11, 'Assidus', 'a jou&eacute; 5 parties'),
 (12, 'Bonnet d’âne', 'abandonne la partie');
 
 -- -----------------------------------------------------
@@ -95,6 +95,7 @@ ENGINE = InnoDB;
 -- Contenu de la table `child_account`
 --
 
+-- Mots de passe 'esgi2016'
 INSERT INTO `child_account` (`id_child_account`, `first_name`, `last_name`, `password`) VALUES
 (1, 'Kent ', 'Beck', '103174cab4844d86236ca1c9a9cc928338fc93a8'),
 (2, 'Simon', 'Brown', '103174cab4844d86236ca1c9a9cc928338fc93a8');
@@ -117,6 +118,7 @@ ENGINE = InnoDB;
 -- Contenu de la table `account`
 --
 
+-- Mot de passe 'esgi2016'
 INSERT INTO `account` (`id_account`, `permission`, `email`, `password`, `first_name`, `last_name`) VALUES
 (1, 'Professeur', 'martin@fowler.com', '103174cab4844d86236ca1c9a9cc928338fc93a8', 'Martin', 'Fowler');
 
@@ -271,6 +273,15 @@ CREATE TABLE IF NOT EXISTS `parent_has_child` (
     FOREIGN KEY (`id_child_account`)
     REFERENCES `child_account` (`id_child_account`))
 ENGINE = InnoDB;
+
+
+--
+-- Contenu de la table `comment`
+--
+
+INSERT INTO `parent_has_child` (`id_account`, `id_child_account`) VALUES
+(1, 1),
+(1, 2);
 
 
 -- -----------------------------------------------------
