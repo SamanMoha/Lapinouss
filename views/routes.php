@@ -69,7 +69,8 @@
 
 		'contact'
 		=> [
-			'index'
+			'index',
+			'conditions'
 		],
 
 		'tutorial'
