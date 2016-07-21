@@ -6,7 +6,7 @@
 				<div class="view view-first">
 				  <img src="resources/images/tiles/tutorial/1.jpg" class="img-responsive" alt=""/>
 				 </div>
-				<h3><a href="#">T&eacute;l&eacute;charger un jeu</a></h3>
+				<h3><a href="<?php echo action('tutorial', 'downloadGame'); ?>">T&eacute;l&eacute;charger un jeu</a></h3>
 				<p class="service_desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
 			</div>
 
@@ -14,7 +14,7 @@
 				<div class="view view-first">
 				  <img src="resources/images/tiles/tutorial/2.jpg" class="img-responsive" alt=""/>
 				 </div>
-				<h3><a href="#">T&eacute;l&eacute;charger un ensemble de jeu</a></h3>
+				<h3><a href="<?php echo action('tutorial', 'downloadGameType'); ?>">T&eacute;l&eacute;charger un ensemble de jeu</a></h3>
 				<p class="service_desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
 			</div>
 
@@ -22,7 +22,7 @@
 				<div class="view view-first">
 				  <img src="resources/images/tiles/tutorial/3.jpg" class="img-responsive" alt=""/>
 				 </div>
-				<h3><a href="#">Ajouter un enfant</a></h3>
+				<h3><a href="<?php echo action('tutorial', 'addChildren'); ?>">Ajouter un enfant</a></h3>
 				<p class="service_desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
 			</div>
 
@@ -30,7 +30,7 @@
 				<div class="view view-first">
 				  <img src="resources/images/tiles/tutorial/4.jpg" class="img-responsive" alt=""/>
 				 </div>
-				<h3><a href="#">Les permissions</a></h3>
+				<h3><a href="<?php echo action('tutorial', 'permissions'); ?>">Les permissions</a></h3>
 				<p class="service_desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
 			</div>
 

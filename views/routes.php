@@ -75,7 +75,11 @@
 
 		'tutorial'
 		=> [
-			'index'
+			'index',
+			'downloadGame',
+			'downloadGameType',
+			'addChildren',
+			'permissions'
 		],
 
 		'account'

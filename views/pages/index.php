@@ -62,7 +62,7 @@
 		<br/><br/>
 
 		<div class="grid_2">
-			<div class="container"> 
+			<div class="container wow fadeInUpBig" data-wow-delay="0.4s">
 				<h3 class="head_1">&agrave; vous de choisir</h3>
 				
 				<div class="col-md-4 box_6">
