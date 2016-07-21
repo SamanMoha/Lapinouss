@@ -165,6 +165,7 @@
 
 				if ($user == null) {
 					 new WebException("Erreur lors de l'inscription.");
+					return;
 				}
 
 				$_SESSION['user'] = $user;
@@ -175,19 +176,18 @@
 			require_once 'views/pages/account/settings.php';
 		}
 
-		public function delete() {
-			if (isset($_POST['delete'])) {
-				$delete = $this->accountRepository->delete(
-					$_SESSION['user']->email,
-					$_SESSION['user']->token
-				);
+		public function deleteChild() {
+			if (!isset($_GET['id']) || empty($_GET['id']))
+				return;
 
-				if (!$delete) {
-					 new WebException("Erreur lors de la suppression du compte.");
-				}
+			$delete = $this->childRepository->delete($_GET['id']);
 
-				$this->logout();
+			if (!$delete) {
+				 new WebException("Erreur lors de la suppression du compte enfant.");
+				return;
 			}
+
+			redirect('account', 'children');
 		}
 
 		public function logout() {
