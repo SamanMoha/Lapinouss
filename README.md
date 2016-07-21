@@ -10,3 +10,8 @@
 ### Web
 
 - Enable Rewriting mod on Apache
+
+
+### Config
+
+- Update common/config.php in case of need

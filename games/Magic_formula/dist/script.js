@@ -15,10 +15,10 @@ app.controller('NumberController', function($scope) {
         $scope.successMsg = false;
         $scope.errorMsg = false;
         $scope.next = false;
-        $scope.score = 0;
 
         randomNumber();
         randomColor();
+
     };
 
     function randomNumber() {
@@ -132,10 +132,9 @@ app.controller('NumberController', function($scope) {
             else {
                 $scope.errorMsg = false;
                 $scope.countTry = false;
-                $scope.next = true;
+                $scope.next = false;
+                $scope.tentative ++;
                 $('#question').text($scope.result);
-
-                $scope.score = 0;
 
                 // Mise à jour des statistiques (1 partie jouée)
                 $.post(window.location, { played: true });

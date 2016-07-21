@@ -1,4 +1,3 @@
-<div class="row">
     <div class="box_1">
         <h3>
             <?php
@@ -52,7 +51,7 @@
                                     <?php echo $child->first_name . ' ' . $child->last_name; ?>
                                 </h3>
                                 <p>
-                                    Dernier jeu jou&eacute; le : 12 Juin 2016
+                                    Dernier jeu jou&eacute; le : <?php echo DateUtil::format(end($child->played)->date_game); ?>
                                 </p>
                             </li>
                             <div class="clearfix"> </div>
@@ -69,4 +68,3 @@
 
         </div>
     </div>
-</div>

@@ -3,6 +3,9 @@
 
      <div id="wrapper" ng-app="myApp" ng-controller="NumberController" ng-init="init()">
         <h1 >Complete la formule magique !</h1>
+         <div class="displayscore" style="font-size: 50px; color: grey;">
+             Ton score est de :<span id="score">{{score}}</span>
+         </div>
         <table id="myTable">
             <tr>
                 <td>
@@ -28,9 +31,9 @@
 			<div class="alert alert-danger" id="gameOver" role="alert" ng-show="!countTry"> <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> DOMMAGE, tu n'as pas trouv&eacute; la solution...</div>
 		</div>
         <div id="gabarit-box" ng-show="countTry">
-            <a href="#" id="soluce1" ng-click="choice(1)"></a>
-            <a href="#" id="soluce2" ng-click="choice(2)"></a>
-            <a href="#" id="soluce3" ng-click="choice(3)"></a>
+            <a id="soluce1" ng-click="choice(1)"></a>
+            <a id="soluce2" ng-click="choice(2)"></a>
+            <a id="soluce3" ng-click="choice(3)"></a>
         </div>
 		<div>
 			<img src="/Lapinouss/games/Magic_formula/dist/img/next.png" ng-click="init()" ng-show="next">

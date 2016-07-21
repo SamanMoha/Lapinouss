@@ -2,7 +2,7 @@
     $count = count($game_type->games);
 ?>
 
-<div class="students wow  zoomInDown" data-wow-delay="0.4s">
+<div class="students">
     <div class="container">
         <h3><?php echo $game_type->name; ?></h3>
         <div class="custom_testimonials_wrap_inner">

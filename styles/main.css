@@ -33,7 +33,7 @@ body a{
 	color:#fff;
 	margin-top:0em;
 	font: italic 400 150px/150px "Lato", sans-serif;
-	font-style:italic;
+	font-style: italic;
 	letter-spacing: -0.025em;
 }
 .header_top h2{
@@ -120,7 +120,7 @@ span.main {
 }
 .fixed{
 	/*position: fixed;*/
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
 	top: 0;
 	width: 100%;
 	left:0;
@@ -746,7 +746,9 @@ i.blog-icon{
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-	width: 34%;
+	text-align: center;
+	width: 50%;
+	/*width: 34%;*/
 }
 .btn-8c:hover {
 	-webkit-transform: rotateY(15deg);
@@ -927,7 +929,7 @@ ul.comment-list .desc1 h5 a:hover {
 }
 input[type="text"], input[type="password"], input[type="email"], .account-select {
 	padding: 15px 15px;
-	width: 55%;
+	width: 100%;
 	color: #999;
 	font: 300 16px/25px Lato, sans-serif;
 	border: 1px solid #eee;
@@ -959,9 +961,11 @@ textarea {
 	background: none;
 	text-transform: uppercase;
 }
+/*
 label.btn1.btn2.btn-8.btn-8c {
 	width: 20%;
 }
+*/
 /*--sontact--*/
 .contact {
 	margin-top: 4em;

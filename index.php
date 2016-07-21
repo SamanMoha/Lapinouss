@@ -1,4 +1,6 @@
-	<?php
+<?php
+	require_once 'common/config.php';
+
 	require_once 'models/account.php';
 	require_once 'models/child_account.php';
 	require_once 'models/comment.php';
@@ -15,13 +17,12 @@
 	require_once 'models/trophy.php';
 
 	session_start();
-	
-	define('BASE_PATH', '/');
 
 	require_once 'common/exceptions/fatal_exception.php';
 	require_once 'common/exceptions/web_exception.php';
 
 	require_once 'common/utils/session_util.php';
+	require_once 'common/utils/error_util.php';
 	require_once 'common/utils/date_util.php';
 	require_once 'common/utils/data_util.php';
 

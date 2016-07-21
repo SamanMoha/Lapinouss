@@ -69,12 +69,17 @@
 
 		'contact'
 		=> [
-			'index'
+			'index',
+			'conditions'
 		],
 
 		'tutorial'
 		=> [
-			'index'
+			'index',
+			'downloadGame',
+			'downloadGameType',
+			'addChildren',
+			'permissions'
 		],
 
 		'account'
@@ -101,7 +106,8 @@
 			'setting',
 			'stats',
 			'comments',
-			'detail'
+			'detail',
+			'theme'
 		]
 	);
 

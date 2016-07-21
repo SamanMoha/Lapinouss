@@ -25,13 +25,27 @@
                 redirect('game', 'store');
 
             if ($_SESSION['user'] instanceof ChildAccount) {
-                $games = $this->gameRepository->findAllByChild($_SESSION['user']);
+                $game_types = $this->gameTypeRepository->findAllByChild($_SESSION['user']);
             }
             else {
-                $games = $this->gameRepository->findAllByParent($_SESSION['user']);
+                $game_types = $this->gameTypeRepository->findAllByParent($_SESSION['user']);
             }
 
             require_once 'views/pages/game/index.php';
+        }
+
+        public function theme() {
+            if (!isset($_GET['id']) || empty($_GET['id']))
+                redirect('game');
+
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $games = $this->gameRepository->findAllByTypeAndChild($_GET['id'], $_SESSION['user']);
+            }
+            else {
+                $games = $this->gameRepository->findAllByType($_GET['id']);
+            }
+
+            require_once 'views/pages/game/theme.php';
         }
 
         public function store() {
@@ -210,7 +224,7 @@
                 return;
             }
 
-            $played = $this->childRepository->played($_SESSION['user']->id_child_account, $_GET['id']);
+            $played = $this->childRepository->playedByGame($_SESSION['user']->id_child_account, $_GET['id']);
             $trophies = $this->childRepository->trophy($_SESSION['user']->id_child_account, $_GET['id']);
 
             require_once 'views/pages/game/detail.php';
@@ -236,7 +250,7 @@
             $children = $this->accountRepository->children($_SESSION['user']);
 
             foreach ($children as $child) {
-                $child->played = $this->childRepository->played($child->id_child_account, $_GET['id']);
+                $child->played = $this->childRepository->playedByGame($child->id_child_account, $_GET['id']);
                 $child->trophies = $this->childRepository->trophy($child->id_child_account, $_GET['id']);
             }
 
@@ -280,7 +294,7 @@
             if (isset($_POST['allow'])) {
                 $allow = $this->gameRepository->allowGame($_POST['child'], $game, $_SESSION['user']);
                 if ($allow == false) {
-                    new WebException("Erreur lors de l'accord de permission");
+                    new WebException("PERMISSION_ALLOW");
                     return;
                 }
 
@@ -290,7 +304,7 @@
             if (isset($_POST['decline'])) {
                 $decline = $this->gameRepository->declineGame($_POST['child'], $game, $_SESSION['user']);
                 if ($decline == false) {
-                    new WebException("Erreur lors de l'accord de permission");
+                    new WebException("PERMISSION_ALLOW");
                     return;
                 }
 
@@ -320,7 +334,7 @@
 
                 $comment = $this->commentRepository->add($_SESSION['user'], $game, $_POST['message']);
                 if ($comment == false) {
-                    new WebException("Erreur lors de l'ajout du commentaire");
+                    new WebException("ADD_COMMENT");
                     return;
                 }
             }

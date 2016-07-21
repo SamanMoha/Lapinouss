@@ -2,6 +2,9 @@
 	<script src="/Lapinouss/scripts/angular.min.js"></script>
 
 <div ng-app="myApp" ng-controller="ColorController" ng-init="init()">
+	<div class="displayscore" style="font-size: 50px">
+		Ton score est de :<span id="score">{{score}}</span>
+	</div>
 <div id="couleur">
 	<table border="2">
 		<tr>
@@ -19,14 +22,17 @@
 	</table>
 </div>
 <div id="message">
-	<div class="alert alert-success" role="alert" ng-show="successMsg"> 
-		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> BRAVO, tu as trouv&eacute;  la bonne solution !!!
+	<div class="alert alert-success" role="alert" ng-show="successMsg">
+		BRAVO, tu as trouv&eacute;  la bonne solution !!!
 	</div>
 	<div class="alert alert-danger" role="alert" ng-show="errorMsg">
-		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> ERREUR, courage tu peux y arriver ! Il te reste {{tries}} essai(s)
+		ERREUR, courage tu peux y arriver ! Il te reste {{tries}} essai(s)
 	</div>
 	<div class="alert alert-danger" role="alert" ng-show="!countTry">
-		<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> DOMMAGE, tu n'as pas trouv&eacute; la solution...
+		DOMMAGE, tu n'as pas trouv&eacute; la solution...<br>
+		Ton score est de <span id="endscore">{{score}}</span><br><br>
+
+		<label class="btn1 btn2 btn-8 btn-8c" ng-click="reloadPage()">Recommencer</label>
 	</div>
 </div>
 <div id="sound">

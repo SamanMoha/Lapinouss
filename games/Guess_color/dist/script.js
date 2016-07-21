@@ -9,9 +9,13 @@ app.controller('ColorController', function($scope) {
 	$scope.tries;
 	$scope.countTry;
 	$scope.nbParty;
+	$scope.score = 0;
+	$scope.parties = 10;
 	var colors = ["bleu", "rouge", "jaune", "vert", "orange", "noir"];
 	
     $scope.init = function(){
+		$("#couleur").show();
+		$("#sound").show();
 		$scope.tries = 3;
 		$scope.countTry = true;
 		$scope.successMsg = false;
@@ -20,6 +24,7 @@ app.controller('ColorController', function($scope) {
         $scope.play = colors[Math.floor(Math.random() * colors.length)];
 		$scope.playUrl = "/Lapinouss/games/Guess_color/colors/"+$scope.play+".mp3";
 		$scope.nbParty = 1;
+		$scope.parties --;
     };
 	
 	$scope.tap = function (color) {
@@ -32,6 +37,7 @@ app.controller('ColorController', function($scope) {
 
 	// Si la partie est perdue
 	$scope.error = function() {
+		$scope.score -= 5;
 		// S'il reste des essais on ne met pas à jour les trophées
 		if ($scope.tries > 1 ){
 			$scope.tries -= 1;
@@ -42,15 +48,23 @@ app.controller('ColorController', function($scope) {
 		else {
 			$scope.errorMsg = false;
 			$scope.countTry = false;
-			$scope.next = true;
-
+			$("#sound").hide();
+			$("#couleur").hide();
+			
 			// Mise à jour des statistiques (1 partie jouée)
 			$.post(window.location, { played: true });
 		}
 	};
+	
+	$scope.reloadPage = function(){
+		
+		location.reload();
+	};
 
 	// Si la partie est gagnée
     $scope.bravo = function() {
+		$scope.score += 10;
+		$("#couleur").hide();
 		$scope.errorMsg = false;
 		$scope.successMsg = true;
 		$scope.countTry = true;

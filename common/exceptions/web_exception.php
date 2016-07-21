@@ -1,8 +1,8 @@
 <?php
     class WebException {
 
-        function __construct($message)
+        function __construct($message = '')
         {
-            echo '<script>alert("' . $message . '");</script>';
+            redirect('home', 'error', $message);
         }
     }

@@ -69,8 +69,19 @@
             return true;
         }
 
-        public function played($id_child_account, $id_game) {
+        public function played($id_child_account) {
             $played = $this->db->prepare(ChildQueries::PLAYED);
+
+            $played->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
+
+            if (!$played || ($played instanceof PDOException) || !$played->execute())
+                return null;
+
+            return $played->fetchAll(PDO::FETCH_CLASS, 'Played');
+        }
+        
+        public function playedByGame($id_child_account, $id_game) {
+            $played = $this->db->prepare(ChildQueries::PLAYED_BY_GAME);
 
             $played->bindParam(':id_child_account', $id_child_account, PDO::PARAM_INT);
             $played->bindParam(':id_game', $id_game, PDO::PARAM_INT);

@@ -9,7 +9,7 @@
 		 
 		<div class="grid_1">
 			<div class="container">
-				<div class="box_1  wow fadeInUpBig" data-wow-delay="0.4s">
+				<div class="box_1 wow fadeInUpBig" data-wow-delay="0.4s">
 					<h3>Apprendre en s'amusant</h3>
 					<p>Laissez libre cours &agrave; votre imagination et construisez de multiples niveaux de jeux m&ecirc;lant savoir et plaisir ensemble.</p>
 				</div>
@@ -62,10 +62,10 @@
 		<br/><br/>
 
 		<div class="grid_2">
-			<div class="container"> 
-				<h3 class="head_1 wow rotateInUpLeft" data-wow-delay="0.4s">&agrave; vous de choisir</h3>
+			<div class="container wow fadeInUpBig" data-wow-delay="0.4s">
+				<h3 class="head_1">&agrave; vous de choisir</h3>
 				
-				<div class="col-md-4 box_6 wow rotateInDownLeft " data-wow-delay="0.4s">
+				<div class="col-md-4 box_6">
 					<img src="resources/images/tiles/pic2.jpg" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Cr&eacute;ez</h4>
@@ -73,7 +73,7 @@
 					</div>
 				</div>
 				
-				<div class="col-md-4 box_6 wow lightSpeedIn" data-wow-delay="0.4s">
+				<div class="col-md-4 box_6">
 					<img src="resources/images/tiles/pic1.jpg" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Jouez</h4>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			  
-				<div class="col-md-4 box_6 wow rotateIn " data-wow-delay="0.4s">
+				<div class="col-md-4 box_6">
 					<img src="resources/images/tiles/pic3.jpg" class="img-responsive" alt=""/>
 					<div class="desc">
 						<h4>Partagez</h4>

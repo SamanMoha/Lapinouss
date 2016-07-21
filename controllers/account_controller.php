@@ -27,7 +27,11 @@
 		private function indexParent() {
 			$account = $_SESSION['user'];
 			$children = array_slice($this->accountRepository->children($account), 0, 3);
-			
+
+			foreach ($children as $child) {
+				$child->played = $this->childRepository->played($child->id_child_account);
+			}
+
 			require_once 'views/pages/account/index_adult.php';
 		}
 
@@ -54,7 +58,7 @@
 			);
 
 			if ($user == null) {
-				new WebException("Adresse e-mail/mot de passe incorrect !");
+				new WebException("USER_INCORRECT");
 				return;
 			}
 
@@ -72,7 +76,7 @@
 			);
 
 			if ($user == null) {
-				new WebException("Utilisateur non reconnu !");
+				new WebException("UNKNOWN_USER");
 				return;
 			}
 
@@ -86,17 +90,17 @@
 
 			if (isset($_POST['register'])) {
 				if ($_POST['password'] != $_POST['re-password']) {
-					new WebException("Les mots de passes doivent etre identiques !");
+					new WebException("PWD_EQUAL");
 					return;
 				}
 
 				if (strlen($_POST['password']) < 8) {
-					new WebException("Le mot de passe doit contenir au moins 8 caracteres.");
+					new WebException("PWD_LENGTH_8");
 					return;
 				}
 
 				if ($this->accountRepository->exists($_POST['email'])) {
-					new WebException("L'adresse email est deja utlisée !");
+					new WebException("EMAIL_USED");
 					return;
 				}
 
@@ -109,13 +113,13 @@
 				);
 
 				if ($user == null) {
-					new WebException("Erreur lors de l'inscription.");
+					new WebException("REGISTRATION");
 					return;
 				}
 
 				$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
 				if ($user == null) {
-					new WebException("Erreur lors de l'inscription.");
+					new WebException("REGISTRATION");
 					return;
 				}
 
@@ -129,12 +133,12 @@
 
 			if (isset($_POST['register'])) {
 				if ($_POST['password'] != $_POST['re-password']) {
-					new WebException("Les mots de passes doivent etre identiques !");
+					new WebException("PWD_EQUAL");
 					return;
 				}
 
 				if (strlen($_POST['password']) < 6) {
-					new WebException("Le mot de passe doit contenir au moins 6 caractères.");
+					new WebException("PWD_LENGTH_6");
 					return;
 				}
 
@@ -146,7 +150,7 @@
 				);
 
 				if ($user == false) {
-					new WebException("Oops une erreur est survenue lors de l'inscription :/");
+					new WebException("REGISTRATION");
 					return;
 				}
 
@@ -164,7 +168,8 @@
 				);
 
 				if ($user == null) {
-					 new WebException("Erreur lors de l'inscription.");
+					 new WebException("REGISTRATION");
+					return;
 				}
 
 				$_SESSION['user'] = $user;
@@ -175,19 +180,18 @@
 			require_once 'views/pages/account/settings.php';
 		}
 
-		public function delete() {
-			if (isset($_POST['delete'])) {
-				$delete = $this->accountRepository->delete(
-					$_SESSION['user']->email,
-					$_SESSION['user']->token
-				);
+		public function deleteChild() {
+			if (!isset($_GET['id']) || empty($_GET['id']))
+				return;
 
-				if (!$delete) {
-					 new WebException("Erreur lors de la suppression du compte.");
-				}
+			$delete = $this->childRepository->delete($_GET['id']);
 
-				$this->logout();
+			if (!$delete) {
+				 new WebException("CHILD_DELETE");
+				return;
 			}
+
+			redirect('account', 'children');
 		}
 
 		public function logout() {

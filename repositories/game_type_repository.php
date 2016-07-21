@@ -61,55 +61,33 @@
 
             if (!$game_types || ($game_types instanceof PDOException) || !$game_types->execute())
                 return null;
+            
+            $game_types = $game_types->fetchAll(PDO::FETCH_CLASS, 'GameType');
 
-            $games = $game_types->fetchAll(PDO::FETCH_CLASS, 'Game');
-
-            foreach ($games as $game) {
-                $game->account = $this->accountRepository->findById($game->id_account);
-            }
-
-            return $games;
+            return $game_types;
         }
 
-        public function findAllByChild(ChildAccount $account) {
-            $games = $this->db->prepare(GameTypeQueries::FIND_ALL_BY_CHILD);
+        public function findAllByChild(ChildAccount $child_account) {
+            $game_types = $this->db->prepare(GameTypeQueries::FIND_ALL_BY_CHILD);
 
-            $games->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
+            $game_types->bindParam(':id_child_account', $child_account->id_child_account, PDO::PARAM_INT);
 
-            if ($games
-                && !($games instanceof PDOException)
-                && $games->execute()) {
+            if (!$game_types || ($game_types instanceof PDOException) || !$game_types->execute())
+                return null;
 
-                $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
-
-                foreach ($games as $game) {
-                    $game->account = $this->accountRepository->findById($game->id_account);
-                }
-
-                return $games;
-            }
-
-            return null;
+            return $game_types->fetchAll(PDO::FETCH_CLASS, 'GameType');
         }
 
-        public function findByChild(ChildAccount $account, $uid) {
-            $game = $this->db->prepare(GameTypeQueries::FIND_BY_CHILD);
+        public function findByChild(ChildAccount $account, $id_game) {
+            $game_type = $this->db->prepare(GameTypeQueries::FIND_BY_CHILD);
 
-            $game->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
-            $game->bindParam(':game_uid', $uid, PDO::PARAM_STR);
+            $game_type->bindParam(':id_child_account', $account->id_child_account, PDO::PARAM_INT);
+            $game_type->bindParam(':id_game', $id_game, PDO::PARAM_INT);
 
-            if ($game
-                && !($game instanceof PDOException)
-                && $game->execute()
-                && $game->rowCount() == 1) {
-
-                $game = $game->fetchObject('Game');
-                $game->account = $this->accountRepository->findById($game->id_account);
-
-                return $game;
-            }
-
+            if (!$game_type || ($game_type instanceof PDOException) | !$game_type->execute() || $game_type->rowCount() != 1)
             return null;
+
+            return $game_type->fetchObject('Game');
         }
 
         public function buy(Account $account, $id_game_type) {
