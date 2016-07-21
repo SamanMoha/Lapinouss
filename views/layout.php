@@ -41,7 +41,7 @@
 						</li>
 
 						<?php
-						if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof Account)) {
+						if (!isset($_SESSION['user']) || ($_SESSION['user'] instanceof ChildAccount)) {
 							?>
 							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
 								<a href="<?php echo action('game', 'store'); ?>">
@@ -105,7 +105,7 @@
 						if (!isset($_SESSION['user'])) {
 							?>
 							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'account'
-								&& isset($_GET['action']) && $_GET['action'] == 'login' ? 'class="active"' : 'class="navbar-blink"'; ?>>
+								&& isset($_GET['action']) && $_GET['action'] == 'register' ? 'class="active"' : 'class="navbar-blink"'; ?>>
 								<a href="<?php echo action('account', 'register'); ?>">
 									Inscription
 								</a>
@@ -131,12 +131,10 @@
 			</div>
 		</div>
 
-		<div class="wow bounceInRight" data-wow-delay="0.1s">
-			<div class="box_2">
-				<?php
-					require_once 'routes.php';
-				?>
-			</div>
+		<div class="box_2">
+			<?php
+				require_once 'routes.php';
+			?>
 		</div>
 
 		<div class="footer wow fadeInRight" data-wow-delay="0.4s">
@@ -147,7 +145,6 @@
 							<h3>Menu</h3>
 							<li><a href="<?php echo action('home'); ?>">Accueil</a></li>
 							<li><a href="<?php echo action('game', 'store'); ?>">Store</a></li>
-							<li><a href="<?php echo action('tutorial'); ?>">Tutoriels</a></li>
 							<li><a href="<?php echo action('contact'); ?>">Contact</a></li>
 						</ul>
 					</div>
@@ -167,7 +164,7 @@
 							<h3>&agrave; propos</h3>
 							<li><a href="<?php echo action('contact'); ?>">Qui sommes nous ?</a></li>
 							<li><a href="<?php echo action('contact'); ?>">Recrutement</a></li>
-							<li><a href="<?php echo action('contact'); ?>">Conditions d'utilisations</a></li>
+							<li><a href="<?php echo action('contact', 'conditions'); ?>">Conditions d'utilisations</a></li>
 							<li><a href="<?php echo action('contact'); ?>">Nous contacter</a></li>
 						</ul>
 					</div>
