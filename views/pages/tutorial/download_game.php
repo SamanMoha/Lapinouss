@@ -1,25 +1,23 @@
 <div class="container">
     <h1 class="blog_head">T&eacute;l&eacute;charger un jeu</h1>
-    <small>Date de la derni&egrave;re modification : 21 juillet 2016</small>
     <div class="contact">
         <div class="col-md-12 contact contact_left">
-            <h3>Bienvenue sur Lapinouss !</h3>
+            <h3>Choisissez vos jeux favoris</h3>
             <p>
-                Merci d&rsquo;avoir choisi nos produits et services (les &laquo; Services &raquo;). Les Services sont fournis par la soci&eacute;t&eacute; Lapinouss Inc. (ci-apr&egrave;s &laquo; Lapinouss &raquo;), sise au 1600 Amphitheatre Parkway, Mountain View, CA 94043, &Eacute;tats-Unis. L&rsquo;utilisation de nos Services implique votre acceptation des pr&eacute;sentes Conditions d&rsquo;Utilisation. Nous vous invitons &agrave; les lire attentivement. Nos Services sont tr&egrave;s vari&eacute;s : il se peut donc que des conditions additionnelles ou particuli&egrave;res &agrave; certains Services (p. ex. des conditions de limite d&rsquo;&acirc;ge) s&rsquo;appliquent. Ces conditions additionnelles seront mises &agrave; votre disposition avec les Services concern&eacute;s. Si vous choisissez d&rsquo;utiliser ces Services, vous acceptez que ces conditions additionnelles fassent alors &eacute;galement partie de votre engagement contractuel avec nous.
-            </p>
-        </div>
-
-        <div class="col-md-12 contact contact_left">
-            <h3>Utilisation de nos Services</h3>
-            <p>
-                Vous devez respecter les r&egrave;gles applicables aux Services que vous utilisez. N&rsquo;utilisez pas nos Services de fa&ccedil;on impropre. Ne tentez pas, par exemple, de produire des interf&eacute;rences avec nos Services ou d&rsquo;y acc&eacute;der en utilisant une m&eacute;thode autre que l&rsquo;interface et les instructions que nous mettons &agrave; votre disposition. Vous ne devez utiliser nos Services que dans le respect des lois en vigueur, y compris les lois et r&eacute;glementations applicables concernant le contr&ocirc;le des exportations et r&eacute;-exportations. Nous pouvons suspendre ou cesser la fourniture de nos Services si vous ne respectez pas les conditions ou r&egrave;glements applicables, ou si nous examinons une suspicion d&rsquo;utilisation impropre. L&rsquo;utilisation de nos Services ne vous conf&egrave;re aucun droit de propri&eacute;t&eacute; intellectuelle sur nos Services ni sur les contenus auxquels vous acc&eacute;dez. Vous ne devez utiliser aucun contenu obtenu par l&rsquo;interm&eacute;diaire de nos Services sans l&rsquo;autorisation du propri&eacute;taire dudit contenu, &agrave; moins d&rsquo;y &ecirc;tre autoris&eacute; par la loi. Ces Conditions d&rsquo;Utilisation ne vous conf&egrave;rent pas le droit d&rsquo;utiliser une quelconque marque ou un quelconque logo pr&eacute;sent dans nos Services. Vous n&rsquo;&ecirc;tes pas autoris&eacute; &agrave; supprimer, masquer ou modifier les notices juridiques affich&eacute;es dans ou avec nos Services. Nos Services affichent des contenus n&rsquo;appartenant pas &agrave; Lapinouss. Ces contenus rel&egrave;vent de l&rsquo;enti&egrave;re responsabilit&eacute; de l&rsquo;entit&eacute; qui les a rendus disponibles. Nous pouvons &ecirc;tre amen&eacute;s &agrave; v&eacute;rifier les contenus pour s&rsquo;assurer de leur conformit&eacute; &agrave; la loi ou &agrave; nos conditions d&rsquo;utilisation. Nous nous r&eacute;servons le droit de supprimer ou de refuser d&rsquo;afficher tout contenu que nous estimons raisonnablement &ecirc;tre en violation de la loi ou de notre r&egrave;glement. Le fait que nous nous r&eacute;servions ce droit ne signifie pas n&eacute;cessairement que nous v&eacute;rifions les contenus. D&egrave;s lors, veuillez ne pas pr&eacute;sumer que nous v&eacute;rifions les contenus. Dans le cadre de votre utilisation des Services et de l&rsquo;ex&eacute;cution de notre engagement contractuel, nous sommes susceptibles de vous adresser des messages li&eacute;s au fonctionnement ou &agrave; l&rsquo;administration des Services ainsi que d&rsquo;autres informations. Vous pouvez choisir de ne plus recevoir certains de ces messages. Certains de nos Services sont disponibles sur les appareils mobiles. Ne les utilisez pas d&rsquo;une mani&egrave;re susceptible de vous distraire et de vous emp&ecirc;cher de respecter le code de la route et les r&egrave;gles de s&eacute;curit&eacute; en mati&egrave;re de conduite.
-            </p>
-        </div>
-
-        <div class="col-md-12 contact contact_left">
-            <h3>Votre compte Lapinouss</h3>
-            <p>
-                Vous pouvez avoir besoin d&rsquo;un compte Lapinouss pour utiliser certains de nos Services. Votre compte Lapinouss peut &ecirc;tre cr&eacute;&eacute; par vous-m&ecirc;me ou vous &ecirc;tre attribu&eacute; par un administrateur (par exemple, votre employeur ou votre &eacute;tablissement d&rsquo;enseignement). Si votre compte Lapinouss vous a &eacute;t&eacute; attribu&eacute; par un administrateur, il se peut que des conditions d&rsquo;utilisation diff&eacute;rentes ou additionnelles s&rsquo;appliquent et que votre administrateur puisse acc&eacute;der &agrave; votre compte ou le d&eacute;sactiver. Pour prot&eacute;ger votre compte Lapinouss, pr&eacute;servez la confidentialit&eacute; de votre mot de passe. Vous &ecirc;tes responsable de l&rsquo;activit&eacute; exerc&eacute;e dans votre compte Lapinouss ou par le biais de celui-ci. Veillez &agrave; ne pas r&eacute;utiliser le m&ecirc;me mot de passe que celui associ&eacute; &agrave; votre compte Lapinouss, dans des applications tierces. Si vous d&eacute;couvrez que votre mot de passe ou votre compte Lapinouss a fait l&rsquo;objet d&rsquo;une utilisation non autoris&eacute;e, suivez ces instructions.
+                <br/>
+                Une fois connect&eacute; avec votre compte parent/professeur, rendez-vous dans l'onglet &quot;Store&quot;.
+                Choisissez &agrave; pr&eacute;sent le th&egrave;me qui contient le jeu souhait&eacute;.
+                <br/><br/>
+                Si le th&egrave;me du jeu souhait&eacute; n'est pas encore t&eacute;l&eacute;charg&eacute;, t&eacute;l&eacute;chargez le.
+                <br/>
+                Un jeu ne peut &ecirc;tre obtenu, si et seulement si, son th&egrave;me a &eacute;t&eacute; t&eacute;l&eacute;charg&eacute;.
+                <br/><br/>
+                Une fois le th&egrave;me obtenu, cliquez sur &quot;Explorer&quot;.
+                Cherchez votre jeu et cliquer sur &quot;T&eacute;l&eacute;charger&quot;.
+                <br/>
+                Vous pouvez ensuite v&eacute;rifier dans l'onglet &quot;Mes jeux&quot; que le jeu a bien &eacute;t&eacute; t&eacute;l&eacute;charg&eacute;.
+                <br/><br/>
+                Rendez-vous ensuite &agrave; la section &quot;Permissions&quot; pour les autorisations des enfants.
             </p>
         </div>
 
