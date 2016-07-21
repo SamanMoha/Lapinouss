@@ -27,7 +27,11 @@
 		private function indexParent() {
 			$account = $_SESSION['user'];
 			$children = array_slice($this->accountRepository->children($account), 0, 3);
-			
+
+			foreach ($children as $child) {
+				$child->played = $this->childRepository->played($child->id_child_account);
+			}
+
 			require_once 'views/pages/account/index_adult.php';
 		}
 

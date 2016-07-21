@@ -41,7 +41,7 @@
 						</li>
 
 						<?php
-						if (!isset($_SESSION['user']) || ($_SESSION['user'] instanceof ChildAccount)) {
+						if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof ChildAccount)) {
 							?>
 							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
 								<a href="<?php echo action('game', 'store'); ?>">

@@ -210,7 +210,7 @@
                 return;
             }
 
-            $played = $this->childRepository->played($_SESSION['user']->id_child_account, $_GET['id']);
+            $played = $this->childRepository->playedByGame($_SESSION['user']->id_child_account, $_GET['id']);
             $trophies = $this->childRepository->trophy($_SESSION['user']->id_child_account, $_GET['id']);
 
             require_once 'views/pages/game/detail.php';
@@ -236,7 +236,7 @@
             $children = $this->accountRepository->children($_SESSION['user']);
 
             foreach ($children as $child) {
-                $child->played = $this->childRepository->played($child->id_child_account, $_GET['id']);
+                $child->played = $this->childRepository->playedByGame($child->id_child_account, $_GET['id']);
                 $child->trophies = $this->childRepository->trophy($child->id_child_account, $_GET['id']);
             }
 

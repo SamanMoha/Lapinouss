@@ -48,9 +48,15 @@
         const PLAYED = "
                     SELECT *
                     FROM played 
+                    WHERE id_child_account = :id_child_account
+                ;";
+
+        const PLAYED_BY_GAME = "
+                    SELECT *
+                    FROM played 
                     WHERE id_game = :id_game
                       AND id_child_account = :id_child_account
-                ";
+                ;";
 
         const TROPHY = "
                     SELECT t.*, s.*
