@@ -280,7 +280,7 @@
             if (isset($_POST['allow'])) {
                 $allow = $this->gameRepository->allowGame($_POST['child'], $game, $_SESSION['user']);
                 if ($allow == false) {
-                    new WebException("Erreur lors de l'accord de permission");
+                    new WebException("PERMISSION_ALLOW");
                     return;
                 }
 
@@ -290,7 +290,7 @@
             if (isset($_POST['decline'])) {
                 $decline = $this->gameRepository->declineGame($_POST['child'], $game, $_SESSION['user']);
                 if ($decline == false) {
-                    new WebException("Erreur lors de l'accord de permission");
+                    new WebException("PERMISSION_ALLOW");
                     return;
                 }
 
@@ -320,7 +320,7 @@
 
                 $comment = $this->commentRepository->add($_SESSION['user'], $game, $_POST['message']);
                 if ($comment == false) {
-                    new WebException("Erreur lors de l'ajout du commentaire");
+                    new WebException("ADD_COMMENT");
                     return;
                 }
             }

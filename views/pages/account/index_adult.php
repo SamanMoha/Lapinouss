@@ -1,4 +1,3 @@
-<div class="row">
     <div class="box_1">
         <h3>
             <?php
@@ -69,4 +68,3 @@
 
         </div>
     </div>
-</div>

@@ -54,7 +54,7 @@
 			);
 
 			if ($user == null) {
-				new WebException("Adresse e-mail/mot de passe incorrect !");
+				new WebException("USER_INCORRECT");
 				return;
 			}
 
@@ -72,7 +72,7 @@
 			);
 
 			if ($user == null) {
-				new WebException("Utilisateur non reconnu !");
+				new WebException("UNKNOWN_USER");
 				return;
 			}
 
@@ -86,17 +86,17 @@
 
 			if (isset($_POST['register'])) {
 				if ($_POST['password'] != $_POST['re-password']) {
-					new WebException("Les mots de passes doivent etre identiques !");
+					new WebException("PWD_EQUAL");
 					return;
 				}
 
 				if (strlen($_POST['password']) < 8) {
-					new WebException("Le mot de passe doit contenir au moins 8 caracteres.");
+					new WebException("PWD_LENGTH_8");
 					return;
 				}
 
 				if ($this->accountRepository->exists($_POST['email'])) {
-					new WebException("L'adresse email est deja utlisée !");
+					new WebException("EMAIL_USED");
 					return;
 				}
 
@@ -109,13 +109,13 @@
 				);
 
 				if ($user == null) {
-					new WebException("Erreur lors de l'inscription.");
+					new WebException("REGISTRATION");
 					return;
 				}
 
 				$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
 				if ($user == null) {
-					new WebException("Erreur lors de l'inscription.");
+					new WebException("REGISTRATION");w
 					return;
 				}
 
@@ -129,12 +129,12 @@
 
 			if (isset($_POST['register'])) {
 				if ($_POST['password'] != $_POST['re-password']) {
-					new WebException("Les mots de passes doivent etre identiques !");
+					new WebException("PWD_EQUAL");
 					return;
 				}
 
 				if (strlen($_POST['password']) < 6) {
-					new WebException("Le mot de passe doit contenir au moins 6 caractères.");
+					new WebException("PWD_LENGTH_6");
 					return;
 				}
 
@@ -146,7 +146,7 @@
 				);
 
 				if ($user == false) {
-					new WebException("Oops une erreur est survenue lors de l'inscription :/");
+					new WebException("REGISTRATION");
 					return;
 				}
 
@@ -164,7 +164,7 @@
 				);
 
 				if ($user == null) {
-					 new WebException("Erreur lors de l'inscription.");
+					 new WebException("REGISTRATION");
 					return;
 				}
 
@@ -183,7 +183,7 @@
 			$delete = $this->childRepository->delete($_GET['id']);
 
 			if (!$delete) {
-				 new WebException("Erreur lors de la suppression du compte enfant.");
+				 new WebException("CHILD_DELETE");
 				return;
 			}
 
