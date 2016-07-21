@@ -5,7 +5,7 @@
                     SELECT *
                     FROM account
                     WHERE email = :email
-                      AND password = :password
+                      AND password = SHA1(:password)
                 ;";
 
         const REGISTER = "INSERT INTO account 
@@ -19,7 +19,7 @@
                             VALUES (
                                 :permission,
                                 :email,
-                                :password, 
+                                SHA1(:password), 
                                 :first_name,
                                 :last_name
                             );";

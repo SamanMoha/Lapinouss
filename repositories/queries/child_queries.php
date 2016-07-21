@@ -8,7 +8,7 @@
                         INNER JOIN account a ON a.id_account = phc.id_account
                         WHERE ca.first_name LIKE :first_name
                           AND ca.last_name LIKE :last_name
-                          AND ca.password = :password
+                          AND ca.password = SHA1(:password)
                           AND a.email = :parent_email
                     ;";
 
@@ -19,7 +19,7 @@
                                 last_name
                             )
                             VALUES (
-                                :password, 
+                                SHA1(:password), 
                                 :first_name,
                                 :last_name
                             );
@@ -42,7 +42,6 @@
                         INNER JOIN account a ON a.id_account = phc.id_account
                         WHERE ca.first_name LIKE :first_name
                           AND ca.last_name LIKE :last_name
-                          AND ca.password = :password
                           AND a.id_account = :id_account
                     ;";
 

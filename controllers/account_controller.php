@@ -115,7 +115,7 @@
 
 				$user = $this->accountRepository->login($_POST['email'], $_POST['password']);
 				if ($user == null) {
-					new WebException("REGISTRATION");w
+					new WebException("REGISTRATION");
 					return;
 				}
 
