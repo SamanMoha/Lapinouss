@@ -106,7 +106,8 @@
 			'setting',
 			'stats',
 			'comments',
-			'detail'
+			'detail',
+			'theme'
 		]
 	);
 

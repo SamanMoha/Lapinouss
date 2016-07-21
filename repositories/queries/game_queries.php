@@ -57,6 +57,15 @@
                           AND available = 1 
                     ;";
 
+        const FIND_ALL_BY_TYPE_AND_CHILD = "
+                        SELECT g.*  
+                        FROM game g
+                        INNER JOIN child_account_has_downloaded_game chg ON chg.downloaded_game_id_game = g.id_game 
+                        WHERE g.id_game_type = :id_game_type
+                          AND chg.id_child_account = :id_child_account
+                          AND available = 1 
+                    ;";
+
         const BUY = "INSERT INTO downloaded_game
                             (
                                 id_account, 

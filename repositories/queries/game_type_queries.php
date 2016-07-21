@@ -13,39 +13,28 @@ class GameTypeQueries {
                     ;";
 
     const FIND_ALL_BY_PARENT = "
-                SELECT g.*
-                FROM game g
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
-                INNER JOIN account a ON a.id_account = dgt.id_account 
-                WHERE a.id_account = :id_account
-                  AND available = 1 
-        ";
+                        SELECT DISTINCT gt.* 
+                        FROM game_type gt
+                        INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
+                        WHERE dgt.id_account = :id_account
+                    ;";
 
     const FIND_ALL_BY_CHILD = "
-                SELECT g.*
-                FROM game g 
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
-                INNER JOIN account a ON a.id_account = dgt.id_account
-                INNER JOIN parent_has_child phc ON phc.id_account = a.id_account
-                INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account 
-                WHERE ca.id_child_account = :id_child_account 
-                  AND Available = 1 
-        ";
+                        SELECT DISTINCT gt.* 
+                        FROM game_type gt
+                        INNER JOIN game g ON g.id_game_type = gt.id_game_type
+                        INNER JOIN child_account_has_downloaded_game chg ON chg.downloaded_game_id_game = g.id_game 
+                        WHERE chg.id_child_account = :id_child_account
+                    ;";
 
     const FIND_BY_CHILD = "
-                SELECT g.*
-                FROM game g
-                INNER JOIN game_type gt ON gt.id_game_type = g.id_game_type 
-                INNER JOIN downloaded_game_type dgt ON dgt.id_game_type = gt.id_game_type 
-                INNER JOIN account a ON a.id_account = dgt.id_account
-                INNER JOIN parent_has_child phc ON phc.id_account = a.id_account
-                INNER JOIN child_account ca ON ca.id_child_account = phc.id_child_account
-                WHERE ca.id_child_account = :id_child_account
-                  AND g.id_game = :id_game 
-                  AND available = 1 
-        ";
+                        SELECT DISTINCT gt.* 
+                        FROM game_type gt
+                        INNER JOIN game g ON g.id_game_type = gt.id_game_type
+                        INNER JOIN child_account_has_downloaded_game chg ON chg.downloaded_game_id_game = g.id_game 
+                        WHERE chg.id_child_account = :id_child_account
+                          AND g.id_game = :id_game 
+                    ;";
 
     const BUY = "INSERT INTO downloaded_game_type
                             (
@@ -57,10 +46,19 @@ class GameTypeQueries {
                                 :id_game_type
                             );";
 
-    const DELETE = "DELETE FROM downloaded_game_type
-                    WHERE id_account = :id_account 
-                        AND id_game_type = :id_game_type
-                    ;";
+    const DELETE = "
+                        DELETE FROM downloaded_game_type
+                        WHERE id_account = :id_account 
+                        AND id_game_type = :id_game_type;
+                        
+                        DELETE FROM child_account_has_downloaded_game chg
+                        LEFT JOIN game g ON g.id_game = chg.downloaded_game_id_game
+                        WHERE chg.downloaded_game_id_account = :id_account;
+                        
+                        DELETE FROM downloaded_game dg
+                        LEFT JOIN game g ON g.id_game = dg.id_game
+                        WHERE dg.id_account = :id_account;
+                    ";
 
     const IS_ALREADY_BOUGHT = "
                         SELECT *  

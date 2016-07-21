@@ -43,7 +43,8 @@
 						<?php
 						if (!isset($_SESSION['user']) || !($_SESSION['user'] instanceof ChildAccount)) {
 							?>
-							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game'
+							&& isset($_GET['action']) && $_GET['action'] == 'store' ? 'class="active"' : ''; ?>>
 								<a href="<?php echo action('game', 'store'); ?>">
 									Store
 								</a>
@@ -53,9 +54,10 @@
 						?>
 
 						<?php
-						if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof ChildAccount)) {
+						if (isset($_SESSION['user'])) {
 							?>
-							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game' ? 'class="active"' : ''; ?>>
+							<li <?php echo isset($_GET['controller']) && $_GET['controller'] == 'game'
+							&& (!isset($_GET['action']) || $_GET['action'] != 'store') ? 'class="active"' : ''; ?>>
 								<a href="<?php echo action('game'); ?>">
 									Mes jeux
 								</a>

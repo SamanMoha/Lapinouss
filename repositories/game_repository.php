@@ -48,18 +48,13 @@
 
         public function findAllByChild(ChildAccount $child_account) {
             $games = $this->db->prepare(GameQueries::FIND_ALL_BY_CHILD);
-
             $games->bindParam(':id_child_account', $child_account->id_child_account, PDO::PARAM_INT);
-
             if (!$games || ($games instanceof PDOException) || !$games->execute())
                 return null;
-
             $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
-
             foreach ($games as $game) {
                 $game->comments = $this->commentRepository->findByGameId($game->id_game);
             }
-
             return $games;
         }
         
@@ -109,6 +104,24 @@
                 if ($account != null) {
                     $game->isAlreadyBought = $this->isAlreadyBought($account, $game);
                 }
+            }
+
+            return $games;
+        }
+        
+        public function findAllByTypeAndChild($id_game_type, ChildAccount $child_account) {
+            $games = $this->db->prepare(GameQueries::FIND_ALL_BY_TYPE_AND_CHILD);
+
+            $games->bindParam(':id_game_type', $id_game_type, PDO::PARAM_INT);
+            $games->bindParam(':id_child_account', $child_account->id_child_account, PDO::PARAM_INT);
+
+            if (!$games || ($games instanceof PDOException) || !$games->execute())
+                return null;
+
+            $games = $games->fetchAll(PDO::FETCH_CLASS, 'Game');
+
+            foreach ($games as $game) {
+                $game->comments = $this->commentRepository->findByGameId($game->id_game);
             }
 
             return $games;

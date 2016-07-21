@@ -25,13 +25,27 @@
                 redirect('game', 'store');
 
             if ($_SESSION['user'] instanceof ChildAccount) {
-                $games = $this->gameRepository->findAllByChild($_SESSION['user']);
+                $game_types = $this->gameTypeRepository->findAllByChild($_SESSION['user']);
             }
             else {
-                $games = $this->gameRepository->findAllByParent($_SESSION['user']);
+                $game_types = $this->gameTypeRepository->findAllByParent($_SESSION['user']);
             }
 
             require_once 'views/pages/game/index.php';
+        }
+
+        public function theme() {
+            if (!isset($_GET['id']) || empty($_GET['id']))
+                redirect('game');
+
+            if ($_SESSION['user'] instanceof ChildAccount) {
+                $games = $this->gameRepository->findAllByTypeAndChild($_GET['id'], $_SESSION['user']);
+            }
+            else {
+                $games = $this->gameRepository->findAllByType($_GET['id']);
+            }
+
+            require_once 'views/pages/game/theme.php';
         }
 
         public function store() {
