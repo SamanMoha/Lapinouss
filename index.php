@@ -1,4 +1,6 @@
-	<?php
+<?php
+	require_once 'common/config.php';
+
 	require_once 'models/account.php';
 	require_once 'models/child_account.php';
 	require_once 'models/comment.php';
@@ -15,8 +17,6 @@
 	require_once 'models/trophy.php';
 
 	session_start();
-	
-	define('BASE_PATH', '/Lapinouss/');
 
 	require_once 'common/exceptions/fatal_exception.php';
 	require_once 'common/exceptions/web_exception.php';

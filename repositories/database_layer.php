@@ -1,6 +1,4 @@
 <?php
-    require_once './common/config.php';
-
     class DatabaseLayer {
 
         private static $_db = null;
